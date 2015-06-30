@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- META SECTION -->
+    <title>Tradedepot Admin dashboard</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <!-- END META SECTION -->
+
+    <!-- CSS INCLUDE -->
+    <link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
+    <link rel="stylesheet" type="text/css" href="css/tradedepot.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery/jquery-jvectormap-2.0.2.css" />
+    <style>
+        /*@css_start*/
+        .jvectormap-legend-title {
+            font-size: 12px;
+        }
+
+        .jvectormap-legend .jvectormap-legend-tick-sample {
+            height: 26px;
+        }
+
+        .jvectormap-legend-icons {
+            background: white;
+            border: black 1px solid;
+        }
+
+        .jvectormap-legend-icons {
+            color: black;
+        }
+        /*@css_end*/
+    </style>
+
+    <!-- EOF CSS INCLUDE -->
+</head>
+<body>
+<!-- START PAGE CONTAINER -->
+<div class="page-container">
+
+    <!-- START PAGE SIDEBAR -->
+    <div class="page-sidebar">
+        <!-- START X-NAVIGATION -->
+        <ul class="x-navigation">
+            <li class="xn-logo">
+                <a href="index.html"> <img src="assets/images/logo/tradedepot.png" alt="Logo"/></a>
+                <a href="#" class="x-navigation-control"></a>
+            </li>
+            <li class="xn-profile">
+                <a href="#" class="profile-mini"> <img src="assets/images/users/avatar.jpg" alt="John Doe"/> </a>
+                <div class="profile">
+                    <div class="profile-image">
+                        <img src="assets/images/users/avatar.jpg" alt="John Doe"/>
+                    </div>
+                    <div class="profile-data">
+                        <div class="profile-data-name">
+                            PROMASIDOR
+                        </div>
+                        <div class="profile-data-title">
+                            <i>quality food products</i>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li id="dashboard">
+                <a href="pages-dashboard.html"><span class="fa fa-dashboard"></span> <span class="xn-text">Dashboard</span></a>
+            </li>
+            <li id="sales-orders" class="" >
+                <a href="pages-ordering.html"><span class="fa fa-shopping-cart"></span> <span class="xn-text">Order Processing</span></a>
+            </li>
+
+            <li id="ordering" class="" >
+                <a href="index.html"><span class="fa fa-shopping-cart"></span> <span class="xn-text">Sales Orders</span></a>
+            </li>
+
+            <li id="deposit" >
+                <a href="pages-deposit.html"><span class="fa fa-truck"></span> <span class="xn-text">Deposits</span></a>
+            </li>
+            <li id="stock-overview" class="active">
+                <a href="pages-stockoverview.html"><span class="fa fa-tasks"></span> <span class="xn-text">Stock Overview</span></a>
+            </li>
+            <li id="analytics" >
+                <a href="pages-analytics.html"><span class="fa fa-truck"></span> <span class="xn-text">Analytics</span></a>
+            </li>
+            <li id="profile" >
+                <a href="pages-edit-profile1.html"><span class="fa fa-user"></span> <span class="xn-text">Profile</span></a>
+            </li>
+
+            <li class="xn-openable">
+                <a> <span class="fa fa-cogs"></span> <span class="xn-text"> Settings</span></a>
+                <ul>
+
+                    <li>
+                        <a href="Customer_Mapping.html"><span class="fa fa-heart"></span> Customer</a>
+                    </li>
+                    <li>
+                        <a href="Price_List.html"><span class="fa fa-cogs"></span> Price List</a>
+                    </li>
+                    <li>
+                        <a href="Product.html"><span class="fa fa-square-o"></span> Products</a>
+                    </li>
+                    <li>
+                        <a href="Inventory.html"><span class="fa fa-pencil-square-o"></span> Inventory</a>
+                    </li>
+                    <li>
+                        <a href="Promo.html"><span class="fa fa-pencil"></span> Promo's</a>
+                    </li>
+
+                    <li>
+                        <a href="Rebate.html"><span class="fa fa-pencil"></span> Rebate</a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+
+        <!-- END X-NAVIGATION -->
+    </div>
+    <!-- END PAGE SIDEBAR -->
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+
+        <!-- START X-NAVIGATION VERTICAL -->
+        <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
+            <!-- TOGGLE NAVIGATION -->
+            <li class="xn-icon-button">
+                <a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
+            </li>
+            <!-- END TOGGLE NAVIGATION -->
+            <!-- SEARCH -->
+            <li class="xn-search">
+                <form role="form">
+                    <input type="text" name="search" placeholder="Search..."/>
+                </form>
+            </li>
+            <!-- END SEARCH -->
+            <!-- POWER OFF -->
+            <li class="xn-icon-button pull-right last">
+                <a href="#"><span class="fa fa-power-off"></span></a>
+                <ul class="xn-drop-left animated zoomIn">
+                    <li><a href="pages-lock-screen.html"><span class="fa fa-lock"></span> Lock Screen</a></li>
+                    <li><a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span> Sign Out</a></li>
+                </ul>
+            </li>
+            <!-- END POWER OFF -->
+            <!-- MESSAGES -->
+            <li class="xn-icon-button pull-right">
+                <a href="#"><span class="fa fa-comments"></span></a>
+                <div class="informer informer-danger">4</div>
+                <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="fa fa-comments"></span> Messages</h3>
+                        <div class="pull-right">
+                            <span class="label label-danger">4 new</span>
+                        </div>
+                    </div>
+                    <div class="panel-body list-group list-group-contacts scroll" style="height: 200px;">
+                        <a href="#" class="list-group-item">
+                            <div class="list-group-status status-online"></div>
+                            <img src="assets/images/users/user2.jpg" class="pull-left" alt="John Doe"/>
+                            <span class="contacts-title">John Doe</span>
+                            <p>Praesent placerat tellus id augue condimentum</p>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <div class="list-group-status status-away"></div>
+                            <img src="assets/images/users/user.jpg" class="pull-left" alt="Dmitry Ivaniuk"/>
+                            <span class="contacts-title">Dmitry Ivaniuk</span>
+                            <p>Donec risus sapien, sagittis et magna quis</p>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <div class="list-group-status status-away"></div>
+                            <img src="assets/images/users/user3.jpg" class="pull-left" alt="Nadia Ali"/>
+                            <span class="contacts-title">Nadia Ali</span>
+                            <p>Mauris vel eros ut nunc rhoncus cursus sed</p>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <div class="list-group-status status-offline"></div>
+                            <img src="assets/images/users/user6.jpg" class="pull-left" alt="Darth Vader"/>
+                            <span class="contacts-title">Darth Vader</span>
+                            <p>I want my money back!</p>
+                        </a>
+                    </div>
+                    <div class="panel-footer text-center">
+                        <a href="pages-messages.html">Show all messages</a>
+                    </div>
+                </div>
+            </li>
+            <!-- END MESSAGES -->
+            <!-- TASKS -->
+            <li class="xn-icon-button pull-right">
+                <a href="#"><span class="fa fa-tasks"></span></a>
+                <div class="informer informer-warning">3</div>
+                <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="fa fa-tasks"></span> Tasks</h3>
+                        <div class="pull-right">
+                            <span class="label label-warning">3 active</span>
+                        </div>
+                    </div>
+                    <div class="panel-body list-group scroll" style="height: 200px;">
+                        <a class="list-group-item" href="#">
+                            <strong>Phasellus augue arcu, elementum</strong>
+                            <div class="progress progress-small progress-striped active">
+                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">50%</div>
+                            </div>
+                            <small class="text-muted">John Doe, 25 Sep 2015 / 50%</small>
+                        </a>
+                        <a class="list-group-item" href="#">
+                            <strong>Aenean ac cursus</strong>
+                            <div class="progress progress-small progress-striped active">
+                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">80%</div>
+                            </div>
+                            <small class="text-muted">Dmitry Ivaniuk, 24 Sep 2015 / 80%</small>
+                        </a>
+                        <a class="list-group-item" href="#">
+                            <strong>Lorem ipsum dolor</strong>
+                            <div class="progress progress-small progress-striped active">
+                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%;">95%</div>
+                            </div>
+                            <small class="text-muted">John Doe, 23 Sep 2015 / 95%</small>
+                        </a>
+                        <a class="list-group-item" href="#">
+                            <strong>Cras suscipit ac quam at tincidunt.</strong>
+                            <div class="progress progress-small">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">100%</div>
+                            </div>
+                            <small class="text-muted">John Doe, 21 Sep 2015 /</small><small class="text-success"> Done</small>
+                        </a>
+                    </div>
+                    <div class="panel-footer text-center">
+                        <a href="pages-tasks.html">Show all tasks</a>
+                    </div>
+                </div>
+            </li>
+            <!-- END TASKS -->
+            <!-- LANG BAR -->
+            <li class="xn-icon-button pull-right">
+                <a href="#"><span class="flag flag-gb"></span></a>
+                <ul class="xn-drop-left xn-drop-white animated zoomIn">
+                    <li><a href="#"><span class="flag flag-gb"></span> English</a></li>
+                    <li><a href="#"><span class="flag flag-de"></span> Deutsch</a></li>
+                    <li><a href="#"><span class="flag flag-cn"></span> Chinese</a></li>
+                </ul>
+            </li>
+            <!-- END LANG BAR -->
+        </ul>
+        <!-- END X-NAVIGATION VERTICAL -->
+
+        <!-- START BREADCRUMB -->
+        <ul class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">stock</a></li>
+            <li class="active">Stock Overview</li>
+        </ul>
+        <!-- END BREADCRUMB -->
+
+        <!-- PAGE CONTENT WRAPPER -->
+        <div class="page-content-wrap">
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <p>Use search to warehouses just by typing the name or location into the search box.</p>
+                            <div class="page-content-wrap">
+
+                                <div class="row" id="searchDistributor">
+                                    <div class="col-md-12 ">
+                                        <div class="input-group push-down-10 ">
+                                            <span class="input-group-addon"><span class="fa fa-search"></span></span>
+                                            <input id="search" type="text" class="form-control" placeholder="Search Warehouse" value="" />
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-primary" onclick="showData()">
+                                                    Select
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row" id="orderdetailsblock">
+                <div class="col-md-12">
+                    <!-- START ORDER DETAILS BLOCK -->
+                    <!-- START ORDER DETAILS BLOCK -->
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="row" id="alertblock" style="display:none">
+                                <div class="col-md-12">
+                                    <div class="alert alert-success" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert">
+                                            <span aria-hidden="true">&nbsp;&nbsp;&nbsp;&times;</span><span class="sr-only">Close</span>
+                                        </button>
+                                        <strong>Stock</strong> Updated Successful .
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row" style="margin-bottom: 10px">
+                                <div class="col-md-6">
+                                    <p>
+                                        <i class="fa fa-stack-overflow btn btn-warning btn-condensed"></i>&nbsp;<small>Warehouse stock management</small>
+                                    </p>
+
+                                </div>
+                                <div class="col-md-6" style="text-align: right">
+                                    <a class="btn btn-default btn-sm" onclick="showMainBlock()" ><span class="fa fa-times" >&nbsp;</span>Close</a>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <address>
+                                        <h3> <strong class="text-info" id="warehouse-name">Warehouse name</strong> </h3>
+                                        <span id="warehouse-address"> warehouse address</span>
+                                        <br>
+                                    </address>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <p>
+                                        &nbsp;
+                                    </p>
+
+                                </div>
+                            </div>
+
+                            <div class="row" >
+                                <div class="col-md-2">
+                                    <h6>Item Description</h6>
+                                </div>
+                                <div class="col-md-2">
+                                    <h6>Product type</h6>
+                                </div>
+                                <div class="col-md-1" style="text-align: right">
+                                    <h6 id="quantityx">Available</h6>
+                                </div>
+                                <div class="col-md-1" style="text-align: right">
+                                    <h6>Damaged</h6>
+                                </div>
+                                <div class="col-md-1" style="text-align: right">
+                                    <h6>Reserved</h6>
+                                </div>
+                                <div class="col-md-1" style="text-align: right">
+                                    <h6>Physical count</h6>
+                                </div>
+                                <div class="col-md-1" style="text-align: right">
+                                    <h6>Total</h6>
+                                </div>
+                                <div class="col-md-1">
+                                    <h6>Unit</h6>
+                                </div>
+                            </div>
+                            <div class="row" >
+                                <div class="col-md-12"  style="border-style:solid; border-bottom-width: 1px; border-top-width: 1px;border-color: #ADADAD; margin-bottom: 8px"></div>
+                            </div>
+
+                            <!-- start the row element -->
+                            <div id="cowbell-stock">
+                                <div class="row" >
+                                    <div class="col-md-2" style="text-align: left">
+                                        <p>
+                                            <input id="cowbell-stock-description" value="Cowbell Instant Filled Milk Powder" type="text" style="text-align: left;width: 100%" disabled/>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-2" style="text-align: left">
+                                            <select id="cowbell-stock-product-type">
+                                                <option value="₦5,000">Tin: 250g</option>
+                                                <option value="₦8,400">Tin: 400g</option>
+                                                <option value="₦15,500">Tin: 800g</option>
+                                                <option value="₦4,500">Sachet: 250g</option>
+                                                <option value="₦8,000">Sachet: 400g</option>
+                                                <option value="₦15,000">Sachet: 800g</option>
+                                            </select>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right;">
+                                        <input id="cowbell-stock-available" type="text" value="0" style="text-align: right;" size="10" disabled/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="cowbell-stock-damaged" type="text" value="0" style="text-align: right;width: 100%" disabled/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="cowbell-stock-reserved" type="text" value="" style="text-align: left;width: 100%" disabled/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="cowbell-stock-adjust" type="text" value="0" style="text-align: right;width: 100%"/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="cowbell-stock-total" type="text" value="0" style="text-align: right;width: 100%" disabled/>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input id="cowbell-stock-unit" type="text" value="Cartons" style="text-align: right;width: 100%" disabled/>
+                                    </div>
+                                </div>
+                                <div class="row" >
+                                    <div class="col-md-12"  style="border-style:solid; border-bottom-width: 0px; border-top-width: 1px;border-color: #DDDDDD; margin-bottom: 8px"></div>
+                                </div>
+                            </div>
+                            <div id="loya-stock">
+                                <div class="row" >
+                                    <div class="col-md-2" style="text-align: left">
+                                        <p>
+                                            <input id="loya-stock-description" value="Loya Full Cream Milk" type="text" style="text-align: left;width: 100%" disabled/>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-2" style="text-align: left">
+                                        <select id="loya-stock-product-type">
+                                            <option value="₦5,000">Tin: 250g</option>
+                                            <option value="₦7,400">Tin: 400g</option>
+                                            <option value="₦15,500">Tin: 800g</option>
+                                            <option value="₦4,500">Sachet: 250g</option>
+                                            <option value="₦8,000">Sachet: 400g</option>
+                                            <option value="₦15,000">Sachet: 800g</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right;">
+                                        <input id="loya-stock-available" type="text" value="0" style="text-align: right;" size="10" disabled/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="loya-stock-damaged" type="text" value="0" style="text-align: right;width: 100%" disabled/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="loya-stock-reserved" type="text" value="" style="text-align: left;width: 100%" disabled/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="loya-stock-adjust" type="text" value="0" style="text-align: right;width: 100%"/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="loya-stock-total" type="text" value="0" style="text-align: right;width: 100%" disabled/>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input id="loya-stock-unit" type="text" value="Cartons" style="text-align: right;width: 100%" disabled/>
+                                    </div>
+                                </div>
+                                <div class="row" >
+                                    <div class="col-md-12"  style="border-style:solid; border-bottom-width: 0px; border-top-width: 1px;border-color: #DDDDDD; margin-bottom: 8px"></div>
+                                </div>
+                            </div>
+                            <div id="loya-premium-stock">
+                                <div class="row" >
+                                    <div class="col-md-2" style="text-align: left">
+                                        <p>
+                                            <input id="loya-premium-stock-description" value="Loya Premium Milk" type="text" style="text-align: left;width: 100%" disabled/>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-2" style="text-align: left">
+                                        <select id="loya-premium-stock-product-type">
+                                            <option value="₦5,000">Tin: 250g</option>
+                                            <option value="₦9,400">Tin: 400g</option>
+                                            <option value="₦15,500">Tin: 800g</option>
+                                            <option value="₦4,500">Sachet: 250g</option>
+                                            <option value="₦8,000">Sachet: 400g</option>
+                                            <option value="₦15,000">Sachet: 800g</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right;">
+                                        <input id="loya-premium-stock-available" type="text" value="0" style="text-align: right;" size="10" disabled/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="loya-premium-stock-damaged" type="text" value="0" style="text-align: right;width: 100%" disabled/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="loya-premium-stock-reserved" type="text" value="" style="text-align: left;width: 100%" disabled/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="loya-premium-stock-adjust" type="text" value="0" style="text-align: right;width: 100%"/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="loya-premium-stock-total" type="text" value="0" style="text-align: right;width: 100%" disabled/>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input id="loya-premium-stock-unit" type="text" value="Cartons" style="text-align: right;width: 100%" disabled/>
+                                    </div>
+                                </div>
+                                <div class="row" >
+                                    <div class="col-md-12"  style="border-style:solid; border-bottom-width: 0px; border-top-width: 1px;border-color: #DDDDDD; margin-bottom: 8px"></div>
+                                </div>
+                            </div>
+                            <div id="toptea-stock">
+                                <div class="row" >
+                                    <div class="col-md-2" style="text-align: left">
+                                        <p>
+                                            <input id="toptea-stock-description" value="Top Tea" type="text" style="text-align: left;width: 100%" disabled/>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-2" style="text-align: left">
+                                        <select id="toptea-stock-product-type">
+                                            <option value="₦4,500">Standard (26): Regular</option>
+                                            <option value="₦4,500">Standard (26): Ginger</option>
+                                            <option value="₦4,500">Standard (26): Lemon and Lime</option>
+                                            <option value="₦3,500">Economical (26): Regular</option>
+                                            <option value="₦3,500">Economical (26): Ginger</option>
+                                            <option value="₦3,500">Economical (26): Lemon and Lime</option>
+                                            <option value="₦7,500">Super Economical (100): Regular</option>
+                                            <option value="₦7,500">Super Economical (100): Ginger</option>
+                                            <option value="₦7,500">Super Economical (100): Lemon and Lime</option>
+                                            <option value="₦4,500">Hygienic (3): Regular</option>
+                                            <option value="₦4,500">Hygienic (3): Ginger</option>
+                                            <option value="₦4,500">Hygienic (3): Lemon and Lime</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right;">
+                                        <input id="toptea-stock-available" type="text" value="0" style="text-align: right;" size="10" disabled/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="toptea-stock-damaged" type="text" value="0" style="text-align: right;width: 100%" disabled/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="toptea-stock-reserved" type="text" value="" style="text-align: left;width: 100%" disabled/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="toptea-stock-adjust" type="text" value="0" style="text-align: right;width: 100%"/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="toptea-stock-total" type="text" value="0" style="text-align: right;width: 100%" disabled/>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input id="toptea-stock-unit" type="text" value="Cartons" style="text-align: right;width: 100%" disabled/>
+                                    </div>
+                                </div>
+                                <div class="row" >
+                                    <div class="col-md-12"  style="border-style:solid; border-bottom-width: 0px; border-top-width: 1px;border-color: #DDDDDD; margin-bottom: 8px"></div>
+                                </div>
+                            </div>
+                            <div id="amila-stock">
+                                <div class="row" >
+                                    <div class="col-md-2" style="text-align: left">
+                                        <p>
+                                            <input id="amila-stock-description" value="Amila Powdered Softdrink" type="text" style="text-align: left;width: 100%" disabled/>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-2" style="text-align: left">
+                                        <select id="amila-stock-product-type">
+                                            <option value="₦1,400">Orange</option>
+                                            <option value="₦1,400">Orange-Mandarin</option>
+                                            <option value="₦1,400">Strawberry-Banana</option>
+                                            <option value="₦1,400">Mango-Apricot</option>
+                                            <option value="₦1,400">Apple-Pear</option>
+                                            <option value="₦1,400">Mixed Berries</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right;">
+                                        <input id="amila-stock-available" type="text" value="0" style="text-align: right;" size="10" disabled/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="amila-stock-damaged" type="text" value="0" style="text-align: right;width: 100%" disabled/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="amila-stock-reserved" type="text" value="" style="text-align: left;width: 100%" disabled/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="amila-stock-adjust" type="text" value="0" style="text-align: right;width: 100%"/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="amila-stock-total" type="text" value="0" style="text-align: right;width: 100%" disabled/>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input id="amila-stock-unit" type="text" value="Cartons" style="text-align: right;width: 100%" disabled/>
+                                    </div>
+                                </div>
+                                <div class="row" >
+                                    <div class="col-md-12"  style="border-style:solid; border-bottom-width: 0px; border-top-width: 1px;border-color: #DDDDDD; margin-bottom: 8px"></div>
+                                </div>
+                            </div>
+                            <div id="onga-stock">
+                                <div class="row" >
+                                    <div class="col-md-2" style="text-align: left">
+                                        <p>
+                                            <input id="onga-stock-description" value="Onga Cube Seasoning" type="text" style="text-align: left;width: 100%" disabled/>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-2" style="text-align: left">
+                                        <select id="onga-stock-product-type">
+                                            <option value="₦2,400">Cube (beef)</option>
+                                            <option value="₦2,500">Chicken</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right;">
+                                        <input id="onga-stock-available" type="text" value="0" style="text-align: right;" size="10" disabled/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="onga-stock-damaged" type="text" value="0" style="text-align: right;width: 100%" disabled/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="onga-stock-reserved" type="text" value="" style="text-align: left;width: 100%" disabled/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="onga-stock-adjust" type="text" value="0" style="text-align: right;width: 100%"/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="onga-stock-total" type="text" value="0" style="text-align: right;width: 100%" disabled/>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input id="onga-stock-unit" type="text" value="Cartons" style="text-align: right;width: 100%" disabled/>
+                                    </div>
+                                </div>
+                                <div class="row" >
+                                    <div class="col-md-12"  style="border-style:solid; border-bottom-width: 0px; border-top-width: 1px;border-color: #DDDDDD; margin-bottom: 8px"></div>
+                                </div>
+                            </div>
+                            <div id="miksi-stock">
+                                <div class="row" >
+                                    <div class="col-md-2" style="text-align: left">
+                                        <p>
+                                            <input id="miksi-stock-description" value="Miksi Filled Milk Powder" type="text" style="text-align: left;width: 100%" disabled/>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-2" style="text-align: left">
+                                        <select id="miksi-stock-product-type">
+
+                                            <option value="₦3,400">Sachet: 200g</option>
+                                            <option value="₦1,800">Sachet: 100g</option>
+                                            <option value="₦900">Sachet: 50g</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right;">
+                                        <input id="miksi-stock-available" type="text" value="0" style="text-align: right;" size="10" disabled/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="miksi-stock-damaged" type="text" value="0" style="text-align: right;width: 100%" disabled/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="miksi-stock-reserved" type="text" value="" style="text-align: left;width: 100%" disabled/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="miksi-stock-adjust" type="text" value="0" style="text-align: right;width: 100%"/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="miksi-stock-total" type="text" value="0" style="text-align: right;width: 100%" disabled/>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input id="miksi-stock-unit" type="text" value="Cartons" style="text-align: right;width: 100%" disabled/>
+                                    </div>
+                                </div>
+                                <div class="row" >
+                                    <div class="col-md-12"  style="border-style:solid; border-bottom-width: 0px; border-top-width: 1px;border-color: #DDDDDD; margin-bottom: 8px"></div>
+                                </div>
+                            </div>
+                            <div id="cowbell-promo-stock">
+                                <div class="row" >
+                                    <div class="col-md-2" style="text-align: left">
+                                        <p>
+                                            <input id="cowbell-promo-stock-description" value="Buy Cowbell Get Miksi Promo" type="text" style="text-align: left;width: 100%" disabled/>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-2" style="text-align: left">
+                                        <select id="cowbell-promo-stock-product-type">
+                                            <option value="₦5,000">Tin: 250g</option>
+                                            <option value="₦8,400">Tin: 400g</option>
+                                            <option value="₦15,500">Tin: 800g</option>
+                                            <option value="₦4,500">Sachet: 250g</option>
+                                            <option value="₦8,000">Sachet: 400g</option>
+                                            <option value="₦15,000">Sachet: 800g</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right;">
+                                        <input id="cowbell-promo-stock-available" type="text" value="0" style="text-align: right;" size="10" disabled/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="cowbell-promo-stock-damaged" type="text" value="0" style="text-align: right;width: 100%" disabled/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="cowbell-promo-stock-reserved" type="text" value="" style="text-align: left;width: 100%" disabled/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="cowbell-promo-stock-adjust" type="text" value="0" style="text-align: right;width: 100%"/>
+                                    </div>
+                                    <div class="col-md-1" style="text-align: right">
+                                        <input id="cowbell-promo-stock-total" type="text" value="0" style="text-align: right;width: 100%" disabled/>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <input id="cowbell-promo-stock-unit" type="text" value="Cartons" style="text-align: right;width: 100%" disabled/>
+                                    </div>
+                                </div>
+                                <div class="row" >
+                                    <div class="col-md-12"  style="border-style:solid; border-bottom-width: 0px; border-top-width: 1px;border-color: #DDDDDD; margin-bottom: 8px"></div>
+                                </div>
+                            </div>
+                            <!-- End the row Element -->
+
+                            <div class="invoice">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p>
+                                            &nbsp;
+                                        </p>
+                                        <h6>Warehouse manager: <span id="warehouse-manager"></span> <a class="btn btn-primary btn-sm pull-right" onclick="adjustnow()">Ajust Now</a></h6>
+                                        <p>
+                                            &nbsp;
+                                        </p>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <!-- END PAGE CONTENT WRAPPER -->
+    </div>
+    <!-- END PAGE CONTENT -->
+</div>
+<!-- END PAGE CONTAINER -->
+
+<!-- MESSAGE BOX-->
+<div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+    <div class="mb-container">
+        <div class="mb-middle">
+            <div class="mb-title">
+                <span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?
+            </div>
+            <div class="mb-content">
+                <p>
+                    Are you sure you want to log out?
+                </p>
+                <p>
+                    Press No if you want to continue work. Press Yes to logout current user.
+                </p>
+            </div>
+            <div class="mb-footer">
+                <div class="pull-right">
+                    <a href="pages-login.html" class="btn btn-success btn-lg">Yes</a>
+                    <button class="btn btn-default btn-lg mb-control-close">
+                        No
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END MESSAGE BOX-->
+
+<!-- START PRELOADS -->
+<audio id="audio-alert" src="audio/alert.mp3" preload="auto"></audio>
+<audio id="audio-fail" src="audio/fail.mp3" preload="auto"></audio>
+<!-- END PRELOADS -->
+
+<!-- START SCRIPTS -->
+<!-- START PLUGINS -->
+<script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="js/plugins/jquery/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/plugins/bootstrap/bootstrap.min.js"></script>
+<script src="js/tradedepot.js" type="text/javascript"></script>
+<!-- END PLUGINS -->
+
+<!-- START THIS PAGE PLUGINS-->
+<script type='text/javascript' src='js/plugins/icheck/icheck.min.js'></script>
+<script type="text/javascript" src="js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+<script type="text/javascript" src="js/plugins/scrolltotop/scrolltopcontrol.js"></script>
+
+<script type="text/javascript" src="js/plugins/morris/raphael-min.js"></script>
+<script type="text/javascript" src="js/plugins/morris/morris.min.js"></script>
+<script type="text/javascript" src="js/plugins/rickshaw/d3.v3.js"></script>
+<script type="text/javascript" src="js/plugins/rickshaw/rickshaw.min.js"></script>
+<!--<script type='text/javascript' src='js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js'></script>-->
+<script type='text/javascript' src='js/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js'></script>
+<script type='text/javascript' src='js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js'></script>
+<script type='text/javascript' src='js/plugins/jvectormap/jquery-jvectormap-ng-mill-en.js'></script>
+<script type="text/javascript" src="js/plugins/daterangepicker/daterangepicker.js"></script>
+<script type='text/javascript' src='js/plugins/bootstrap/bootstrap-datepicker.js'></script>
+<script type="text/javascript" src="js/plugins/owl/owl.carousel.min.js"></script>
+
+<script type="text/javascript" src="js/plugins/moment.min.js"></script>
+<script type="text/javascript" src="js/plugins/daterangepicker/daterangepicker.js"></script>
+
+<!-- END THIS PAGE PLUGINS-->
+
+<!-- START TEMPLATE -->
+<script type="text/javascript" src="js/settings.js"></script>
+
+<script type="text/javascript" src="js/plugins.js"></script>
+<script type="text/javascript" src="js/actions.js"></script>
+<script type="text/javascript">
+    $(window).load(function() {
+        showData('apapa warehouse');
+        initializeChange();
+    });
+    $(function() {
+        var warehouses = ["Apapa Warehouse", "Ikorodu Warehouse", "Wuse Warehouse", "TransAmadi Warehouse", "Jos Warehouse", "Kaduna Warehouse", "Aba Warehouse", "Enugu Warehouse", "Benin Warehouse", "Abakaliki Warehouse", "Zaria Warehouse", "Ibadan Warehouse", "Akure Warehouse", "Ikare Warehouse", "Kontagora Warehouse", "Seme Warehouse"];
+        window.stocks = ['cowbell','loya','loya-premium','toptea','amila','onga','miksi','cowbell-promo'];
+        window.warehouseData = {
+            'apapa warehouse': { details: {address: '759 Apapa Express behind Liverpool roundabout, Apapa Lagos', manager: 'Mr Femi Ashamo Adeyemi (+2347088908165)', stockkeepper: 'Mr Ezeanyi Christopher (+2349088987765)', status: 'Open for pickups' }},
+            'wuse warehouse': { details: {address: 'Behind Central mosque wuse zone 6 Abuja, Nigeria', manager: 'Mr Femi Ashamo Adeyemi (+2347076544133)', stockkeepper: 'Mr Festus Osaro Ejigbo (+2347099876543)', status: 'Open for pickups' }},
+            'ikorodu warehouse': { details: {address: 'Plot 367 Bamidele street along Ikorodu Express, Ikorodu lagos', manager: 'Mrs Chidebere Oluchi (+23480345677823)', stockkeepper: 'Mr Daniel Ohinma (+2347043989009)', status: 'Closes by 6 pm' }},
+            'transamadi warehouse': { details: {address: '759 Apapa Express behind Liverpool roundabout, Apapa Lagos', manager: 'Mr Akintoye Oluwafemi (+2347082364532)', stockkeepper: 'Mr Chid Okpara (+2349055423142)', status: 'Open for pickups' }},
+            'jos warehouse': { details: {address: 'Crescent hall adegbela estate, jos Nigeria', manager: 'Mr Kolawole Fidelis (+234708272625)', stockkeepper: 'Mrs Anastacia Sanni (+2349088261522)', status: 'Open for pickups' }},
+            'kaduna warehouse': { details: {address: 'Openning plaza Kaduna district', manager: 'Mr Cyril Njideca (+23480993458)', stockkeepper: 'Mr Aloo Rambo (+2349088987765)', status: 'Open for pickups' }},
+            'aba warehouse': { details: {address: '567 Iweka road onitsha', manager: 'Mr Femi Ashamo Adeyemi (+23470889081)', stockkeepper: 'Mr Ezeanyi Christopher (+2349088987765)', status: 'Open for pickups' }},
+            'enugu warehouse': { details: {address: 'Independent layout enugu, behind obosi plaza', manager: 'Mr Kuti Iwemena (+23470889081)', stockkeepper: 'Mr Ezeanyi Christopher (+2349088987765)', status: 'Open for pickups' }},
+            'benin warehouse': { details: {address: '7 Ejigbolo road behind ring road, Central benin town', manager: 'Mr Iwunere Okada (+234707362554)', stockkeepper: 'Mr Ezeanyi Christopher (+2349088987765)', status: 'Open for pickups' }},
+            'abakaliki warehouse': { details: {address: '759 Behind Central mosque Abakalikit, Nigeria', manager: 'Akinwuni Ajogba (+23470889081)', stockkeepper: 'Mr Ezeanyi Christopher (+2349088987765)', status: 'Open for pickups' }},
+            'zaria warehouse': { details: {address: 'Crescent hall adegbela estate, ibadan Nigeria', manager: 'Mr Femi Ashamo Adeyemi (+23470889081)', stockkeepper: 'Mr Ezeanyi Christopher (+2349088987765)', status: 'Open for pickups' }},
+            "ibadan warehouse": { details: {address: '759 Apapa Express behind Liverpool roundabout, Apapa Lagos', manager: 'Mr Femi Ashamo Adeyemi (+23470889081)', stockkeepper: 'Mr Ezeanyi Christopher (+2349088987765)', status: 'Open for pickups' }},
+            "akure warehouse": { details: {address: 'Plot 367 Bamidele street along Ikorodu Express, Ikorodu lagos', manager: 'Mr Femi Ashamo Adeyemi (+23470889081)', stockkeepper: 'Mr Ezeanyi Christopher (+2349088987765)', status: 'Open for pickups' }},
+            "ikare warehouse": { details: {address: '759 Apapa Express behind Liverpool roundabout, Apapa Lagos', manager: 'Mr Femi Ashamo Adeyemi (+23470889081)', stockkeepper: 'Mr Ezeanyi Christopher (+2349088987765)', status: 'Open for pickups' }},
+            "kontagora warehouse": { details: {address: '759 Apapa Express behind Liverpool roundabout, Apapa Lagos', manager: 'Mr Femi Ashamo Adeyemi (+23470889081)', stockkeepper: 'Mr Ezeanyi Christopher (+2349088987765)', status: 'Open for pickups' }},
+            "seme warehouse": { details: {address: '759 Apapa Express behind Liverpool roundabout, Apapa Lagos', manager: 'Mr Femi Ashamo Adeyemi (+23470889081)', stockkeepper: 'Mr Ezeanyi Christopher (+2349088987765)', status: 'Open for pickups' }}
+
+        };
+        //pupulate table with data on pageload
+        for(var warehouse in warehouseData){
+            console.log(warehouse);
+        }
+        $("#search").autocomplete({
+            source: warehouses,
+            change: function (event, ui) {
+            }
+        });
+    });
+    function initializeChange(){
+
+        $('#cowbell-stock-product-type').change(function(){
+            ch('cowbell');
+        });
+        $('#loya-stock-product-type').change(function(){
+            ch('loya');
+        });
+        $('#loya-premium-stock-product-type').change(function(){
+            ch('loya-premium');
+        });
+        $('#toptea-stock-product-type').change(function(){
+            ch('toptea');
+        });
+        $('#amila-stock-product-type').change(function(){
+            ch('amila');
+        });
+        $('#cowbell-stock-product-type').change(function(){
+            ch('cowbell');
+        });
+        $('#onga-stock-product-type').change(function(){
+            ch('onga');
+        });
+        $('#cowbell-promo-stock-product-type').change(function(){
+            ch('cowbell-promo');
+        });
+        $('#miksi-stock-product-type').change(function(){
+            ch('miksi');
+        });
+
+    }
+    function updateTotal(){
+        for(var i = 0; i < stocks.length; i++) {
+            var pf = stocks[i];
+            var ad = $('#' + pf + '-stock-adjust').val();
+            console.log(ad);
+            if(ad){
+                $('#' + pf + '-stock-available').val(parseInt(ad));
+            }
+            $('#' + pf + '-stock-adjust').val('');
+            //update total
+            var total = parseInt($('#' + pf + '-stock-available').val()) + parseInt($('#' + pf + '-stock-damaged').val()) + parseInt($('#' + pf + '-stock-reserved').val());
+            $('#' + pf + '-stock-total').val(total);
+        }
+    }
+    function ch(obj){
+        var pf = obj;
+        var avl = Math.floor(Math.random() * 10000),
+                dmg = Math.floor(Math.random() * 100),
+                rsd = Math.floor(Math.random() * 1000),
+                adj = avl,
+                total = avl + dmg +  rsd;
+        //update table with values using jquery
+        $('#' + pf + '-stock-available').val(avl);
+        $('#' + pf + '-stock-damaged').val(dmg);
+        $('#' + pf + '-stock-reserved').val(rsd);
+        $('#' + pf + '-stock-adjust').val('');
+        $('#' + pf + '-stock-total').val(total);
+    }
+    function populateWarehouse(){
+        for(var i = 0; i < stocks.length; i++){
+            ch(stocks[i]);
+        }
+    }
+
+    function showData(key){
+        //update with warehouseData
+        var obj = $('#search').val().toLowerCase();
+        if(warehouseData.hasOwnProperty(obj)){
+            populateWarehouse();
+            $('#orderdetailsblock').fadeOut();
+            var warehouse = warehouseData[obj];
+            $('#warehouse-name').html(obj);
+            $('#warehouse-address').html('Warehouse Address: ' + warehouse['details']['address']);
+            $('#warehouse-manager').html(warehouse['details']['manager']);
+            $('#orderdetailsblock').fadeIn();
+            return;
+        }
+        if(key){
+            populateWarehouse();
+            $('#orderdetailsblock').fadeOut();
+            var warehouse = warehouseData[key];
+            $('#warehouse-name').html(key);
+            $('#warehouse-address').html('Warehouse Address: ' + warehouse['details']['address']);
+            $('#warehouse-manager').html(warehouse['details']['manager']);
+            $('#orderdetailsblock').fadeIn();
+        } else {
+            alert('Warehouse not found');
+        }
+    }
+    function showMainBlock() {
+        $('#orderdetailsblock').fadeOut();
+        $("#mainblock").fadeIn();
+
+    }
+    function adjustnow(){
+        var txt;
+        var r = confirm("Are you sure you want to Proceeed with Adjustmet ?");
+        if (r == true) {
+            updateTotal();
+            $('#alertblock').fadeIn();
+            setTimeout(function(){
+                $('#alertblock').hide();
+            }, 3000);
+
+        } else {
+            txt = "Adjustment Cancelled";
+        }
+    }
+
+</script>
+
+</body>
+</html>

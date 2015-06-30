@@ -1,0 +1,2421 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- META SECTION -->
+		<title>Tradedepot</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="icon" href="favicon.ico" type="image/x-icon" />
+		<!-- END META SECTION -->
+
+		<!-- CSS INCLUDE -->
+		<link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
+		<link rel="stylesheet" type="text/css" id="" href="css/tradedepot.css" />
+		<!-- EOF CSS INCLUDE -->
+		<script>
+			var user_name = sessionStorage.getItem("user_name");
+			if (!user_name) {
+				window.location.replace("pages-login.html");
+
+			}
+			//declare global variable to store selected item
+			window.addedItems = {};
+		</script>
+
+	</head>
+	<body>
+		<!-- START PAGE CONTAINER -->
+		<div class="page-container hidden" id="page-container">
+
+			<!-- START PAGE SIDEBAR -->
+			<div class="page-sidebar">
+				<!-- START X-NAVIGATION -->
+				<ul class="x-navigation">
+					<li class="xn-logo">
+						<a href="index.html"> <img src="assets/images/logo/tradedepot.png" alt="Logo"/></a>
+						<a href="#" class="x-navigation-control"></a>
+					</li>
+					<li class="xn-profile" onclick="window.open('http://www.promasidor.com/nigeria.php', '', '');">
+						<a href="#" class="profile-mini"> <img src="assets/images/users/avatar.jpg" alt="John Doe"/> </a>
+						<div class="profile">
+							<div class="profile-image">
+								<img src="assets/images/users/avatar.jpg" alt="John Doe"/>
+							</div>
+							<div class="profile-data">
+								<div class="profile-data-name">
+									PROMASIDOR
+								</div>
+								<div class="profile-data-title">
+									<i>quality food products</i>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li id="ordering" class="active" >
+						<a href="index.html"><span class="fa fa-shopping-cart"></span> <span class="xn-text">Sales Orders</span></a>
+					</li>
+					<li id="deposit" >
+						<a href="pages-deposit.html"><span class="fa fa-truck"></span> <span class="xn-text">Deposits</span></a>
+					</li>
+					<li id="profile" >
+						<a href="pages-edit-profile1.html"><span class="fa fa-user"></span> <span class="xn-text">Profile</span></a>
+					</li>
+
+				</ul>
+
+				<!-- END X-NAVIGATION -->
+			</div>
+			<!-- END PAGE SIDEBAR -->
+
+			<!-- PAGE CONTENT -->
+			<div class="page-content">
+
+				<!-- START X-NAVIGATION VERTICAL -->
+				<ul class="x-navigation x-navigation-horizontal x-navigation-panel">
+					<!-- TOGGLE NAVIGATION -->
+					<li class="xn-icon-button">
+						<a href="#" class="x-navigation-minimize" id="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
+					</li>
+					<!-- END TOGGLE NAVIGATION -->
+					<!-- SEARCH -->
+					<li class="xn-search">
+						<form role="form">
+							<input type="text" name="search" placeholder="Search..."/>
+						</form>
+					</li>
+					<!-- END SEARCH -->
+					<!-- POWER OFF -->
+					<li class="xn-icon-button pull-right last">
+						<a href="#"><span class="fa fa-power-off"></span></a>
+						<ul class="xn-drop-left animated zoomIn">
+							<li>
+								<a href="pages-lock-screen.html"><span class="fa fa-lock"></span> Lock Screen</a>
+							</li>
+							<li>
+								<a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span> Sign Out</a>
+							</li>
+						</ul>
+					</li>
+					<!-- END POWER OFF -->
+					<!-- NOTIFICATIONS -->
+					<li class="xn-icon-button pull-right">
+						<a href="#"><span class="fa fa-bell-o"></span></a>
+						<div class="informer informer-warning">
+							4
+						</div>
+						<div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
+							<div class="panel-heading">
+								<h3 class="panel-title"><span class="fa fa-bell-o"></span> Notifications</h3>
+								<div class="pull-right">
+									<span class="label label-warning">4 new</span>
+								</div>
+							</div>
+							<div class="panel-body list-group list-group-contacts scroll" style="height: 200px;">
+								<a class="list-group-item" href="#"> Payment made for Order #133232 <small class="text-muted" >&nbsp;&nbsp;1d</small> </a>
+								<a class="list-group-item" href="#"> Items ready for pickup for Order #133232 <small class="text-muted" >&nbsp;&nbsp;3d</small> </a>
+								<a class="list-group-item" href="#"> Items picked up for  Order #133232 <small class="text-muted" >&nbsp;&nbsp;1d</small> </a>
+								<a class="list-group-item" href="#"> Items picked up for  Order #133232 <small class="text-muted" >&nbsp;&nbsp;1d</small> </a>
+								<a class="list-group-item" href="#"> Items picked up for  Order #133232 <small class="text-muted" >&nbsp;&nbsp;1d</small> </a>
+							</div>
+							<div class="panel-footer text-center">
+								<a href="pages-messages.html">Show all notifications</a>
+							</div>
+						</div>
+					</li>
+					<!-- END NOTIFICATIONS -->
+
+				</ul>
+				<!-- END X-NAVIGATION VERTICAL -->
+
+				<!-- START BREADCRUMB -->
+				<ul class="breadcrumb">
+					<li>
+						<a href="pages-index.html">Home</a>
+					</li>
+					<li class="active">
+						Ordering
+					</li>
+
+				</ul>
+				<!-- END BREADCRUMB -->
+
+				<!-- PAGE CONTENT WRAPPER -->
+				<div class="page-content-wrap">
+
+					<!-- START PROMO SLIDERS -->
+					<div class="row">
+						<div class="col-md-12">
+							<div>
+								<ul class="tabs" data-persist="true">
+									<li>
+										<a href="#view1"><i class="fa fa-gift">&nbsp;&nbsp;</i>Buy</a>
+									</li>
+									<li>
+										<a href="#view2" id="cart_tab"><i class="fa fa-shopping-cart">&nbsp;&nbsp;</i>Cart</a>
+									</li>
+									<li>
+										<a href="#view3" class="view3"><i class="fa fa-list">&nbsp;&nbsp;</i>History</a>
+									</li>
+								</ul>
+							</div>
+							<div class="tabcontents" id="orders_view">
+								<div id="view1">
+
+									<!-- START WIDGET SLIDER -->
+									<div class="widget widget-default widget-carousel hidden">
+										<div class="owl-carousel" id="owl-example">
+											<div>
+												<img src="assets/images/cementbanner1.jpg" width="100%">
+											</div>
+											<div>
+												<img src="assets/images/cementbanner2.jpg" width="100%">
+											</div>
+											<div>
+												<img src="assets/images/cementbanner3.jpg" width="100%">
+											</div>
+										</div>
+
+									</div>
+									<!-- END WIDGET SLIDER -->
+									<!-- START PRODUCTS -->
+									<div class="row">
+										<div class="col-md-3">
+											<!-- START PRODUCT 1 -->
+											<div class="panel panel-default">
+
+												<div class="panel-body panel-body-image">
+													<img src="assets/images/cowbell.jpg" alt="ocean"/>
+
+												</div>
+
+												<div class="panel-body" align="center">
+													<h6>Cowbell Instant Filled Milk Powder</h6>
+													<h4><span id="cowbell_type">Tin: 400g</span></h4>
+													<h4><span style="color:red" id="cowbell_price">₦8,400</span> per carton</h4>
+													<p>
+														(volume discounts may apply)
+													</p>
+													<div class="input-group">
+														<span class="input-group-btn"> <span class="btn btn-default"><span class="fa fa-toggle-down"></span></span> </span>
+														<select class="form-control" onchange="$('#cowbell_price').html($('#cowbell_options').val());$('#cowbell_type').html($('#cowbell_options').find('option:selected').text());" id="cowbell_options" >
+															<option value="₦5,000">Tin: 250g</option>
+															<option value="₦8,400">Tin: 400g</option>
+															<option value="₦15,500">Tin: 800g</option>
+															<option value="₦4,500">Sachet: 250g</option>
+															<option value="₦8,000">Sachet: 400g</option>
+															<option value="₦15,000">Sachet: 800g</option>
+														</select>
+													</div>
+												</div>
+												<div class="panel-footer">
+													<div class="form-group" align="center">
+														<div class="col-md-12">
+															<button id="cart_item_1" class="btn btn-success add-cart" onclick="addToCart('M1001', 1);">
+																<i class="fa fa-shopping-cart">&nbsp;</i>Add to Cart
+															</button>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- END PRODUCT 1 -->
+										</div>
+										<div class="col-md-3">
+											<!-- START PRODUCT 1 -->
+											<div class="panel panel-default">
+
+												<div class="panel-body panel-body-image">
+													<img src="assets/images/loya.jpg" alt="Ocean"/>
+
+												</div>
+
+												<div class="panel-body" align="center">
+													<h6>Loya Full Cream Milk</h6>
+													<h4><span id="loya_type">Tin: 400g</span></h4>
+													<h4><span style="color:red" id="loya_price">₦7,400</span> per carton</h4>
+													<p>
+														(volume discounts may apply)
+													</p>
+													<div class="input-group">
+														<span class="input-group-btn"> <span class="btn btn-default"><span class="fa fa-toggle-down"></span></span> </span>
+														<select class="form-control" onchange="$('#loya_price').html($('#loya_options').val());$('#loya_type').html($('#loya_options').find('option:selected').text());" id="loya_options" >
+															<option value="₦5,000">Tin: 250g</option>
+															<option value="₦7,400">Tin: 400g</option>
+															<option value="₦15,500">Tin: 800g</option>
+															<option value="₦4,500">Sachet: 250g</option>
+															<option value="₦8,000">Sachet: 400g</option>
+															<option value="₦15,000">Sachet: 800g</option>
+														</select>
+													</div>
+												</div>
+												<div class="panel-footer">
+													<div class="form-group" align="center">
+														<div class="col-md-12">
+															<button id="cart_item_1" class="btn btn-success add-cart" onclick="addToCart('M2001', 1);">
+																<i class="fa fa-shopping-cart">&nbsp;</i>Add to Cart
+															</button>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- END PRODUCT 1 -->
+										</div>
+										<div class="col-md-3">
+											<!-- START PRODUCT 1 -->
+											<div class="panel panel-default">
+
+												<div class="panel-body panel-body-image">
+													<img src="assets/images/loya-milk.jpg" alt="Ocean"/>
+
+												</div>
+												<div class="panel-body" align="center">
+													<h6>Loya Premium Milk</h6>
+													<h4><span id="loya_milk_type">Tin: 400g</span></h4>
+													<h4><span style="color:red" id="loya_milk_price">₦9,400</span> per carton</h4>
+													<p>
+														(volume discounts may apply)
+													</p>
+													<div class="input-group">
+														<span class="input-group-btn"> <span class="btn btn-default"><span class="fa fa-toggle-down"></span></span> </span>
+														<select class="form-control" onchange="$('#loya_milk_price').html($('#loya_milk_options').val());$('#loya_milk_type').html($('#loya_milk_options').find('option:selected').text());" id="loya_milk_options" >
+															<option value="₦5,000">Tin: 250g</option>
+															<option value="₦9,400">Tin: 400g</option>
+															<option value="₦15,500">Tin: 800g</option>
+															<option value="₦4,500">Sachet: 250g</option>
+															<option value="₦8,000">Sachet: 400g</option>
+															<option value="₦15,000">Sachet: 800g</option>
+														</select>
+													</div>
+												</div>
+
+												<div class="panel-footer">
+													<div class="form-group" align="center">
+														<div class="col-md-12">
+															<button id="cart_item_1" class="btn btn-success add-cart" onclick="addToCart('M3003', 2);">
+																<i class="fa fa-shopping-cart">&nbsp;</i>Add to Cart
+															</button>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- END PRODUCT 1 -->
+										</div>
+										<div class="col-md-3">
+											<!-- START PRODUCT 1 -->
+											<div class="panel panel-default">
+
+												<div class="panel-body panel-body-image">
+													<img src="assets/images/miksi.jpg" alt="Ocean"/>
+
+												</div>
+
+												<div class="panel-body" align="center">
+													<h6>Miksi Filled Milk Powder</h6>
+													<h4><span id="miksi_type">Sachet: 200g</span></h4>
+													<h4><span style="color:red" id="miksi_price">₦3,400</span> per carton</h4>
+													<p>
+														(volume discounts may apply)
+													</p>
+													<div class="input-group">
+														<span class="input-group-btn"> <span class="btn btn-default"><span class="fa fa-toggle-down"></span></span> </span>
+														<select class="form-control" onchange="$('#miksi_price').html($('#miksi_options').val());$('#miksi_type').html($('#miksi_options').find('option:selected').text());" id="miksi_options" >
+
+															<option value="₦3,400">Sachet: 200g</option>
+															<option value="₦1,800">Sachet: 100g</option>
+															<option value="₦900">Sachet: 50g</option>
+														</select>
+													</div>
+												</div>
+												<div class="panel-footer">
+													<div class="form-group" align="center">
+														<div class="col-md-12">
+															<button id="cart_item_1" class="btn btn-success add-cart" onclick="addToCart('M1001', 1);">
+																<i class="fa fa-shopping-cart">&nbsp;</i>Add to Cart
+															</button>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- END PRODUCT 1 -->
+										</div>
+									</div>
+									<!-- END PRODUCTS -->
+									<!-- START PRODUCTS -->
+									<div class="row">
+										<div class="col-md-3">
+											<!-- START PRODUCT 1 -->
+											<div class="panel panel-default">
+
+												<div class="panel-body panel-body-image">
+													<img src="assets/images/toptea.jpg" alt="Ocean"/>
+
+												</div>
+
+												<div class="panel-body" align="center">
+													<h6>Top Tea</h6>
+													<h4><span id="toptea_type">Standard</span></h4>
+													<h4><span style="color:red" id="toptea_price">₦4,500</span> per carton</h4>
+													<p>
+														(volume discounts may apply)
+													</p>
+													<div class="input-group">
+														<span class="input-group-btn"> <span class="btn btn-default"><span class="fa fa-toggle-down"></span></span> </span>
+														<select class="form-control" onchange="$('#toptea_price').html($('#toptea_options').val());$('#toptea_type').html($('#toptea_options').find('option:selected').text());" id="toptea_options" >
+															<option value="₦4,500">Standard (26): Regular</option>
+															<option value="₦4,500">Standard (26): Ginger</option>
+															<option value="₦4,500">Standard (26): Lemon and Lime</option>
+															<option value="₦3,500">Economical (26): Regular</option>
+															<option value="₦3,500">Economical (26): Ginger</option>
+															<option value="₦3,500">Economical (26): Lemon and Lime</option>
+															<option value="₦7,500">Super Economical (100): Regular</option>
+															<option value="₦7,500">Super Economical (100): Ginger</option>
+															<option value="₦7,500">Super Economical (100): Lemon and Lime</option>
+															<option value="₦4,500">Hygienic (3): Regular</option>
+															<option value="₦4,500">Hygienic (3): Ginger</option>
+															<option value="₦4,500">Hygienic (3): Lemon and Lime</option>
+
+														</select>
+													</div>
+												</div>
+												<div class="panel-footer">
+													<div class="form-group" align="center">
+														<div class="col-md-12">
+															<button id="cart_item_1" class="btn btn-success add-cart" onclick="addToCart('M4003', 3);">
+																<i class="fa fa-shopping-cart">&nbsp;</i>Add to Cart
+															</button>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- END PRODUCT 1 -->
+										</div>
+										<div class="col-md-3">
+											<!-- START PRODUCT 1 -->
+											<div class="panel panel-default">
+
+												<div class="panel-body panel-body-image">
+													<img src="assets/images/amila.jpg" alt="Ocean"/>
+
+												</div>
+
+												<div class="panel-body" align="center">
+													<h6>Amila Powdered Softdrink</h6>
+													<h4><span id="amila_type">Several Flavours</span></h4>
+													<h4><span style="color:red" id="amila_price">₦1,400</span> per carton</h4>
+													<p>
+														(volume discounts may apply)
+													</p>
+													<div class="input-group">
+														<span class="input-group-btn"> <span class="btn btn-default"><span class="fa fa-toggle-down"></span></span> </span>
+														<select class="form-control" onchange="$('#amila_price').html($('#amila_options').val());$('#amila_type').html($('#amila_options').find('option:selected').text());" id="amila_options" >
+															<option value="₦1,400">Orange</option>
+															<option value="₦1,400">Orange-Mandarin</option>
+															<option value="₦1,400">Strawberry-Banana</option>
+															<option value="₦1,400">Mango-Apricot</option>
+															<option value="₦1,400">Apple-Pear</option>
+															<option value="₦1,400">Mixed Berries</option>
+														</select>
+													</div>
+												</div>
+												<div class="panel-footer">
+													<div class="form-group" align="center">
+														<div class="col-md-12">
+															<button id="cart_item_1" class="btn btn-success add-cart" onclick="addToCart('M1001', 1);">
+																<i class="fa fa-shopping-cart">&nbsp;</i>Add to Cart
+															</button>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- END PRODUCT 1 -->
+										</div>
+										<div class="col-md-3">
+											<!-- START PRODUCT 1 -->
+											<div class="panel panel-default">
+
+												<div class="panel-body panel-body-image">
+													<img src="assets/images/onga.jpg" alt="Ocean"/>
+
+												</div>
+												<div class="panel-body" align="center">
+													<h6>Onga Cube Seasoning</h6>
+													<h4><span id="onga_type">Cube (beef)</span></h4>
+													<h4><span style="color:red" id="onga_price">₦2,400</span> per carton</h4>
+													<p>
+														(volume discounts may apply)
+													</p>
+													<div class="input-group">
+														<span class="input-group-btn"> <span class="btn btn-default"><span class="fa fa-toggle-down"></span></span> </span>
+														<select class="form-control" onchange="$('#onga_price').html($('#onga_options').val());$('#onga_type').html($('#onga_options').find('option:selected').text());" id="onga_options" >
+															<option value="₦2,400">Cube (beef)</option>
+															<option value="₦2,500">Chicken</option>
+
+														</select>
+													</div>
+												</div>
+
+												<div class="panel-footer">
+													<div class="form-group" align="center">
+														<div class="col-md-12">
+															<button id="cart_item_1" class="btn btn-success add-cart" onclick="addToCart('M1001', 1);">
+																<i class="fa fa-shopping-cart">&nbsp;</i>Add to Cart
+															</button>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- END PRODUCT 1 -->
+										</div>
+										<div class="col-md-3">
+											<!-- START PRODUCT 1 -->
+											<div class="panel panel-default">
+
+												<div class="panel-body panel-body-image">
+													<img src="assets/images/promo.jpg" alt="Ocean"/>
+
+												</div>
+
+												<div class="panel-body" align="center">
+													<h6>Buy Cowbell Get Miksi Promo</h6>
+													<h4><span id="promo_type">Tin: 400g</span></h4>
+													<h4><span style="color:red" id="promo_price">₦8,400</span> per carton</h4>
+													<p>
+														(volume discounts may apply)
+													</p>
+													<div class="input-group">
+														<span class="input-group-btn"> <span class="btn btn-default"><span class="fa fa-toggle-down"></span></span> </span>
+														<select class="form-control" onchange="$('#promo_price').html($('#promo_options').val());$('#promo_type').html($('#promo_options').find('option:selected').text());" id="promo_options" >
+															<option value="₦5,000">Tin: 250g</option>
+															<option value="₦8,400">Tin: 400g</option>
+															<option value="₦15,500">Tin: 800g</option>
+															<option value="₦4,500">Sachet: 250g</option>
+															<option value="₦8,000">Sachet: 400g</option>
+															<option value="₦15,000">Sachet: 800g</option>
+														</select>
+													</div>
+												</div>
+												<div class="panel-footer">
+													<div class="form-group" align="center">
+														<div class="col-md-12">
+															<button id="cart_item_1" class="btn btn-success add-cart" onclick="addToCart('M9001', 4);">
+																<i class="fa fa-shopping-cart">&nbsp;</i>Add to Cart
+															</button>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- END PRODUCT 1 -->
+										</div>
+									</div>
+									<!-- END PRODUCTS -->
+
+								</div>
+								<div id="view2">
+									<div class="row" id="alert_success" style="display:none">
+										<div class="col-md-12">
+											<div class="alert alert-success">
+												<button type="button" class="close" data-dismiss="alert">
+													<span aria-hidden="true">&nbsp;&nbsp;&nbsp;&times;</span><span class="sr-only">Close</span>
+												</button>
+												<strong>Congrats!</strong> You have successfully placed ORDER # 116-9080987-4077815, We will inform you onces your sales order has been approved.
+											</div>
+										</div>
+									</div>
+
+									<div class="row" id="mailbody">
+										<div class="col-md-12">
+											<!-- START NEW ORDER BLOCK -->
+											<div class="panel panel-colorful">
+												<div class="panel-body">
+
+													<div class="row" style="margin-bottom: 10px">
+														<div class="col-md-6">
+															<h2 id="sales_order_title">Shopping Cart</h2>
+														</div>
+														<div class="col-md-6" style="text-align: right">
+															<a class="btn btn-default btn-sm" onclick="showMainBlock()" ><span class="fa fa-times" >&nbsp;</span>Clear </a>
+															<a id="print_button" style="display:none" class="btn btn-default btn-sm" onclick="window.print();" ><span class="fa fa-print" >&nbsp;</span>Print</a>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+
+															<address >
+																<strong id="distributor_name_1" class="text-info">Abiodun Supply Company</strong>
+																<br>
+																<span id="distributor_address_2">141 Lawanson Street </span>
+																<br>
+																<span id="distributor_address_3">Surulere, Lagos, Nigeria</span>
+																<br>
+																<abbr title="Phone">P:</abbr>+234-803-647-9455
+															</address>
+														</div>
+														<div class="col-md-6">
+															<p>
+																&nbsp;
+															</p>
+														</div>
+													</div>
+
+													<div class="row" >
+														<div class="col-md-1">
+															<h6>Item Code</h6>
+														</div>
+														<div class="col-md-3">
+															<h6>Item Description</h6>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<h6 id="quantityx">Quantity</h6>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<h6>Unit Price </h6>
+														</div>
+														<div class="col-md-1" style="text-align: right">
+															<h6>Unit </h6>
+														</div>
+														<div class="col-md-1" style="text-align: right">
+															<h6>Disc. (%) </h6>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<h6>Total</h6>
+														</div>
+													</div>
+
+													<div class="row" >
+														<div class="col-md-12"  style="border-style:solid; border-bottom-width: 1px; border-top-width: 1px;border-color: #ADADAD; margin-bottom: 8px"></div>
+													</div>
+													<div class="row" >
+														<div class="col-md-1" style="text-align: left">
+															<p>
+																<input id="item1" type="text" placeholder="Search Item..." style="text-align: left;width: 100%"/>
+															</p>
+														</div>
+														<div class="col-md-3" style="text-align: left">
+															<p>
+																<input id="description1" type="text" style="text-align: left;width: 100%" disabled/>
+															</p>
+														</div>
+														<div class="col-md-2" style="text-align: right;">
+															<form class="form-inline" role="form">
+																<div class="form-group">
+																	<div class="input-group">
+
+																		<input id="quantity1" type="text" value="1" style="text-align: right;" size="10"/>
+																		<input id="quantityx1" type="text" value="150" style="text-align: right; display:none" size="10" data-toggle="tooltip" data-placement="right" title="Stock Qty: 3,150 | Reserved: 3,000 | Available: 150"/>
+																	</div>
+																</div>
+															</form>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<input id="price1" type="text" value="0" style="text-align: right;width: 100%" disabled/>
+														</div>
+														<div class="col-md-1" style="text-align: right">
+															<input id="unit1" type="text" value="Cartons" style="text-align: left;width: 100%"/>
+														</div>
+														<div class="col-md-1" style="text-align: right">
+															<input id="discount1" type="text" value="0" style="text-align: right;width: 100%" disabled/>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<input id="total1" type="text" value="0" style="text-align: right;width: 100%" disabled/>
+														</div>
+													</div>
+													<div class="row" >
+														<div class="col-md-12"  style="border-style:solid; border-bottom-width: 0px; border-top-width: 1px;border-color: #DDDDDD; margin-bottom: 8px"></div>
+													</div>
+													<div class="row" >
+														<div class="col-md-1" style="text-align: left">
+															<p>
+																<input id="item2" type="text" placeholder="Search Item..." style="text-align: left;width: 100%"/>
+															</p>
+														</div>
+														<div class="col-md-3" style="text-align: left">
+															<p>
+																<input id="description2" type="text" style="text-align: left;width: 100%" disabled/>
+															</p>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<form class="form-inline" role="form">
+																<div class="form-group">
+																	<div class="input-group">
+
+																		<input id="quantity2" type="text" value="1" style="text-align: right;" size="10"/>
+																		<input id="quantityx2" type="text" value="3,100" style="text-align: right; display:none" size="10" data-toggle="tooltip" data-placement="right" title="Stock Qty: 10,100 | Reserved: 7,000 | Available: 3,100"/>
+																	</div>
+																</div>
+															</form>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<input id="price2" type="text" value="0" style="text-align: right;width: 100%" disabled/>
+														</div>
+														<div class="col-md-1" style="text-align: right">
+															<input id="unit2" type="text" value="Cartons" style="text-align: left;width: 100%"/>
+														</div>
+														<div class="col-md-1" style="text-align: right">
+															<input id="discount2" type="text" value="0" style="text-align: right;width: 100%" disabled/>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<input id="total2" type="text" value="0" style="text-align: right;width: 100%" disabled/>
+														</div>
+													</div>
+													<div class="row" >
+														<div class="col-md-12"  style="border-style:solid; border-bottom-width: 0px; border-top-width: 1px;border-color: #DDDDDD; margin-bottom: 8px"></div>
+													</div>
+													<div class="row" >
+														<div class="col-md-1" style="text-align: left">
+															<p>
+																<input id="item3" type="text" placeholder="Search Item..." style="text-align: left;width: 100%"/>
+															</p>
+														</div>
+														<div class="col-md-3" style="text-align: left">
+															<p>
+																<input id="description3" type="text" style="text-align: left;width: 100%" disabled/>
+															</p>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<form class="form-inline" role="form">
+																<div class="form-group">
+																	<div class="input-group">
+
+																		<input id="quantity3" type="text" value="1" style="text-align: right;" size="10"/>
+																		<input id="quantityx3" type="text" value="20,000" style="text-align: right; display:none" size="10" data-toggle="tooltip" data-placement="right" title="Stock Qty: 50,500 | Reserved: 3,500 | Available: 20,000"/>
+																	</div>
+																</div>
+															</form>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<input id="price3" type="text" value="0" style="text-align: right;width: 100%" disabled/>
+														</div>
+														<div class="col-md-1" style="text-align: right">
+															<input id="unit3" type="text" value="Cartons" style="text-align: left;width: 100%"/>
+														</div>
+														<div class="col-md-1" style="text-align: right">
+															<input id="discount3" type="text" value="0" style="text-align: right;width: 100%" disabled/>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<input id="total3" type="text" value="0" style="text-align: right;width: 100%" disabled/>
+														</div>
+													</div>
+													<div class="row" >
+														<div class="col-md-12"  style="border-style:solid; border-bottom-width: 0px; border-top-width: 1px;border-color: #DDDDDD; margin-bottom: 8px"></div>
+													</div>
+													<div class="row" >
+														<div class="col-md-1" style="text-align: left">
+															<p>
+																<input id="item4" type="text" placeholder="Search Item..." style="text-align: left;width: 100%"/>
+															</p>
+														</div>
+														<div class="col-md-3" style="text-align: left">
+															<p>
+																<input id="description4" type="text" style="text-align: left;width: 100%" disabled/>
+															</p>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<form class="form-inline" role="form">
+																<div class="form-group">
+																	<div class="input-group">
+
+																		<input id="quantity4" type="text" value="1" style="text-align: right;" size="10"/>
+																		<input id="quantityx4" type="text" value="1,500" style="text-align: right; display:none" size="10" data-toggle="tooltip" data-placement="right" title="Stock Qty: 5,000 | Reserved: 3,500 | Available: 1,500"/>
+																	</div>
+																</div>
+															</form>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<input id="price4" type="text" value="0" style="text-align: right;width: 100%" disabled/>
+														</div>
+														<div class="col-md-1" style="text-align: right">
+															<input id="unit4" type="text" value="Cartons" style="text-align: left;width: 100%"/>
+														</div>
+														<div class="col-md-1" style="text-align: right">
+															<input id="discount4" type="text" value="0" style="text-align: right;width: 100%"  disabled/>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<input id="total4" type="text" value="0" style="text-align: right;width: 100%" disabled/>
+														</div>
+													</div>
+													<div class="row" id="promo_line" style="display:none" >
+														<div class="col-md-1" style="text-align: left">
+															<div class="mail">
+																<div class="mail-item mail-unread mail-danger" style="padding-top:0px; padding-bottom: 0px; padding-right:0px; padding-left:5px">
+																	<div class="mail-star">
+																		<span class="fa fa-star-o text-danger"></span>
+																	</div>
+																	<div class="mail-text text-danger">
+																		<small>PROMO</small>
+																	</div>
+
+																</div>
+															</div>
+														</div>
+														<div class="col-md-3" style="text-align: left">
+															<p>
+																<input id="description5" type="text" style="text-align: left;width: 100%" disabled value="Miksi Filled Milk Powder"/>
+															</p>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<form class="form-inline" role="form">
+																<div class="form-group">
+																	<div class="input-group">
+
+																		<input id="quantity5" type="text" value="10" style="text-align: right;" size="10"/>
+																		<input id="quantityx5" type="text" value="11,500" style="text-align: right; display:none" size="10" data-toggle="tooltip" data-placement="right" title="Stock Qty: 20,500 | Reserved: 9,000 | Available: 11,500"/>
+																	</div>
+																</div>
+															</form>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<input id="price5" type="text" value="0.00" style="text-align: right;width: 100%" disabled/>
+														</div>
+														<div class="col-md-1" style="text-align: right">
+															<input id="unit5" type="text" value="Cartons" style="text-align: left;width: 100%"/>
+														</div>
+														<div class="col-md-1" style="text-align: right">
+															<input id="discount5" type="text" value="0" style="text-align: right;width: 100%"  disabled/>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<input id="total5" type="text" value="0.00" style="text-align: right;width: 100%" disabled/>
+														</div>
+													</div>
+
+													<div class="row" >
+														<div  id="new_line_div" class="col-md-12" style="margin-bottom: 8px;cursor: pointer">
+															<a><span class="label label-default">NEW LINE</span></a>
+														</div>
+													</div>
+													<div class="row" >
+														<div class="col-md-12"  style="border-style:solid; border-bottom-width: 0px; border-top-width: 1px;border-color: #DDDDDD; margin-bottom: 8px"></div>
+													</div>
+													<div class="row invoice">
+														<div class="col-md-4">
+															<textarea class="form-control push-down-10" placeholder="Additional comments"></textarea>
+															<textarea class="form-control push-down-10" placeholder="Seller Comments" id="seller_comments" style="display:none"></textarea>																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																											
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+															<div class="row"  id="delivery_pane">
+																<div class="col-md-4 btn text-left">
+																	<p>
+																		<small><strong>DELIVERY OPTIONS:</strong></small>
+																	</p>
+																</div>
+																<div class="col-md-3 btn text-center">
+																	<p>
+																		I will pick it up
+																	</p>
+																</div>
+																<script>
+																	function toggleDelivery() {
+																		if ($('#delivery_options').is(":visible")) {
+																			$('#delivery_options').hide();
+																			$('#pickup_options').fadeIn();
+																		} else {
+
+																			$('#pickup_options').hide();
+																			$('#delivery_options').fadeIn();
+																		}
+																	}
+
+																	function changePickupAddress() {
+																		$('#pickup_address_1').html($('#pickup_address').find('option:selected').val() + " Depot");
+																		$('#pickup_address_2').html("12 " + $('#pickup_address').find('option:selected').val() + " Street");
+																		$('#pickup_address_3').html($('#pickup_address').find('option:selected').val() + ", Nigeria");
+																	}
+
+																	function changeDeliveryAddress() {
+																		if ($('#delivery_address').find('option:selected').val() == "Head Office") {
+																			$('#delivery_address_2').html("141 Lawanson Street");
+																			$('#delivery_address_3').html("Surulere, Lagos, Nigeria");
+																		} else {
+																			$('#delivery_address_2').html("Medina Shopping Mall, 14 Adeniyi Jones Street");
+																			$('#delivery_address_3').html("Ikeja, Lagos, Nigeria");
+																		}
+
+																	}
+																</script>
+																<div class="col-md-2 text-center">
+																	<label class="switch switch-small">
+																		<input id="delivery_switcher" type="checkbox" value="1" onchange="toggleDelivery();"/>
+																		<span></span> </label>
+
+																</div>
+																<div class="col-md-3 btn text-center">
+																	<p>
+																		Deliver to me
+																	</p>
+																</div>
+
+															</div>
+															<div id="pickup_options">
+																<div class="form-group">
+																	<label class="col-md-4 control-label">Pickup Location:</label>
+																	<div class="col-md-8">
+																		<select class="form-control" onchange="changePickupAddress();" id="pickup_address" >
+																			<option value="Apapa">Apapa, Lagos</option>
+																			<option value="Osodi">Oshodi, Lagos</option>
+																			<option value="Ikorodu">Ikorodu, Lagos</option>
+																			<option value="Wuse">Wuse, Abuja</option>
+																			<option value="Trans Amadi">Trans Amadi, PHC</option>
+																		</select>
+																	</div>
+																</div>
+																<div class="form-group">
+																	<div class="col-md-12">
+																		<address style="padding-top:5px" class="form-group">
+																			<strong id="pickup_address_1">Apapa Depot</strong>
+																			<br>
+																			<span id="pickup_address_2">12 Apapa Street</span>
+																			<br>
+																			<span id="pickup_address_3">Apapa, Nigeria</span>
+																			<br>
+																			<abbr title="Phone">P:</abbr> +234-803-347-3422
+																		</address>
+																	</div>
+																</div>
+															</div>
+															<div id="delivery_options" style="display:none">
+																<div class="form-group">
+																	<label class="col-md-4 control-label">Delivery Address:</label>
+																	<div class="col-md-8">
+																		<select class="form-control" onchange="changeDeliveryAddress();" id="delivery_address">
+																			<option>Head Office</option>
+																			<option>Shopping Complex</option>
+																		</select>
+																	</div>
+																</div>
+																<div class="form-group">
+																	<div class="col-md-12">
+																		<address style="padding-top:5px" class="form-group">
+																			<strong id="delivery_address_1">Head Office</strong>
+																			<br>
+																			<span id="delivery_address_2">141 Lawanson Street</span>
+																			<br>
+																			<span id="delivery_address_3">Surulere, Lagos, Nigeria</span>
+																			<br>
+																			<abbr title="Phone">P:</abbr> +234-803-647-9455
+																		</address>
+																	</div>
+																</div>
+															</div>
+
+														</div>
+														<div class="col-md-2">
+															<p>
+																&nbsp;
+															</p>
+														</div>
+														<div class="col-md-6">
+															<table class="table table-condensed">
+																<tr>
+																	<td >Sub Total: (includes discount of ₦<span id="totaldiscount">0.0</span> )</td>
+																	<td class="text-right"><span>₦</span><span id="subtotal">0.0</span></td>
+																</tr>
+																<tr>
+																	<td>Tax (VAT 5%):</td>
+																	<td class="text-right"><span>₦</span><span id="totaltax">0.0</span></td>
+																</tr>
+																<tr class="total-x">
+																	<td><strong>TOTAL</strong></td>
+																	<td class="text-right"><span>₦</span><span><strong id="grandtotal">0.0</strong></span></td>
+																</tr>
+															</table>
+
+															<div id="invoice_rebates" style="display:none">
+																<script>
+																	function updateGrandTotal1() {
+																		var grandTotal1 = 0;
+																		var rebateAmount = parseFloat($("#rebate_amount").val().replace(/\,/g, '').replace("₦", ""));
+																		var depositAmount = parseFloat($("#deposit_amount").val().replace(/\,/g, '').replace("₦", ""));
+																		var tempTotal = parseFloat($("#grandtotal").html().replace(/\,/g, '').replace("₦", ""));
+																		var grandTotal1 = tempTotal - rebateAmount - depositAmount;
+
+																		$("#grandtotal1").html(grandTotal1.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+																	}
+
+																	function rebateToggle() {
+
+																		if ($('#rebate_check').is(':checked')) {
+
+																			$("#rebate_amount").val("₦250,000.00");
+																		} else {
+
+																			$("#rebate_amount").val("₦.00");
+																		}
+
+																		updateGrandTotal1();
+																	}
+
+																	function rebateUpdate() {
+
+																		if (!isNaN($("#rebate_amount").val())) {
+																			var amount = parseFloat($("#rebate_amount").val().replace(/\,/g, ''));
+																			$("#rebate_max").html((250000 - amount).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+																		}
+																		updateGrandTotal1();
+
+																	}
+
+																	function rebateUpdate1() {
+
+																		if (!isNaN($("#rebate_amount").val())) {
+																			var amount = parseFloat($("#rebate_amount").val().replace(/\,/g, ''));
+																			$("#rebate_amount").val(amount.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+																		}
+																		updateGrandTotal1();
+
+																	}
+
+																	function depositToggle() {
+
+																		if ($('#deposit_check').is(':checked')) {
+
+																			$("#deposit_amount").val("₦500,000.00");
+																		} else {
+
+																			$("#deposit_amount").val("₦0.00");
+																		}
+																		updateGrandTotal1();
+																	}
+
+																	function depositUpdate() {
+
+																		if (!isNaN($("#deposit_amount").val())) {
+																			var amount = parseFloat($("#deposit_amount").val().replace(/\,/g, ''));
+																			$("#deposit_max").html((500000 - amount).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+																		}
+																		updateGrandTotal1();
+
+																	}
+
+																	function depositUpdate1() {
+
+																		if (!isNaN($("#deposit_amount").val())) {
+																			var amount = parseFloat($("#deposit_amount").val().replace(/\,/g, ''));
+																			$("#deposit_amount").val(amount.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+																		}
+																		updateGrandTotal1();
+
+																	}
+
+																</script>
+																<table class="table table-condensed">
+																	<tr>
+																		<td colspan="3" style="border-style:solid; border-bottom-width: 1px; border-top-width: 0px;border-color: #DDDDDD; margin-bottom: 8px" class="text-success"><strong>REBATES (Available Amount: ₦<span id="rebate_max">250,000.00</span>)</strong></td>
+																	</tr>
+																	<tr >
+																		<td ><label class="check">
+																			<input onclick="rebateToggle()" id="rebate_check" type="checkbox" style="padding:0px;margin: 0px"/>
+																			Available Amount:</label></td><td class="text-right">
+																		<input id="rebate_amount" type="text" value="₦0.00" style="text-align: right;width: 100%" onkeyup="rebateUpdate()" onfocusout="rebateUpdate1()"/>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td colspan="3" style="border-style:solid; border-bottom-width: 1px; border-top-width: 0px;border-color: #DDDDDD; margin-bottom: 8px" class="text-success"><strong>DEPOSITS (Available Amount: ₦<span id="deposit_max">500,000.00</span>)</strong></td>
+																	</tr>
+																	<tr >
+																		<td ><label class="check">
+																			<input onclick="depositToggle()" id="deposit_check" type="checkbox" style="padding:0px;margin: 0px"/>
+																			Available Amount:</label></td><td class="text-right">
+																		<input id="deposit_amount" type="text" value="₦0.00" style="text-align: right;width: 100%" onkeyup="depositUpdate()" onfocusout="depositUpdate1()"/>
+																		</td>
+																	</tr>
+
+																	<tr class="total-x" style="background: #E6E6E6">
+																		<td><strong>TOTAL</strong></td>
+																		<td class="text-right"><span>₦</span><span><strong id="grandtotal1">0.0</strong></span></td>
+																	</tr>
+																</table>
+															</div>
+
+														</div>
+													</div>
+													<div class="row" >
+														<div class="col-md-12">
+															<div class="pull-right push-down-20" id="place_order_button_div">
+																<button class="btn btn-success" onClick="showInvoicePage();">
+																	<span class="fa fa-credit-card"></span><span id="place_order_button">Place Order</span>
+																</button>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- END NEW ORDER BLOCK -->
+										</div>
+									</div>
+
+								</div>
+								<div id="view3">
+									<div class="panel panel-default">
+										<div class="panel-body">
+
+											<div class="row">
+												<div class="col-md-12" style="text-align: right">
+													<div class="form-group">
+														<button class="btn btn-default btn-condensed" data-toggle="tooltip" data-placement="bottom" title="All Orders">
+															<i class="fa fa-align-justify"></i>
+														</button>
+														<button class="btn btn-warning btn-condensed" data-toggle="tooltip" data-placement="bottom" title="Open Orders">
+															<i class="fa fa-stack-overflow"></i>
+														</button>
+														<button class="btn btn-success btn-condensed" data-toggle="tooltip" data-placement="bottom" title="Paid Orders">
+															<i>₦</i>
+														</button>
+														<button class="btn btn-primary btn-condensed" data-toggle="tooltip" data-placement="bottom" title="Collected Orders">
+															<i class="fa fa-truck"></i>
+														</button>
+														<button class="btn btn-default btn-condensed" data-toggle="tooltip" data-placement="bottom" title="Cancelled Orders">
+															<i class="fa fa-trash-o delete-item"></i>
+														</button>
+
+													</div>
+												</div>
+											</div>
+
+											<div class="row">
+												<h2 style="margin-top:10px">ALL ORDERS</h2>
+											</div>
+											<div class="alert alert-success" role="alert" id="succes-alert">
+												<button type="button" class="close" data-dismiss="alert">
+													<span aria-hidden="true">&nbsp;&nbsp;&nbsp;&times;</span><span class="sr-only">Close</span>
+												</button>
+												<strong>Congrats!</strong> You have successfully placed ORDER # 116-9080987-4077815, please note your order number and visit your bank to make payments.
+											</div>
+											<!-- ORDERS -->
+											<div class="panel panel-default hidden" id="receipt">
+												<div class="panel-body">
+
+													<div class="row" style="margin-bottom: 10px">
+														<div class="col-md-10">
+															<h6><i class="fa fa-stack-overflow btn btn-warning btn-condensed"></i></h6>
+															<h6>ORDER # 116-9080987-4077815</h6>
+															<p>
+																Distributor: # 116-9080987 Good Brothers Distributors Ltd
+															</p>
+															<p>
+																Status: <strong>Open</strong>| Created on: 3rd April 2015
+															</p>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<button class="btn btn-default">
+																<span class="fa fa-print"></span> Print
+															</button>
+														</div>
+													</div>
+													<div class="row" >
+														<div class="col-md-5">
+															<h6>Item Description</h6>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<h6>Unit Price </h6>
+														</div>
+														<div class="col-md-3" style="text-align: right">
+															<h6>Quantity</h6>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<h6>Total</h6>
+														</div>
+
+													</div>
+													<hr style="margin-top:5px;height:2px;background-color:#B2B2B2;">
+													<div class="row hidden" id="cements" >
+
+														<div class="col-md-5" style="text-align: left">
+															<p style="margin-bottom: 0px;">
+																Cement is a very big thing
+															</p>
+
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<p>
+																₦150,000,000.00
+															</p>
+														</div>
+														<div class="col-md-3" style="text-align: right">
+															<p>
+																2 truck(s)
+															</p>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<p>
+																₦300,000,000.00
+															</p>
+														</div>
+														<div class="row" >
+															<div class="col-md-12"  style="border-style:solid; border-bottom-width: 0px; border-top-width: 1px;border-color: #DDDDDD; margin-bottom: 8px"></div>
+														</div>
+													</div>
+													<div class="row hidden" id="sugars" >
+
+														<div class="col-md-5" style="text-align: left">
+															<p style="margin-bottom: 0px;">
+																Sugar
+															</p>
+
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<p>
+																₦150,000,000.00
+															</p>
+														</div>
+														<div class="col-md-3" style="text-align: right">
+															<p>
+																2 bags(s)
+															</p>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<p>
+																₦300,000,000.00
+															</p>
+														</div>
+														<div class="row" >
+															<div class="col-md-12"  style="border-style:solid; border-bottom-width: 0px; border-top-width: 1px;border-color: #DDDDDD; margin-bottom: 8px"></div>
+														</div>
+													</div>
+													<div class="row hidden" id="flours" >
+
+														<div class="col-md-5" style="text-align: left">
+															<p style="margin-bottom: 0px;">
+																Flour
+															</p>
+
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<p>
+																₦150,000,000.00
+															</p>
+														</div>
+														<div class="col-md-3" style="text-align: right">
+															<p>
+																2 bags(s)
+															</p>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<p>
+																₦300,000,000.00
+															</p>
+														</div>
+														<div class="row" >
+															<div class="col-md-12"  style="border-style:solid; border-bottom-width: 0px; border-top-width: 1px;border-color: #DDDDDD; margin-bottom: 8px"></div>
+														</div>
+													</div>
+													<div class="row hidden" id="rices" >
+
+														<div class="col-md-5" style="text-align: left">
+															<p style="margin-bottom: 0px;">
+																Rice
+															</p>
+
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<p>
+																₦150,000,000.00
+															</p>
+														</div>
+														<div class="col-md-3" style="text-align: right">
+															<p>
+																2 bags(s)
+															</p>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<p>
+																₦300,000,000.00
+															</p>
+														</div>
+														<div class="row" >
+															<div class="col-md-12"  style="border-style:solid; border-bottom-width: 0px; border-top-width: 1px;border-color: #DDDDDD; margin-bottom: 8px"></div>
+														</div>
+													</div>
+													<div class="invoice">
+														<div class="row">
+															<div class="col-md-6">
+
+																<h6>Pickup Location: Apapa, Lagos</h6>
+																<address>
+																	<strong>Apapa Warehouse</strong>
+																	<br>
+																	795 Folsom Ave, Suite 600
+																	<br>
+																	San Francisco, CA 94107
+																	<br>
+																	<abbr title="Phone">P:</abbr> (123) 456-7890
+																</address>
+																<p>
+																	&nbsp;
+																</p>
+
+															</div>
+															<div class="col-md-6">
+																<p>
+																	&nbsp;
+																</p>
+
+																<table class="table table-striped table-condensed">
+																	<tr>
+																		<td width="200"><strong>Sub Total:</strong></td><td class="text-right">₦<span id="sub-total-receipt">0.00</span></td>
+																	</tr>
+																	<tr>
+																		<td><strong>Discount (2%):</strong></td><td class="text-right">₦<span id="discount-receipt">0.00</span></td>
+																	</tr>
+																	<tr>
+																		<td><strong>Tax (VAT 5%):</strong></td><td class="text-right">₦<span id="vat-receipt">0.00</span></td>
+																	</tr>
+
+																	<tr class="total">
+																		<td>Total:</td><td class="text-right">₦<span id="total-receipt">0.00</span></td>
+																	</tr>
+																</table>
+															</div>
+														</div>
+
+														<div class="row">
+															<div class="col-md-12">
+																<div class="pull-right push-down-20">
+																	<button class="btn btn-primary">
+																		Cancel Order
+																	</button>
+																</div>
+															</div>
+														</div>
+													</div>
+
+												</div>
+											</div>
+											<div class="panel panel-default">
+												<div class="panel-body">
+
+													<div class="row" style="margin-bottom: 10px">
+														<div class="col-md-10">
+															<h6><i class="btn btn-success btn-condensed">₦</i></h6>
+															<h6>ORDER # 116-9080987-4077815</h6>
+															<p>
+																Distributor: # 116-9080987 Good Brothers Distributors Ltd
+															</p>
+															<p>
+																Status: <strong>Payment Received</strong>| Created on: 3rd April 2015
+															</p>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<button class="btn btn-default">
+																<span class="fa fa-print"></span> Print
+															</button>
+														</div>
+													</div>
+													<div class="row" >
+														<div class="col-md-5">
+															<h6>Item Description</h6>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<h6>Unit Price </h6>
+														</div>
+														<div class="col-md-3" style="text-align: right">
+															<h6>Quantity</h6>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<h6>Total</h6>
+														</div>
+
+													</div>
+													<hr style="margin-top:5px;height:2px;background-color:#B2B2B2;">
+													<div class="row" >
+
+														<div class="col-md-5" style="text-align: left">
+															<p style="margin-bottom: 0px;">
+																Cement is a very big thing
+															</p>
+
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<p>
+																₦150,000,000.00
+															</p>
+														</div>
+														<div class="col-md-3" style="text-align: right">
+															<p>
+																200 truck(s)
+															</p>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<p>
+																₦300,000,000.00
+															</p>
+														</div>
+													</div>
+													<div class="row" >
+														<div class="col-md-12"  style="border-style:solid; border-bottom-width: 0px; border-top-width: 1px;border-color: #DDDDDD; margin-bottom: 8px"></div>
+													</div>
+													<div class="row" >
+
+														<div class="col-md-5" style="text-align: left">
+															<p style="margin-bottom: 0px;">
+																Sugar
+															</p>
+
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<p>
+																₦150,000,000.00
+															</p>
+														</div>
+														<div class="col-md-3" style="text-align: right">
+															<p>
+																100 bags(s)
+															</p>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<p>
+																₦300,000,000.00
+															</p>
+														</div>
+													</div>
+													<div class="row" >
+														<div class="col-md-12"  style="border-style:solid; border-bottom-width: 0px; border-top-width: 1px;border-color: #DDDDDD; margin-bottom: 8px"></div>
+													</div>
+													<div class="row" >
+
+														<div class="col-md-5" style="text-align: left">
+															<p style="margin-bottom: 0px;">
+																Flour
+															</p>
+
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<p>
+																₦150,000,000.00
+															</p>
+														</div>
+														<div class="col-md-3" style="text-align: right">
+															<p>
+																23 bags(s)
+															</p>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<p>
+																₦300,000,000.00
+															</p>
+														</div>
+													</div>
+													<div class="row" >
+														<div class="col-md-12"  style="border-style:solid; border-bottom-width: 0px; border-top-width: 1px;border-color: #DDDDDD; margin-bottom: 8px"></div>
+													</div>
+													<div class="row" >
+
+														<div class="col-md-5" style="text-align: left">
+															<p style="margin-bottom: 0px;">
+																Rice
+															</p>
+
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<p>
+																₦150,000,000.00
+															</p>
+														</div>
+														<div class="col-md-3" style="text-align: right">
+															<p>
+																50 bags(s)
+															</p>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<p>
+																₦300,000,000.00
+															</p>
+														</div>
+													</div>
+													<div class="row" >
+														<div class="col-md-12"  style="border-style:solid; border-bottom-width: 0px; border-top-width: 1px;border-color: #DDDDDD; margin-bottom: 8px"></div>
+													</div>
+													<div class="invoice">
+														<div class="row">
+															<div class="col-md-6">
+
+																<h6>Pickup Location: Apapa, Lagos</h6>
+																<address>
+																	<strong>Apapa Warehouse</strong>
+																	<br>
+																	795 Folsom Ave, Suite 600
+																	<br>
+																	San Francisco, CA 94107
+																	<br>
+																	<abbr title="Phone">P:</abbr> (123) 456-7890
+																</address>
+																<p>
+																	&nbsp;
+																</p>
+
+															</div>
+															<div class="col-md-6">
+																<p>
+																	&nbsp;
+																</p>
+
+																<table class="table table-striped table-condensed">
+																	<tr>
+																		<td width="200"><strong>Sub Total:</strong></td><td class="text-right">$2,533.00</td>
+																	</tr>
+																	<tr>
+																		<td><strong>Discount (2%):</strong></td><td class="text-right">$50.66</td>
+																	</tr>
+																	<tr>
+																		<td><strong>Tax (VAT 4.5%):</strong></td><td class="text-right">$113.98</td>
+																	</tr>
+
+																	<tr class="total">
+																		<td>Total:</td><td class="text-right">$2,697.64</td>
+																	</tr>
+																</table>
+															</div>
+														</div>
+
+													</div>
+
+												</div>
+											</div>
+											<div class="panel panel-default">
+												<div class="panel-body">
+
+													<div class="row" style="margin-bottom: 10px">
+														<div class="col-md-10">
+															<h6><i class="fa fa-truck btn btn-primary btn-condensed"></i></h6>
+															<h6>ORDER # 116-9080987-4077815</h6>
+															<p>
+																Distributor: # 116-9080987 Good Brothers Distributors Ltd
+															</p>
+															<p>
+																Status: <strong>Goods Collected</strong>| Created on: 3rd April 2015
+															</p>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<button class="btn btn-default">
+																<span class="fa fa-print"></span> Print
+															</button>
+														</div>
+													</div>
+													<div class="row" >
+														<div class="col-md-5">
+															<h6>Item Description</h6>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<h6>Unit Price </h6>
+														</div>
+														<div class="col-md-3" style="text-align: right">
+															<h6>Quantity</h6>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<h6>Total</h6>
+														</div>
+
+													</div>
+													<hr style="margin-top:5px;height:2px;background-color:#B2B2B2;">
+													<div class="row" >
+
+														<div class="col-md-5" style="text-align: left">
+															<p style="margin-bottom: 0px;">
+																Cement is a very big thing
+															</p>
+
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<p>
+																₦150,000,000.00
+															</p>
+														</div>
+														<div class="col-md-3" style="text-align: right">
+															<p>
+																200 truck(s)
+															</p>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<p>
+																₦300,000,000.00
+															</p>
+														</div>
+													</div>
+													<div class="row" >
+														<div class="col-md-12"  style="border-style:solid; border-bottom-width: 0px; border-top-width: 1px;border-color: #DDDDDD; margin-bottom: 8px"></div>
+													</div>
+													<div class="row" >
+
+														<div class="col-md-5" style="text-align: left">
+															<p style="margin-bottom: 0px;">
+																Sugar
+															</p>
+
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<p>
+																₦150,000,000.00
+															</p>
+														</div>
+														<div class="col-md-3" style="text-align: right">
+															<p>
+																100 bags(s)
+															</p>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<p>
+																₦300,000,000.00
+															</p>
+														</div>
+													</div>
+													<div class="row" >
+														<div class="col-md-12"  style="border-style:solid; border-bottom-width: 0px; border-top-width: 1px;border-color: #DDDDDD; margin-bottom: 8px"></div>
+													</div>
+													<div class="row" >
+
+														<div class="col-md-5" style="text-align: left">
+															<p style="margin-bottom: 0px;">
+																Flour
+															</p>
+
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<p>
+																₦150,000,000.00
+															</p>
+														</div>
+														<div class="col-md-3" style="text-align: right">
+															<p>
+																23 bags(s)
+															</p>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<p>
+																₦300,000,000.00
+															</p>
+														</div>
+													</div>
+													<div class="row" >
+														<div class="col-md-12"  style="border-style:solid; border-bottom-width: 0px; border-top-width: 1px;border-color: #DDDDDD; margin-bottom: 8px"></div>
+													</div>
+													<div class="row" >
+
+														<div class="col-md-5" style="text-align: left">
+															<p style="margin-bottom: 0px;">
+																Rice
+															</p>
+
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<p>
+																₦150,000,000.00
+															</p>
+														</div>
+														<div class="col-md-3" style="text-align: right">
+															<p>
+																50 bags(s)
+															</p>
+														</div>
+														<div class="col-md-2" style="text-align: right">
+															<p>
+																₦300,000,000.00
+															</p>
+														</div>
+													</div>
+													<div class="row" >
+														<div class="col-md-12"  style="border-style:solid; border-bottom-width: 0px; border-top-width: 1px;border-color: #DDDDDD; margin-bottom: 8px"></div>
+													</div>
+													<div class="invoice">
+														<div class="row">
+															<div class="col-md-6">
+
+																<h6>Pickup Location: Apapa, Lagos</h6>
+																<address>
+																	<strong>Apapa Warehouse</strong>
+																	<br>
+																	795 Folsom Ave, Suite 600
+																	<br>
+																	San Francisco, CA 94107
+																	<br>
+																	<abbr title="Phone">P:</abbr> (123) 456-7890
+																</address>
+																<p>
+																	&nbsp;
+																</p>
+
+															</div>
+															<div class="col-md-6">
+																<p>
+																	&nbsp;
+																</p>
+
+																<table class="table table-striped table-condensed">
+																	<tr>
+																		<td width="200"><strong>Sub Total:</strong></td><td class="text-right">$2,533.00</td>
+																	</tr>
+																	<tr>
+																		<td><strong>Discount (2%):</strong></td><td class="text-right">$50.66</td>
+																	</tr>
+																	<tr>
+																		<td><strong>Tax (VAT 4.5%):</strong></td><td class="text-right">$113.98</td>
+																	</tr>
+
+																	<tr class="total">
+																		<td>Total:</td><td class="text-right">$2,697.64</td>
+																	</tr>
+																</table>
+															</div>
+														</div>
+
+													</div>
+
+												</div>
+											</div>
+											<!-- END ORDERS -->
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- END END PROMO SLIDERS -->
+
+				</div>
+				<!-- END PAGE CONTENT WRAPPER -->
+			</div>
+			<!-- END PAGE CONTENT -->
+		</div>
+		<!-- END PAGE CONTAINER -->
+
+		<!-- MESSAGE BOX-->
+		<div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+			<div class="mb-container">
+				<div class="mb-middle">
+					<div class="mb-title">
+						<span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?
+					</div>
+					<div class="mb-content">
+						<p>
+							Are you sure you want to log out?
+						</p>
+						<p>
+							Press No if youwant to continue work. Press Yes to logout current user.
+						</p>
+					</div>
+					<div class="mb-footer">
+						<div class="pull-right">
+							<a href="pages-login.html" class="btn btn-success btn-lg">Yes</a>
+							<button class="btn btn-default btn-lg mb-control-close">
+								No
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END MESSAGE BOX-->
+
+		<!-- START PRELOADS -->
+		<audio id="audio-alert" src="audio/alert.mp3" preload="auto"></audio>
+		<audio id="audio-fail" src="audio/fail.mp3" preload="auto"></audio>
+		<!-- END PRELOADS -->
+
+		<!-- START SCRIPTS -->
+		<!-- START PLUGINS -->
+		<script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
+		<script type="text/javascript" src="js/plugins/jquery/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="js/plugins/bootstrap/bootstrap.min.js"></script>
+		<script src="js/tradedepot.js" type="text/javascript"></script>
+		<!-- END PLUGINS -->
+
+		<!-- START THIS PAGE PLUGINS-->
+		<script type='text/javascript' src='js/plugins/icheck/icheck.min.js'></script>
+		<script type="text/javascript" src="js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+		<script type="text/javascript" src="js/plugins/scrolltotop/scrolltopcontrol.js"></script>
+
+		<script type="text/javascript" src="js/plugins/morris/raphael-min.js"></script>
+		<script type="text/javascript" src="js/plugins/morris/morris.min.js"></script>
+		<!--<script type="text/javascript" src="js/plugins/rickshaw/d3.v3.js"></script>
+		<script type="text/javascript" src="js/plugins/rickshaw/rickshaw.min.js"></script>
+		-->
+		<script type='text/javascript' src='js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js'></script>
+		<script type='text/javascript' src='js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js'></script>
+		<script type='text/javascript' src='js/plugins/bootstrap/bootstrap-datepicker.js'></script>
+		<script type="text/javascript" src="js/plugins/owl/owl.carousel.min.js"></script>
+
+		<script type="text/javascript" src="js/plugins/moment.min.js"></script>
+		<script type="text/javascript" src="js/plugins/daterangepicker/daterangepicker.js"></script>
+		<script type='text/javascript' src='js/plugins/noty/jquery.noty.js'></script>
+		<script type='text/javascript' src='js/plugins/noty/layouts/topCenter.js'></script>
+		<script type='text/javascript' src='js/plugins/noty/layouts/topLeft.js'></script>
+		<script type='text/javascript' src='js/plugins/noty/layouts/topRight.js'></script>
+
+		<script type='text/javascript' src='js/plugins/noty/themes/default.js'></script>
+		<script type="text/javascript">
+			function notyConfirm() {
+				noty({
+					text : 'Pls cross-check that your order is okay...',
+					layout : 'topRight',
+					buttons : [{
+						addClass : 'btn btn-success btn-clean checkout',
+						text : 'Proceed',
+						onClick : function($noty) {
+							$noty.close();
+							proceedCheckout();
+							//add code to change tab and add notification
+						}
+					}, {
+						addClass : 'btn btn-danger btn-clean',
+						text : 'Cancel',
+						onClick : function($noty) {
+							$noty.close();
+
+						}
+					}]
+				})
+			}
+
+			$(function() {
+
+				var items = [{
+					label : "M1001: Cowbell Instant Filled Milk Powder (Tin: 250g)",
+					value : "M1001"
+				}, {
+					label : "M1002: Cowbell Instant Filled Milk Powder (Tin: 400g)",
+					value : "M1002"
+				}, {
+					label : "M1003: Cowbell Instant Filled Milk Powder (Tin: 800g)",
+					value : "M1003"
+				}, {
+					label : "M1004: Cowbell Instant Filled Milk Powder (Sachet: 250g)",
+					value : "M1004"
+				}, {
+					label : "M1005: Cowbell Instant Filled Milk Powder (Sachet: 400g)",
+					value : "M1005"
+				}, {
+					label : "M1006: Cowbell Instant Filled Milk Powder (Sachet: 800g)",
+					value : "M1006"
+				}, {
+					label : "M2001: Loya Full Cream Milk (Tin: 250g)",
+					value : "M2001"
+				}, {
+					label : "M2002: Loya Full Cream Milk (Tin: 400g)",
+					value : "M2002"
+				}, {
+					label : "M2003: Loya Full Cream Milk (Tin: 800g)",
+					value : "M2003"
+				}, {
+					label : "M2004: Loya Full Cream Milk (Sachet: 250g)",
+					value : "M2004"
+				}, {
+					label : "M2005: Loya Full Cream Milk (Sachet: 400g)",
+					value : "M2005"
+				}, {
+					label : "M2006: Loya Full Cream Milk (Sachet: 800g)",
+					value : "M2006"
+				}, {
+					label : "M3001: Loya Premium Milk (Tin: 250g)",
+					value : "M3001"
+				}, {
+					label : "M3002: Loya Premium Milk (Tin: 400g)",
+					value : "M3002"
+				}, {
+					label : "M3003: Loya Premium Milk (Tin: 800g)",
+					value : "M3003"
+				}, {
+					label : "M3004: Loya Premium Milk (Sachet: 250g)",
+					value : "M3004"
+				}, {
+					label : "M3005: Loya Premium Milk (Sachet: 400g)",
+					value : "M3005"
+				}, {
+					label : "M3006: Loya Premium Milk (Sachet: 800g)",
+					value : "M3006"
+				}, {
+					label : "M4001:Top Tea (Standard, Regular)",
+					value : "M4001"
+				}, {
+					label : "M4002:Top Tea (Standard, Ginger)",
+					value : "M4002"
+				}, {
+					label : "M4003:Top Tea (Standard, Lemon and Lime)",
+					value : "M4003"
+				}, {
+					label : "M4004:Top Tea (Economical, Regular)",
+					value : "M4004"
+				}, {
+					label : "M4005:Top Tea (Economical, Ginger",
+					value : "M4005"
+				}, {
+					label : "M4006:Top Tea (Economical, Lemon and Lime)",
+					value : "M4006"
+				}, {
+					label : "M9001: Buy Cowbell Get Miksi Promo",
+					value : "M9001"
+				}];
+
+				var units = [{
+					label : "Each",
+					value : "EA"
+				}, {
+					label : "Cartons",
+					value : "Cartons"
+				}];
+
+				var discounts = [{
+					label : "10%",
+					value : "10"
+				}, {
+					label : "15%",
+					value : "15"
+				}, {
+					label : "20%",
+					value : "20"
+				}];
+
+				$("#item1").autocomplete({
+					source : items,
+					change : function(event, ui) {
+						autoPopulateRow(1);
+					}
+				});
+
+				$("#unit1").autocomplete({
+					source : units
+
+				});
+
+				$("#discount1").autocomplete({
+					source : discounts,
+					change : function(event, ui) {
+						autoPopulateRow(1);
+					}
+				});
+
+				$("#discount1").change(function() {
+					autoPopulateRow(1);
+				});
+				$("#quantity1").change(function() {
+					autoPopulateRow(1);
+				});
+
+				$("#item2").autocomplete({
+					source : items,
+					change : function(event, ui) {
+						autoPopulateRow(2);
+					}
+				});
+
+				$("#unit2").autocomplete({
+					source : units
+
+				});
+
+				$("#discount2").autocomplete({
+					source : discounts,
+					change : function(event, ui) {
+						autoPopulateRow(2);
+					}
+				});
+
+				$("#discount2").change(function() {
+					autoPopulateRow(2);
+				});
+				$("#quantity2").change(function() {
+					autoPopulateRow(2);
+				});
+
+				$("#item3").autocomplete({
+					source : items,
+					change : function(event, ui) {
+						autoPopulateRow(3);
+					}
+				});
+
+				$("#unit3").autocomplete({
+					source : units
+
+				});
+
+				$("#discount3").autocomplete({
+					source : discounts,
+					change : function(event, ui) {
+						autoPopulateRow(3);
+					}
+				});
+
+				$("#discount3").change(function() {
+					autoPopulateRow(3);
+				});
+				$("#quantity3").change(function() {
+					autoPopulateRow(3);
+				});
+
+				$("#item4").autocomplete({
+					source : items,
+					change : function(event, ui) {
+						autoPopulateRow(4);
+					}
+				});
+
+				$("#unit4").autocomplete({
+					source : units
+
+				});
+
+				$("#discount4").autocomplete({
+					source : discounts,
+					change : function(event, ui) {
+						autoPopulateRow(4);
+					}
+				});
+
+				$("#discount4").change(function() {
+					autoPopulateRow(4);
+				});
+				$("#quantity4").change(function() {
+					autoPopulateRow(4);
+				});
+
+			});
+
+			var promo_ref = 0;
+			function autoPopulateRow(row) {
+
+				if (promo_ref == row) {
+					$("#promo_line").hide();
+					promo_ref = 0;
+				}
+
+				if (($("#item" + row).val()) == "M1001") {
+					$("#price" + row).val("5,000.00");
+					$("#description" + row).val("Cowbell Instant Filled Milk Powder (Tin: 250g)");
+				} else if (($("#item" + row).val()) == "M1002") {
+					$("#price" + row).val("8,400.00");
+					$("#description" + row).val("Cowbell Instant Filled Milk Powder (Tin: 400g)");
+				} else if (($("#item" + row).val()) == "M1003") {
+					$("#price" + row).val("15,500.00");
+					$("#description" + row).val("Cowbell Instant Filled Milk Powder (Tin: 800g)");
+				} else if (($("#item" + row).val()) == "M1004") {
+					$("#price" + row).val("4,500.00");
+					$("#description" + row).val("Cowbell Instant Filled Milk Powder (Sachet: 250g)");
+				} else if (($("#item" + row).val()) == "M1005") {
+					$("#price" + row).val("4,500.00");
+					$("#description" + row).val("Cowbell Instant Filled Milk Powder (Sachet: 400g)");
+				} else if (($("#item" + row).val()) == "M1006") {
+					$("#price" + row).val("4,500.00");
+					$("#description" + row).val("Cowbell Instant Filled Milk Powder (Sachet: 800g)");
+				} else if (($("#item" + row).val()) == "M2001") {
+					$("#price" + row).val("5,000.00");
+					$("#description" + row).val("Loya Full Cream Milk (Tin: 250g)");
+				} else if (($("#item" + row).val()) == "M2002") {
+					$("#price" + row).val("8,400.00");
+					$("#description" + row).val("Loya Full Cream Milk (Tin: 400g)");
+				} else if (($("#item" + row).val()) == "M2003") {
+					$("#price" + row).val("15,500.00");
+					$("#description" + row).val("Loya Full Cream Milk (Tin: 800g)");
+				} else if (($("#item" + row).val()) == "M2004") {
+					$("#price" + row).val("4,500.00");
+					$("#description" + row).val("Loya Full Cream Milk (Sachet: 250g)");
+				} else if (($("#item" + row).val()) == "M2005") {
+					$("#price" + row).val("4,500.00");
+					$("#description" + row).val("Loya Full Cream Milk (Sachet: 400g)");
+				} else if (($("#item" + row).val()) == "M2006") {
+					$("#price" + row).val("4,500.00");
+					$("#description" + row).val("Loya Full Cream Milk (Sachet: 800g)");
+				} else if (($("#item" + row).val()) == "M3001") {
+					$("#price" + row).val("5,000.00");
+					$("#description" + row).val("Loya Premium Milk (Tin: 250g)");
+				} else if (($("#item" + row).val()) == "M3002") {
+					$("#price" + row).val("8,400.00");
+					$("#description" + row).val("Loya Premium Milk (Tin: 400g)");
+				} else if (($("#item" + row).val()) == "M3003") {
+					$("#price" + row).val("15,500.00");
+					$("#description" + row).val("Loya Premium Milk (Tin: 800g)");
+				} else if (($("#item" + row).val()) == "M3004") {
+					$("#price" + row).val("4,500.00");
+					$("#description" + row).val("Loya Premium Milk (Sachet: 250g)");
+				} else if (($("#item" + row).val()) == "M3005") {
+					$("#price" + row).val("4,500.00");
+					$("#description" + row).val("Loya Premium Milk (Sachet: 400g)");
+				} else if (($("#item" + row).val()) == "M3006") {
+					$("#price" + row).val("4,500.00");
+					$("#description" + row).val("Loya Premium Milk (Sachet: 8000g)");
+				} else if (($("#item" + row).val()) == "M4001") {
+					$("#price" + row).val("5,000.00");
+					$("#description" + row).val("Top Tea (Standard Regular)");
+				} else if (($("#item" + row).val()) == "M4002") {
+					$("#price" + row).val("8,400.00");
+					$("#description" + row).val("Top Tea (Standard Ginger)");
+				} else if (($("#item" + row).val()) == "M4003") {
+					$("#price" + row).val("15,500.00");
+					$("#description" + row).val("Top Tea (Standard Lemon and Lime)");
+				} else if (($("#item" + row).val()) == "M4004") {
+					$("#price" + row).val("4,500.00");
+					$("#description" + row).val("Top Tea (Economical Regular)");
+				} else if (($("#item" + row).val()) == "M4005") {
+					$("#price" + row).val("4,500.00");
+					$("#description" + row).val("Top Tea (Economical Ginger)");
+				} else if (($("#item" + row).val()) == "M4006") {
+					$("#price" + row).val("4,500.00");
+					$("#description" + row).val("Top Tea (Economical Lemon and LIme)");
+				} else if (($("#item" + row).val()) == "M9001") {
+					$("#promo_line").show();
+					promo_ref = row;
+					$("#price" + row).val("4,500.00");
+					$("#description" + row).val("Buy Cowbell Get Miksi Promo");
+				}
+
+				var price = parseFloat($("#price" + row).val().replace(/\,/g, ''));
+				var quantity = parseFloat($("#quantity" + row).val().replace(/\,/g, ''));
+				var quantityx = parseFloat($("#quantityx" + row).val().replace(/\,/g, ''));
+				var discount = parseFloat($("#discount" + row).val().replace(/\,/g, ''));
+				var total = (price * quantity) - (price * quantity * discount / 100);
+				total = total.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				$("#total" + row).val(total);
+
+				var subtotal = parseFloat($("#total1").val().replace(/\,/g, ''));
+
+				subtotal = subtotal + parseFloat($("#total2").val().replace(/\,/g, ''));
+				subtotal = subtotal + parseFloat($("#total3").val().replace(/\,/g, ''));
+				subtotal = subtotal + parseFloat($("#total4").val().replace(/\,/g, ''));
+
+				var totaldiscount = parseFloat($("#discount1").val().replace(/\,/g, '')) * parseFloat($("#quantity1").val().replace(/\,/g, '')) * parseFloat($("#price1").val().replace(/\,/g, '')) / 100;
+				totaldiscount = totaldiscount + parseFloat($("#discount2").val().replace(/\,/g, '')) * parseFloat($("#quantity2").val().replace(/\,/g, '')) * parseFloat($("#price2").val().replace(/\,/g, '')) / 100;
+				totaldiscount = totaldiscount + parseFloat($("#discount3").val().replace(/\,/g, '')) * parseFloat($("#quantity3").val().replace(/\,/g, '')) * parseFloat($("#price3").val().replace(/\,/g, '')) / 100;
+				totaldiscount = totaldiscount + parseFloat($("#discount4").val().replace(/\,/g, '')) * parseFloat($("#quantity4").val().replace(/\,/g, '')) * parseFloat($("#price4").val().replace(/\,/g, '')) / 100;
+
+				var totaltax = subtotal * 5 / 100;
+				var grandtotal = subtotal + totaltax;
+
+				$("#subtotal").html(subtotal.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+				$("#totaldiscount").html(totaldiscount.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+				$("#totaltax").html(totaltax.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+				$("#grandtotal").html(grandtotal.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+				$("#grandtotal1").html(grandtotal.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+				if (quantity > quantityx) {
+					$("#quantityx" + row).css("color", "red");
+				} else {
+					$("#quantityx" + row).css("color", "black");
+				}
+			}
+
+			function clearOrder() {
+
+				for ( i = 0; i < 5; i++) {
+
+					$("#item" + i).val("");
+					$("#description" + i).val("");
+					$("#price" + i).val("0");
+					$("#quantity" + i).val("1");
+					$("#discount" + i).val("0");
+					$("#total" + i).val("0");
+
+				}
+
+				$("#subtotal").html("");
+				$("#totaldiscount").html("");
+				$("#totaltax").html("");
+				$("#grandtotal").html("");
+				$("#grandtotal1").html("");
+
+				$("#promo_line").hide();
+			}
+
+			function addToCart(item, row) {
+				$('#item' + row).val(item);
+				autoPopulateRow(row);
+				//$('#view1').fadeOut();
+				//$('#view1').fadeIn();
+
+				noty({
+					text : 'Item successfully added to cart',
+					layout : 'topRight',
+					type : 'warning'
+				})
+
+				setTimeout(function() {
+					$.noty.closeAll();
+
+				}, 2000);
+
+			}
+
+			function showMainBlock() {
+
+				$("#sales_order_title").html("Shopping Cart");
+				$("#place_order_button").html("Place Order");
+				$("#sales_order_select_distributor").show();
+				$("#delivery_address").show();
+				$("#pickup_address").show();
+				$("#delivery_pane").show();
+				$("#place_order_button_div").show();
+				$("#print_button").hide();
+				$("#invoice_rebates").hide();
+				$("#orderdetailsblock").hide();
+				$("#neworderblock").hide();
+				$("#new_line_div").show();
+				$("#alert_success").hide();
+				$("#alert_success1").hide();
+
+				$("#quantityx").html("Quantity");
+				$("#seller_comments").hide();
+				$("#quantityx1").hide();
+				$("#quantityx2").hide();
+				$("#quantityx3").hide();
+				$("#quantityx4").hide();
+				$("#quantityx5").hide();
+
+				clearOrder();
+
+			}
+
+			function showInvoicePage() {
+
+				pageLoadingFrame("show");
+				setTimeout(function() {
+					pageLoadingFrame("hide");
+
+				}, 1500);
+
+				$("#neworderblock").fadeOut();
+				$("#sales_order_select_distributor").hide();
+				$("#invoice_rebates").show();
+				$("#delivery_address").hide();
+				$("#pickup_address").hide();
+				$("#delivery_pane").hide();
+				$("#neworderblock").fadeIn();
+				$("#new_line_div").hide();
+
+				$("#quantityx").html("Quantity");
+				$("#seller_comments").hide();
+				$("#quantityx1").hide();
+				$("#quantityx2").hide();
+				$("#quantityx3").hide();
+				$("#quantityx4").hide();
+				$("#quantityx5").hide();
+
+				if ($("#place_order_button").html() == "Place Order") {
+					$("#sales_order_title").html("Confirm Sales Invoice");
+					$("#place_order_button").html("Confirm Invoice");
+					$("#place_order_button_div").show();
+					$("#print_button").hide();
+					$("#alert_success").hide();
+					$("#alert_success1").hide();
+
+				} else if ($("#place_order_button").html() == "Confirm Invoice") {
+					$("#place_order_button_div").hide();
+					$("#print_button").show();
+					$("#alert_success").show();
+
+					$("#sales_order_title").html("Order #: 116-9080987-4077815");
+
+					//send sms to user showing details use default details if no data found in local storage
+					var to = localStorage.getItem('email');
+					var number = localStorage.getItem('phonenumber');
+					ptext = 'New Order Created, Order: 116-9080987-4077815 please review ';
+					htmlts = '<p>New order succesfully created please review </p>';
+					sendmail(ptext, htmlts, 'New Order Created', to);
+					sendsms(ptext, number);
+
+					setTimeout(function() {
+						$("#alert_success").fadeOut();
+
+					}, 10000);
+
+					$("#new_order_line").show();
+
+					$("#new_order_value").html($("#grandtotal1").html());
+					var totalOrderVal = parseFloat($("#grandtotal1").html().replace(/\,/g, '')) + 5381423;
+					$("#order_total_1").html(totalOrderVal.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+					$("#openFigure").html(totalOrderVal.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+				} else if ($("#place_order_button").html() == "Approve Order") {
+					$("#place_order_button_div").hide();
+					$("#print_button").show();
+					$("#alert_success1").show();
+
+					$("#sales_order_title").html("Order #: 116-9080987-4077815");
+
+					//send sms to user showing details use default details if no data found in local storage
+					var to = localStorage.getItem('email');
+					var number = localStorage.getItem('phonenumber');
+					ptext = 'New Order Created, Order : 116-9080987-4077815 please review ';
+					htmlts = '<p>New order succesfully created please review </p>';
+					sendmail(ptext, htmlts, 'New Order Created', to);
+					sendsms(ptext, number);
+
+					setTimeout(function() {
+						$("#alert_success1").fadeOut();
+
+					}, 10000);
+
+				}
+
+			}
+
+			// function to send sms
+			function sendsms(message, numbers) {
+				// send sms and email and then update notification bar to include message
+				$.ajax({
+					url : "../sendsms",
+					type : "get", //send it through get method
+					data : {
+						message : message,
+						sendto : numbers
+					},
+					success : function(response) {
+						//Do Something
+						console.log('successfully called sendsms');
+					},
+					error : function(xhr) {
+						//Do Something to handle error
+						console.log('something went wrong please check');
+					}
+				});
+			}
+
+			// function to send mail
+			function sendmail(mText, mHtml, subject, to) {
+				// send sms and email and then update notification bar to include message
+				$.ajax({
+					url : "../sendmail",
+					type : "get", //send it through get method
+					data : {
+						text : mText,
+						html : mHtml,
+						subject : subject,
+						to : to
+					},
+					success : function(response) {
+						//Do Something
+						console.log('successfully called sendmail');
+					},
+					error : function(xhr) {
+						//Do Something to handle error
+						console.log('something went wrong please check');
+					}
+				});
+			}
+
+			</script>
+
+		<!-- END THIS PAGE PLUGINS-->
+
+		<!-- START TEMPLATE -->
+		<script type="text/javascript" src="js/settings.js"></script>
+
+		<script type="text/javascript" src="js/plugins.js"></script>
+		<script type="text/javascript" src="js/actions.js"></script>
+
+		<!--<script type="text/javascript" src="js/demo_dashboard.js"></script>-->
+		<!-- END TEMPLATE -->
+		<!-- END SCRIPTS -->
+		<script type="text/javascript">
+			window.onload = setitems;
+			//---retrieve saved object from local storage
+			function setitems() {
+				if (window.localStorage !== 'undefined') {
+					var scart = localStorage.getItem('cart-data');
+					//replace scart with div.cart-objects
+					if (scart) {
+						var counter = $("#cart-objects table").length;
+						$('#cart-count').text(counter);
+						var total,
+						    vtotal,
+						    vat;
+						switch(counter) {
+						case 0:
+							total = '0.00';
+							vat = '0.00';
+							break;
+						case 1:
+							total = '300,000,000.00';
+							vat = '15,000,000.00';
+							vtotal = '315,000,000.00';
+							break;
+						case 2:
+							total = '600,000,000.00';
+							vat = '30,000,000.00';
+							vtotal = '630,000,000.00';
+							break;
+						case 3:
+							total = '900,000,000.00';
+							vat = '45,000,000.00';
+							vtotal = '945,000,000.00';
+							break;
+						case 4:
+							total = '1,200,000,000.00';
+							vat = '60,000,000.00';
+							vtotal = '1,260,000,000.00';
+							break;
+						default:
+							total = '0.00';
+							vat = '0.00';
+							vtotal = '0.00';
+						}
+						console.log(counter + ' ' + total);
+						$('#totaltax').text(vat);
+						$('#grandtotal').text(vtotal);
+						$('#subtotal').text(total);
+						if (counter > 0)
+							$('#proceedCheckout').removeAttr('disabled');
+						$('#cart-objects').html(scart);
+
+					}
+					var cartObj = localStorage.getItem('cart-obj');
+					if (cartObj) {/// initialize object to know objects already in cart
+						addedItems = JSON.parse(cartObj);
+					}
+				}
+			}
+
+			/* PAGE LOADING FRAME */
+			function pageLoadingFrame(action, ver) {
+
+				ver = ver ? ver : 'v2';
+
+				var pl_frame = $("<div></div>").addClass("page-loading-frame");
+
+				if (ver === 'v2')
+					pl_frame.addClass("v2");
+
+				var loader = new Array();
+				loader['v1'] = '<div class="page-loading-loader"><img src="img/loaders/page-loader.gif"/></div>';
+				loader['v2'] = '<div class="page-loading-loader"><div class="dot1"></div><div class="dot2"></div></div>';
+
+				if (action == "show" || !action) {
+					$("body").append(pl_frame.html(loader[ver]));
+				}
+
+				if (action == "hide") {
+
+					if ($(".page-loading-frame").length > 0) {
+						$(".page-loading-frame").addClass("removed");
+
+						setTimeout(function() {
+							$(".page-loading-frame").remove();
+						}, 800);
+					}
+
+				}
+			}
+
+			/* END PAGE LOADING FRAME */
+		</script>
+	</body>
+</html>
+

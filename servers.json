@@ -1,0 +1,21 @@
+{
+	"services": [
+		{
+			"host" : "www.tradedepot.io",
+			"path" : "./web"
+		},
+		{
+			"host" : "tradedepot.io",
+			"path" : "./web"
+		},
+		{
+			"host" : "www.tradedepot.com",
+			"path" : "./web"
+		},
+		{
+			"host" : "tradedepot.com",
+			"path" : "./web"
+		}
+		
+	]
+}

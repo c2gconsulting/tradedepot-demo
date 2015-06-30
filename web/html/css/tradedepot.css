@@ -1,0 +1,242 @@
+﻿
+tr.total-x {
+	border-top: 1px solid #606060;
+	border-bottom: 3px double #606060;
+}
+
+.widget .widget-big-int1 {
+  font-size: 15px;
+  line-height: 17px;
+  font-weight: 300;
+  width: 100%;
+  float: left;
+  text-align: center;
+  
+}
+
+.widget.widget-gray {
+  background: #eff1f3;
+  background: -moz-linear-gradient(top, #FCFCFC 0%, #F8F8F8 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #FCFCFC), color-stop(100%, #F8F8F8));
+  background: -webkit-linear-gradient(top, #FCFCFC 0%, #F8F8F8 100%);
+  background: -o-linear-gradient(top, #FCFCFC 0%, #F8F8F8 100%);
+  background: -ms-linear-gradient(top, #FCFCFC 0%, #F8F8F8 100%);
+  background: linear-gradient(to bottom, #FCFCFC 0%, #F8F8F8 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#FCFCFC, endColorstr=#F8F8F8, GradientType=0);
+  border: 1px solid #C0C0C0;
+}
+
+.widget.widget-gray:hover {
+   background: #eff1f3;
+  background: -moz-linear-gradient(top, #eff1f3 0%, #c4c5c6 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eff1f3), color-stop(100%, #c4c5c6));
+  background: -webkit-linear-gradient(top, #eff1f3 0%, #c4c5c6 100%);
+  background: -o-linear-gradient(top, #eff1f3 0%, #c4c5c6 100%);
+  background: -ms-linear-gradient(top, #eff1f3 0%, #c4c5c6 100%);
+  background: linear-gradient(#eff1f3,#c4c5c6);
+  box-shadow: 0 1px 3px rgba(221,221,221,0.5);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#FCFCFC, endColorstr=#F8F8F8, GradientType=0);
+  border: 1px solid #C0C0C0;
+  cursor:pointer;
+}
+
+
+.widget.widget-dark-gray {
+  background: #eff1f3;
+  background: -moz-linear-gradient(top, #eff1f3 0%, #c4c5c6 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eff1f3), color-stop(100%, #c4c5c6));
+  background: -webkit-linear-gradient(top, #eff1f3 0%, #c4c5c6 100%);
+  background: -o-linear-gradient(top, #eff1f3 0%, #c4c5c6 100%);
+  background: -ms-linear-gradient(top, #eff1f3 0%, #c4c5c6 100%);
+  background: linear-gradient(#eff1f3,#c4c5c6);
+  box-shadow: 0 1px 3px rgba(221,221,221,0.5);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#FCFCFC, endColorstr=#F8F8F8, GradientType=0);
+  border: 1px solid #C0C0C0;
+}
+
+
+tr.row-hover:hover{
+	cursor:pointer;
+	background: #eff1f3;
+}
+
+
+div.row-hover {
+	padding-top: 8px;
+}
+div.row-hover:hover{
+	cursor:pointer;
+	background: #eff1f3;
+	border-right: 1px solid #DDDDDD;
+	border-left: 1px solid #DDDDDD;
+}
+
+div.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+div.hidden
+{
+   display: none;
+}
+
+li.hidden
+{
+   display: none;
+}
+
+/* Tab Content - menucool.com */
+ul.tabs
+{
+    padding: 7px 0;
+    margin:0;
+    font-size: 0;
+    list-style-type: none;
+    text-align: left; /*set to left, center, or right to align the tabs as desired*/
+    padding-left:5px; /* Offset of the first tab */
+    padding-top:15px; 
+}
+        
+ul.tabs li
+{
+    display: inline;
+    margin: 0;
+    margin-right:4px; /*distance between tabs*/
+}
+        
+ul.tabs li a
+{
+    font: normal 12px Verdana;
+    text-decoration: none;
+    position: relative;
+    padding: 7px 20px;
+    color:#000;
+    outline:none;
+    background: #FFF;
+    border:1px solid #CCC;
+	border-radius: 3px 3px 0 0;
+}
+
+/*Note: IE8 and earlier doesn't support li:last-child. You have to add another class to the last tab (LI) and specify its border-right as below.*/
+ul.tabs li:last-child a
+{
+    border-right:1px solid #CCC;
+}
+  
+        
+ul.tabs li a:hover
+{
+    color: #000;
+    background: white;
+}
+        
+ul.tabs li.selected a, ul.tabs li.selected a:hover
+{
+    top: 0px;
+    font-weight:normal;
+    background: #F6F6F9;
+    border-bottom: 1px solid #FFF;
+    color: #000;
+}
+        
+        
+ul.tabs li.selected a:hover
+{
+    text-decoration: none;
+}
+
+div.tabcontents
+{
+    border-top: 1px solid #CCC; padding: 7px 0px;
+    float:left;
+    width:100%
+}
+#succes-alert {
+    display: none;
+}
+#cart-count {
+    color: #8b0000;
+    font-weight: bold;
+}
+
+#backgroundPopup {
+    z-index:1;
+    position: fixed;
+    display:none;
+    height:100%;
+    width:100%;
+    background:#000000;
+    top:0px;
+    left:0px;
+}
+#toPopup {
+    font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 10px solid #ccc;
+    border-radius: 3px 3px 3px 3px;
+    color: #333333;
+    display: none;
+    font-size: 14px;
+    left: 50%;
+    margin-left: -410px;
+    position: fixed;
+    top: 20%;
+    width: 800px;
+    z-index: 2;
+}
+div.loader {
+    background: url("../img/loading.gif") no-repeat scroll 0 0 transparent;
+    height: 32px;
+    width: 32px;
+    display: none;
+    z-index: 9999;
+    top: 40%;
+    left: 50%;
+    position: absolute;
+    margin-left: -10px;
+}
+div.close {
+    background: url("../img/closebox.png") no-repeat scroll 0 0 transparent;
+    cursor: pointer;
+    height: 30px;
+    position: absolute;
+    right: -27px;
+    top: -24px;
+    width: 30px;
+}
+span.ecs_tooltip {
+    background: none repeat scroll 0 0 #000000;
+    border-radius: 2px 2px 2px 2px;
+    color: #FFFFFF;
+    display: none;
+    font-size: 11px;
+    height: 16px;
+    opacity: 0.7;
+    padding: 4px 3px 2px 5px;
+    position: absolute;
+    right: -62px;
+    text-align: center;
+    top: -51px;
+    width: 93px;
+}
+span.arrow {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 7px solid #000000;
+    display: block;
+    height: 1px;
+    left: 40px;
+    position: relative;
+    top: 3px;
+    width: 1px;
+}
+div#popup_content {
+    margin: 4px 7px;
+    /* remove this comment if you want scroll bar
+    overflow-y:scroll;
+    height:200px
+    */
+}
+
+

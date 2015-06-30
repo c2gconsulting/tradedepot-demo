@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- META SECTION -->
+		<title>Tradedepot Admin dashboard</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="icon" href="favicon.ico" type="image/x-icon" />
+		<!-- END META SECTION -->
+
+		<!-- CSS INCLUDE -->
+		<link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
+		<link rel="stylesheet" type="text/css" href="css/tradedepot.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery/jquery-jvectormap-2.0.2.css" />
+		<style>
+			/*@css_start*/
+			.jvectormap-legend-title {
+				font-size: 12px;
+			}
+
+			.jvectormap-legend .jvectormap-legend-tick-sample {
+				height: 26px;
+			}
+
+			.jvectormap-legend-icons {
+				background: white;
+				border: black 1px solid;
+			}
+
+			.jvectormap-legend-icons {
+				color: black;
+			}
+			/*@css_end*/
+		</style>
+
+		<!-- EOF CSS INCLUDE -->
+	</head>
+	<body>
+		<!-- START PAGE CONTAINER -->
+		<div class="page-container">
+
+			<!-- START PAGE SIDEBAR -->
+			<div class="page-sidebar">
+				<!-- START X-NAVIGATION -->
+				<ul class="x-navigation">
+					<li class="xn-logo">
+						<a href="index.html"> <img src="assets/images/logo/tradedepot.png" alt="Logo"/></a>
+						<a href="#" class="x-navigation-control"></a>
+					</li>
+					<li class="xn-profile">
+						<a href="#" class="profile-mini"> <img src="assets/images/users/avatar.jpg" alt="John Doe"/> </a>
+						<div class="profile">
+							<div class="profile-image">
+								<img src="assets/images/users/avatar.jpg" alt="John Doe"/>
+							</div>
+							<div class="profile-data">
+								<div class="profile-data-name">
+									PROMASIDOR
+								</div>
+								<div class="profile-data-title">
+									<i>quality food products</i>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li id="dashboard" class="active" >
+						<a href="pages-dashboard.html"><span class="fa fa-dashboard"></span> <span class="xn-text">Dashboard</span></a>
+					</li>
+					<li id="sales-orders" class="" >
+						<a href="pages-ordering.html"><span class="fa fa-shopping-cart"></span> <span class="xn-text">Order Processing</span></a>
+					</li>
+
+					<li id="ordering" class="" >
+						<a href="index.html"><span class="fa fa-shopping-cart"></span> <span class="xn-text">Sales Orders</span></a>
+					</li>
+
+					<li id="deposit" >
+						<a href="pages-deposit.html"><span class="fa fa-truck"></span> <span class="xn-text">Deposits</span></a>
+					</li>
+					<li id="stock-overview" >
+						<a href="pages-stockoverview.html"><span class="fa fa-tasks"></span> <span class="xn-text">Stock Overview</span></a>
+					</li>
+					<li id="analytics" >
+						<a href="pages-analytics.html"><span class="fa fa-truck"></span> <span class="xn-text">Analytics</span></a>
+					</li>
+					<li id="profile" >
+						<a href="pages-edit-profile1.html"><span class="fa fa-user"></span> <span class="xn-text">Profile</span></a>
+					</li>
+
+					<li class="xn-openable">
+						<a> <span class="fa fa-cogs"></span> <span class="xn-text"> Settings</span></a>
+						<ul>
+
+							<li>
+								<a href="Customer_Mapping.html"><span class="fa fa-heart"></span> Customer</a>
+							</li>
+							<li>
+								<a href="Price_List.html"><span class="fa fa-cogs"></span> Price List</a>
+							</li>
+							<li>
+								<a href="Product.html"><span class="fa fa-square-o"></span> Products</a>
+							</li>
+							<li>
+								<a href="Inventory.html"><span class="fa fa-pencil-square-o"></span> Discounts</a>
+							</li>
+							<li>
+								<a href="Promo.html"><span class="fa fa-pencil"></span> Promo's</a>
+							</li>
+
+							<li>
+								<a href="Rebate.html"><span class="fa fa-pencil"></span> Rebate</a>
+							</li>
+						</ul>
+					</li>
+
+				</ul>
+
+				<!-- END X-NAVIGATION -->
+			</div>
+			<!-- END PAGE SIDEBAR -->
+
+			<!-- PAGE CONTENT -->
+			<div class="page-content">
+
+				<!-- START X-NAVIGATION VERTICAL -->
+				<ul class="x-navigation x-navigation-horizontal x-navigation-panel">
+					<!-- TOGGLE NAVIGATION -->
+					<li class="xn-icon-button">
+						<a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
+					</li>
+					<!-- END TOGGLE NAVIGATION -->
+					<!-- SEARCH -->
+					<li class="xn-search">
+						<form role="form">
+							<input type="text" name="search" placeholder="Search..."/>
+						</form>
+					</li>
+					<!-- END SEARCH -->
+					<!-- POWER OFF -->
+					<li class="xn-icon-button pull-right last">
+						<a href="#"><span class="fa fa-power-off"></span></a>
+						<ul class="xn-drop-left animated zoomIn">
+							<li>
+								<a href="pages-lock-screen.html"><span class="fa fa-lock"></span> Lock Screen</a>
+							</li>
+							<li>
+								<a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span> Sign Out</a>
+							</li>
+						</ul>
+					</li>
+					<!-- END POWER OFF -->
+					<!-- MESSAGES -->
+					<li class="xn-icon-button pull-right">
+						<a href="#"><span class="fa fa-comments"></span></a>
+						<div class="informer informer-danger">
+							4
+						</div>
+						<div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
+							<div class="panel-heading">
+								<h3 class="panel-title"><span class="fa fa-comments"></span> Messages</h3>
+								<div class="pull-right">
+									<span class="label label-danger">4 new</span>
+								</div>
+							</div>
+							<div class="panel-body list-group list-group-contacts scroll" style="height: 200px;">
+								<a href="#" class="list-group-item"> <div class="list-group-status status-online"></div> <img src="assets/images/users/user2.jpg" class="pull-left" alt="John Doe"/> <span class="contacts-title">John Doe</span>
+								<p>
+									Praesent placerat tellus id augue condimentum
+								</p> </a>
+								<a href="#" class="list-group-item"> <div class="list-group-status status-away"></div> <img src="assets/images/users/user.jpg" class="pull-left" alt="Dmitry Ivaniuk"/> <span class="contacts-title">Dmitry Ivaniuk</span>
+								<p>
+									Donec risus sapien, sagittis et magna quis
+								</p> </a>
+								<a href="#" class="list-group-item"> <div class="list-group-status status-away"></div> <img src="assets/images/users/user3.jpg" class="pull-left" alt="Nadia Ali"/> <span class="contacts-title">Nadia Ali</span>
+								<p>
+									Mauris vel eros ut nunc rhoncus cursus sed
+								</p> </a>
+								<a href="#" class="list-group-item"> <div class="list-group-status status-offline"></div> <img src="assets/images/users/user6.jpg" class="pull-left" alt="Darth Vader"/> <span class="contacts-title">Darth Vader</span>
+								<p>
+									I want my money back!
+								</p> </a>
+							</div>
+							<div class="panel-footer text-center">
+								<a href="pages-messages.html">Show all messages</a>
+							</div>
+						</div>
+					</li>
+					<!-- END MESSAGES -->
+					<!-- TASKS -->
+					<li class="xn-icon-button pull-right">
+						<a href="#"><span class="fa fa-tasks"></span></a>
+						<div class="informer informer-warning">
+							3
+						</div>
+						<div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
+							<div class="panel-heading">
+								<h3 class="panel-title"><span class="fa fa-tasks"></span> Tasks</h3>
+								<div class="pull-right">
+									<span class="label label-warning">3 active</span>
+								</div>
+							</div>
+							<div class="panel-body list-group scroll" style="height: 200px;">
+								<a class="list-group-item" href="#"> <strong>Phasellus augue arcu, elementum</strong>
+								<div class="progress progress-small progress-striped active">
+									<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
+										50%
+									</div>
+								</div> <small class="text-muted">John Doe, 25 Sep 2015 / 50%</small> </a>
+								<a class="list-group-item" href="#"> <strong>Aenean ac cursus</strong>
+								<div class="progress progress-small progress-striped active">
+									<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
+										80%
+									</div>
+								</div> <small class="text-muted">Dmitry Ivaniuk, 24 Sep 2015 / 80%</small> </a>
+								<a class="list-group-item" href="#"> <strong>Lorem ipsum dolor</strong>
+								<div class="progress progress-small progress-striped active">
+									<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%;">
+										95%
+									</div>
+								</div> <small class="text-muted">John Doe, 23 Sep 2015 / 95%</small> </a>
+								<a class="list-group-item" href="#"> <strong>Cras suscipit ac quam at tincidunt.</strong>
+								<div class="progress progress-small">
+									<div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+										100%
+									</div>
+								</div> <small class="text-muted">John Doe, 21 Sep 2015 /</small><small class="text-success"> Done</small> </a>
+							</div>
+							<div class="panel-footer text-center">
+								<a href="pages-tasks.html">Show all tasks</a>
+							</div>
+						</div>
+					</li>
+					<!-- END TASKS -->
+					<!-- LANG BAR -->
+					<li class="xn-icon-button pull-right">
+						<a href="#"><span class="flag flag-gb"></span></a>
+						<ul class="xn-drop-left xn-drop-white animated zoomIn">
+							<li>
+								<a href="#"><span class="flag flag-gb"></span> English</a>
+							</li>
+							<li>
+								<a href="#"><span class="flag flag-de"></span> Deutsch</a>
+							</li>
+							<li>
+								<a href="#"><span class="flag flag-cn"></span> Chinese</a>
+							</li>
+						</ul>
+					</li>
+					<!-- END LANG BAR -->
+				</ul>
+				<!-- END X-NAVIGATION VERTICAL -->
+
+				<!-- START BREADCRUMB -->
+				<ul class="breadcrumb">
+					<li>
+						<a href="index.html">Home</a>
+					</li>
+					<li class="active">
+						Dashboard
+					</li>
+				</ul>
+				<!-- END BREADCRUMB -->
+
+				<!-- PAGE CONTENT WRAPPER -->
+				<div class="page-content-wrap">
+
+					<div class="row">
+						<div class="col-md-12">
+
+							<!-- START SALES BLOCK -->
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<div class="panel-title-box">
+										<h3>Global Stock overview</h3>
+										<span>Stock distribution by products</span>
+									</div>
+									<ul class="panel-controls panel-controls-title">
+										<li>
+											<a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a>
+										</li>
+										<li>
+											<a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a>
+										</li>
+									</ul>
+
+								</div>
+								<div class="panel-body">
+									<div class="row stacked">
+										<div class="col-md-8">
+											<div class="row" style="margin:10px">
+												<div class="input-group input-group-sm push-down-10">
+													<span class="input-group-addon"><span class="fa fa-search"></span></span>
+													<input id="search" type="text" class="form-control" placeholder="Select Products" value="" />
+													<div class="input-group-btn">
+														<button class="btn btn-primary" onclick="showProductDashboard()">
+															Select
+														</button>
+													</div>
+												</div>
+											</div>
+											<div class="row text-center">
+												<h3>STOCK OVERVIEW</h3>
+												<h4 id="producttitle">All Products</h4>
+											</div>
+											<div class="row">
+												<div id="dashboard-map-seles" style="width: 100%; height: 550px"></div>
+											</div>
+										</div>
+										<div class="col-md-4 text-right" id="tablefigures">
+											<table width="100%">
+												<tr style="border-bottom: 1px solid #606060;">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small><strong>State</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong>Current Stock</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong>Un-const. Demand</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong>Difference</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow1">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Abia</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock1">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand1">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference1">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow2">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Adamawa</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock2">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand2">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference2">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow3">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Akwa Ibom</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock3">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand3">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference3">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow4">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Anambra</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock4">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand4">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference4">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow5">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Bauchi</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock5">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand5">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference5">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow6">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Bayelsa</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock6">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand6">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference6">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow7">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Benue</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock7">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand7">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference7">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow8">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Borno</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock8">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand8">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference8">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow9">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Cross River</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock9">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand9">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference9">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow10">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Delta</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock10">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand10">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference10">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow11">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Ebonyi</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock11">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand11">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference11">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow12">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Edo</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock12">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand12">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference12">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow13">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Ekiti</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock13">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand13">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference13">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow14">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Enugu</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock14">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand14">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference14">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow15">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>FCT</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock15">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand15">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference15">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow16">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Gombe</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock16">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand16">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference16">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow17">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Imo</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock17">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand17">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference17">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow18">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Jigawa</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock18">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand18">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference18">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow19">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Kaduna</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock19">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand19">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference19">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow20">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Kano</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock20">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand20">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference20">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow21">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Katsina</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock21">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand21">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference21">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow22">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Kebbi</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock22">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand22">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference22">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow23">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Kogi</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock23">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand23">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference23">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow24">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Kwara</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock24">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand24">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference24">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow25">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Lagos</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock25">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand25">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference25">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow26">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Nasarawa</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock26">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand26">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference26">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow27">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Niger</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock27">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand27">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference27">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow28">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Ogun</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock28">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand28">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference28">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow29">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Ondo</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock29">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand29">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference29">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow30">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Osun</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock30">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand30">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference30">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow31">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Oyo</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock31">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand31">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference31">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow32">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Plateau</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock32">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand32">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference32">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow33">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Rivers</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock33">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand33">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference33">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow34">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Sokoto</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock34">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand34">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference34">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow35">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Taraba</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock35">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand35">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference35">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow36">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Yobe</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock36">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand36">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference36">10,500</strong></small></td>
+												</tr>
+												<tr class="row-hover" style="border-bottom: 1px solid #DFDFDF;"  id="datarow37">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small>Zamfara</small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stock37">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demand37">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="difference37">10,500</strong></small></td>
+												</tr>
+												<tr class="total-x" id="datarowtotal">
+													<td class="text-primary text-left" style="padding-left: 5px;padding-right: 5px"><small><strong>Total</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="stocktotal">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="demandtotal">10,500</strong></small></td>
+													<td class="text-primary text-right" style="padding-left: 5px;padding-right: 5px"><small><strong id="differencetotal">10,500</strong></small></td>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- END SALES BLOCK -->
+
+						</div>
+					</div>
+
+				</div>
+				<!-- END PAGE CONTENT WRAPPER -->
+			</div>
+			<!-- END PAGE CONTENT -->
+		</div>
+		<!-- END PAGE CONTAINER -->
+
+		<!-- MESSAGE BOX-->
+		<div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+			<div class="mb-container">
+				<div class="mb-middle">
+					<div class="mb-title">
+						<span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?
+					</div>
+					<div class="mb-content">
+						<p>
+							Are you sure you want to log out?
+						</p>
+						<p>
+							Press No if youwant to continue work. Press Yes to logout current user.
+						</p>
+					</div>
+					<div class="mb-footer">
+						<div class="pull-right">
+							<a href="pages-login.html" class="btn btn-success btn-lg">Yes</a>
+							<button class="btn btn-default btn-lg mb-control-close">
+								No
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END MESSAGE BOX-->
+
+		<!-- START PRELOADS -->
+		<audio id="audio-alert" src="audio/alert.mp3" preload="auto"></audio>
+		<audio id="audio-fail" src="audio/fail.mp3" preload="auto"></audio>
+		<!-- END PRELOADS -->
+
+		<!-- START SCRIPTS -->
+		<!-- START PLUGINS -->
+		<script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
+		<script type="text/javascript" src="js/plugins/jquery/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="js/plugins/bootstrap/bootstrap.min.js"></script>
+		<script src="js/tradedepot.js" type="text/javascript"></script>
+		<!-- END PLUGINS -->
+
+		<!-- START THIS PAGE PLUGINS-->
+		<script type='text/javascript' src='js/plugins/icheck/icheck.min.js'></script>
+		<script type="text/javascript" src="js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+		<script type="text/javascript" src="js/plugins/scrolltotop/scrolltopcontrol.js"></script>
+
+		<script type="text/javascript" src="js/plugins/morris/raphael-min.js"></script>
+		<script type="text/javascript" src="js/plugins/morris/morris.min.js"></script>
+		<script type="text/javascript" src="js/plugins/rickshaw/d3.v3.js"></script>
+		<script type="text/javascript" src="js/plugins/rickshaw/rickshaw.min.js"></script>
+		<!--<script type='text/javascript' src='js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js'></script>-->
+		<script type='text/javascript' src='js/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js'></script>
+		<script type='text/javascript' src='js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js'></script>
+		<script type='text/javascript' src='js/plugins/jvectormap/jquery-jvectormap-ng-mill-en.js'></script>
+		<script type="text/javascript" src="js/plugins/daterangepicker/daterangepicker.js"></script>
+		<script type='text/javascript' src='js/plugins/bootstrap/bootstrap-datepicker.js'></script>
+		<script type="text/javascript" src="js/plugins/owl/owl.carousel.min.js"></script>
+
+		<script type="text/javascript" src="js/plugins/moment.min.js"></script>
+		<script type="text/javascript" src="js/plugins/daterangepicker/daterangepicker.js"></script>
+
+		<!-- END THIS PAGE PLUGINS-->
+
+		<!-- START TEMPLATE -->
+		<script type="text/javascript" src="js/settings.js"></script>
+
+		<script type="text/javascript" src="js/plugins.js"></script>
+		<script type="text/javascript" src="js/actions.js"></script>
+
+		<!--<script type="text/javascript" src="js/demo_dashboard.js"></script>-->
+		<!-- END TEMPLATE -->
+		<script type="text/javascript">
+			var items = [{
+				label : "M1001: Cowbell Instant Filled Milk Powder (Tin: 250g)",
+				value : "M1001: Cowbell Instant Filled Milk Powder (Tin: 250g)"
+			}, {
+				label : "M1002: Cowbell Instant Filled Milk Powder (Tin: 400g)",
+				value : "M1002: Cowbell Instant Filled Milk Powder (Tin: 400g)"
+			}, {
+				label : "M1003: Cowbell Instant Filled Milk Powder (Tin: 800g)",
+				value : "M1003: Cowbell Instant Filled Milk Powder (Tin: 800g)"
+			}, {
+				label : "M1004: Cowbell Instant Filled Milk Powder (Sachet: 250g)",
+				value : "M1004: Cowbell Instant Filled Milk Powder (Sachet: 250g)"
+			}, {
+				label : "M1005: Cowbell Instant Filled Milk Powder (Sachet: 400g)",
+				value : "M1005: Cowbell Instant Filled Milk Powder (Sachet: 400g)"
+			}, {
+				label : "M1006: Cowbell Instant Filled Milk Powder (Sachet: 800g)",
+				value : "M1006: Cowbell Instant Filled Milk Powder (Sachet: 800g)"
+			}, {
+				label : "M2001: Loya Full Cream Milk (Tin: 250g)",
+				value : "M2001: Loya Full Cream Milk (Tin: 250g)"
+			}, {
+				label : "M2002: Loya Full Cream Milk (Tin: 400g)",
+				value : "M2002: Loya Full Cream Milk (Tin: 400g)"
+			}, {
+				label : "M2003: Loya Full Cream Milk (Tin: 800g)",
+				value : "M2003: Loya Full Cream Milk (Tin: 800g)"
+			}, {
+				label : "M2004: Loya Full Cream Milk (Sachet: 250g)",
+				value : "M2004: Loya Full Cream Milk (Sachet: 250g)"
+			}, {
+				label : "M2005: Loya Full Cream Milk (Sachet: 400g)",
+				value : "M2005: Loya Full Cream Milk (Sachet: 400g)"
+			}, {
+				label : "M2006: Loya Full Cream Milk (Sachet: 800g)",
+				value : "M2006: Loya Full Cream Milk (Sachet: 800g)"
+			}, {
+				label : "M3001: Loya Premium Milk (Tin: 250g)",
+				value : "M3001: Loya Premium Milk (Tin: 250g)"
+			}, {
+				label : "M3002: Loya Premium Milk (Tin: 400g)",
+				value : "M3002: Loya Premium Milk (Tin: 400g)"
+			}, {
+				label : "M3003: Loya Premium Milk (Tin: 800g)",
+				value : "M3003: Loya Premium Milk (Tin: 800g)"
+			}, {
+				label : "M3004: Loya Premium Milk (Sachet: 250g)",
+				value : "M3004: Loya Premium Milk (Sachet: 250g)"
+			}, {
+				label : "M3005: Loya Premium Milk (Sachet: 400g)",
+				value : "M3005: Loya Premium Milk (Sachet: 400g)"
+			}, {
+				label : "M3006: Loya Premium Milk (Sachet: 800g)",
+				value : "M3006: Loya Premium Milk (Sachet: 800g)"
+			}, {
+				label : "M4001:Top Tea (Standard, Regular)",
+				value : "M4001:Top Tea (Standard, Regular)"
+			}, {
+				label : "M4002:Top Tea (Standard, Ginger)",
+				value : "M4002:Top Tea (Standard, Ginger)"
+			}, {
+				label : "M4003:Top Tea (Standard, Lemon and Lime)",
+				value : "M4003:Top Tea (Standard, Lemon and Lime)"
+			}, {
+				label : "M4004:Top Tea (Economical, Regular)",
+				value : "M4004:Top Tea (Economical, Regular)"
+			}, {
+				label : "M4005:Top Tea (Economical, Ginger)",
+				value : "M4005:Top Tea (Economical, Ginger)"
+			}, {
+				label : "M4006:Top Tea (Economical, Lemon and Lime)",
+				value : "M4006:Top Tea (Economical, Lemon and Lime)"
+			}, {
+				label : "M9001: Buy Cowbell Get Miksi Promo",
+				value : "M9001: Buy Cowbell Get Miksi Promo"
+			}];
+
+			$("#search").autocomplete({
+				source : items,
+			});
+
+			var jvm_wm;
+			var activeRegions= {};
+			var stateMap = {};
+			var stocks = {};
+
+			function createMap(activeRegions) {
+				var warehouses = [{
+					name : 'Madewell Productions Limited',
+					coords : [13.06, 5.23],
+					status : 'distributor',
+					offsets : [0, 2]
+				}, {
+					name : 'Newkelson Agro Allied Industries',
+					coords : [12.0543102, 6.4825862],
+					status : 'distributor',
+					offsets : [0, 2]
+				}, {
+					name : 'Ab Gold Oladayo Nigeria Limited',
+					coords : [12.0030599, 9.4513693],
+					status : 'distributor'
+				}, {
+					name : 'Abiodun Supply Company',
+					coords : [11.0030599, 9.4513693],
+					status : 'distributor'
+				}, {
+					name : 'Abimbola Emmanuel Enterprises',
+					coords : [12.0030599, 8.5513693],
+					status : 'distributor'
+				}, {
+					name : 'Abimbola Emmanuel Enterprises',
+					coords : [12.5030599, 7.7513693],
+					status : 'distributor'
+				}, {
+					name : 'Abven Building Materials Company',
+					coords : [12.0030599, 13.4513693],
+					status : 'distributor',
+					offsets : [0, -2]
+				}, {
+					name : 'A Chukson International Company Limited',
+					coords : [12.0030599, 11.7513693],
+					status : 'distributor',
+					offsets : [0, -2]
+				}, {
+					name : 'Adeomi Block Industry',
+					coords : [12.0543102, 4.2825862],
+					status : 'distributor'
+				}, {
+					name : 'Adebak International Nigeria Limited',
+					coords : [10.06, 5.23],
+					status : 'distributor',
+					offsets : [0, -2]
+				}, {
+					name : 'Ade Joseph Block Industry',
+					coords : [10.06, 7.53],
+					status : 'distributor'
+				}, {
+					name : 'Adexco Nigeria Limited',
+					coords : [10.06, 11.53],
+					status : 'distributor'
+				}, {
+					name : 'Ade Naz Nigeria Enterprises',
+					coords : [9.56, 12.53],
+					status : 'distributor'
+				}, {
+					name : 'Aderade Enterprises',
+					coords : [9.56, 9.13],
+					status : 'distributor'
+				}, {
+					name : 'Adekola Building Contracts Services',
+					coords : [7.56, 10.53],
+					status : 'distributor',
+					offsets : [0, -5]
+				}, {
+					name : 'Pavillion Computer Ltd',
+					coords : [7.56, 8.53],
+					status : 'distributor',
+					offsets : [0, 2]
+				}, {
+					name : 'Process Equipment Parts Ltd',
+					coords : [7.56, 4.53],
+					status : 'distributor'
+				}, {
+					name : 'Majestic Scepter Ltd',
+					coords : [7.56, 5.13],
+					status : 'distributor'
+				}, {
+					name : 'Jamekofe Technologies Solution Limited',
+					coords : [7.56, 6.53],
+					status : 'distributor',
+					offsets : [0, -2]
+				}, {
+					name : 'Obiwezy Enterprise',
+					coords : [8.26, 3.13],
+					status : 'distributor'
+				}, {
+					name : 'Macdon Resources Intl Limited',
+					coords : [53.4104656, 10.4091597],
+					status : 'distributor'
+				}, {
+					name : 'Chinel International Company',
+					coords : [6.56, 3.13],
+					status : 'distributor'
+				}, {
+					name : 'Harris-marris-oshima Plc',
+					coords : [6.46, 3.23],
+					status : 'distributor',
+					offsets : [0, 5]
+				}, {
+					name : 'Stammy Global Resources Ltd',
+					coords : [6.51, 3.63],
+					status : 'distributor'
+				}, {
+					name : 'Safreed Intl Nig Ltd',
+					coords : [6.51, 4.63],
+					status : 'distributor'
+				}, {
+					name : 'Affah International Limited',
+					coords : [6.51, 5.63],
+					status : 'distributor',
+					offsets : [0, 2]
+				}, {
+					name : 'Sonny Odigbo & Sons(nig) Ltd',
+					coords : [6.51, 6.23],
+					status : 'distributor',
+					offsets : [0, 2]
+				}, {
+					name : 'Predicky Investment Technologist',
+					coords : [5.61, 6.23],
+					status : 'distributor',
+					offsets : [0, 2]
+				}, {
+					name : 'Kresta Laurel Limited',
+					coords : [4.61, 6.23],
+					status : 'distributor',
+					offsets : [0, 2]
+				}, {
+					name : 'Nombimz Nigeria Limited',
+					coords : [5.61, 5.53],
+					status : 'distributor',
+					offsets : [0, 2]
+				}, {
+					name : 'Christoflab Nigeria Limited',
+					coords : [5.11, 6.73],
+					status : 'distributor',
+					offsets : [0, 2]
+				}, {
+					name : 'Guardgates Limited',
+					coords : [5.61, 6.93],
+					status : 'distributor',
+					offsets : [0, 2]
+				}, {
+					name : 'Olu Balogun Nigeria Enterprises',
+					coords : [5.61, 7.63],
+					status : 'distributor',
+					offsets : [0, 2]
+				}, {
+					name : 'Axetonz Limited',
+					coords : [4.91, 7.93],
+					status : 'distributor',
+					offsets : [0, 2]
+				}, {
+					name : 'Prolific Enterprises',
+					coords : [5.21, 8.43],
+					status : 'distributor',
+					offsets : [0, 2]
+				}, {
+					name : 'Nissi Global Pte Ltd',
+					coords : [6.61, 7.63],
+					status : 'distributor',
+					offsets : [0, 2]
+				}, {
+					name : 'Apapa Warehouse',
+					coords : [6.41, 3.93],
+					status : 'customer'
+				}, {
+					name : 'Enugu Warehouse',
+					coords : [6.21, 7.33],
+					status : 'customer',
+					offsets : [0, 2]
+				}, {
+					name : 'Oshodi Warehouse',
+					coords : [6.54, 4.23],
+					status : 'customer'
+				}, {
+					name : 'Ahmed Global Pte Ltd',
+					coords : [8.71, 7.23],
+					status : 'distributor',
+					offsets : [0, 2]
+				}];
+				
+				var markers = {};
+				markers[0] = '39,700';
+				markers[1] = '100';
+				markers[2] = '12,290';
+				markers[3] = '13,320';
+				markers[4] = '300';
+				markers[5] = '15,380';
+				markers[6] = '16,410';
+				markers[7] = '17,440';
+				markers[8] = '18,470';
+				markers[9] = '19,500';
+				markers[10] = '20,530';
+				markers[11] = '21,560';
+				markers[12] = '22,590';
+				markers[13] = '23,620';
+				markers[14] = '24,650';
+				markers[15] = '25,680';
+				markers[16] = '26,710';
+				markers[17] = '27,740';
+				markers[18] = '150';
+				markers[19] = '29,800';
+				markers[20] = '30,830';
+				markers[21] = '31,860';
+				markers[22] = '32,890';
+				markers[23] = '33,920';
+				markers[24] = '34,950';
+				markers[25] = '35,980';
+				markers[26] = '37,010';
+				markers[27] = '38,040';
+				markers[28] = '39,070';
+				markers[29] = '40,100';
+				markers[39] = '0';
+				markers[31] = '42,160';
+				markers[32] = '43,190';
+				markers[33] = '44,220';
+				markers[34] = '33,920';
+				markers[35] = '300';
+				markers[36] = '29,800';
+				markers[37] = '30,830';
+				markers[38] = '31,860';
+				markers[39] = '32,890';
+				markers[40] = '33,920';
+				markers[41] = '34,950';
+				markers[42] = '35,980';
+				markers[43] = '37,010';
+				markers[44] = '38,040';
+				markers[45] = '39,070';
+				markers[46] = '40,100';
+				markers[47] = '0';
+				markers[48] = '42,160';
+				markers[49] = '43,190';
+				markers[50] = '44,220';
+				markers[51] = '33,920';
+
+				jvm_wm = new jvm.Map({
+					container : $('#dashboard-map-seles'),
+					map : 'ng_mill_en',
+					backgroundColor : '#FFFFFF',
+					regionsSelectable : true,
+					regionStyle : {
+						selected : {
+							fill : '#8AB8E6'
+						},
+						initial : {
+							fill : '#66C266'
+						}
+					},
+					markers : warehouses.map(function(h) {
+						return {
+							name : h.name,
+							latLng : h.coords
+						}
+					}),
+
+					series : {
+						markers : [{
+							attribute : 'image',
+							scale : {
+								'distributor' : '/img/icons/warehouse1.png',
+								'customer' : '/img/icons/warehouse2.png'
+							},
+							values : warehouses.reduce(function(p, c, i) {
+								p[i] = c.status;
+								return p
+							}, {}),
+							legend : {
+								horizontal : true,
+								title : 'Stock Types',
+								cssClass : 'jvectormap-legend-icons',
+								labelRender : function(v) {
+									return {
+									distributor: 'C-WH',
+									customer: 'O-WH'
+									}[v];
+								}
+							}
+						}],
+						regions : [{
+							scale : {
+								red : '#ff0000',
+								orange : '#FFAD33'
+							},
+							attribute : 'fill',
+							values : activeRegions
+						}]
+
+					},
+
+					onMarkerTipShow : function(event, label, index) {
+						//console.log(index);
+						label.html('<b>' + label.html() + '</b></br>' + '<b>Total stock: ' + markers[index] + '</b>');
+					},
+					onRegionTipShow : function(event, label, code) {
+						console.log(label.html() + " : " + code);
+						label.html('<b>' + label.html() + '</b></br>' + '<b>Total stock: ' + stocks[code] + '</b>');
+					}
+				});
+			}
+
+			function updateStockQuanitites(range, multiplier) {
+				var stock = 0;
+				var demand = 0;
+				var difference = 0;
+
+				var totalStock = 0;
+				var totalDemand = 0;
+				
+				activeRegions= {};
+
+				for ( i = 1; i < 38; i++) {
+
+					stock = multiplier * range;
+					demand = range;
+					stock = stock + (Math.floor(Math.random() * 10000) + 3000);
+					demand = demand + (Math.floor(Math.random() * 10000) + 3000);
+					difference = stock - demand;
+
+					if (difference < 0) {
+						$('#datarow' + i).css("background", "#FF9999");
+						activeRegions[stateMap[i]] = 'red';
+					} else if (difference < 1000) {
+						$('#datarow' + i).css("background", "#FFE0C2");
+						activeRegions[stateMap[i]] = 'orange';
+					}
+					
+					
+
+					$('#stock' + i).html(stock.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+					$('#demand' + i).html(demand.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+					$('#difference' + i).html(difference.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+					totalStock = totalStock + stock;
+					totalDemand = totalDemand + demand;
+					
+					stocks[stateMap[i]] = $('#stock' + i).html();
+					
+				}
+
+				$('#stocktotal').html(totalStock.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+				$('#demandtotal').html(totalDemand.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+				$('#differencetotal').html((totalStock - totalDemand).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+			}
+
+
+			$(document).ready(function() {
+				
+				stateMap[1] = "2841";
+				stateMap[2] = "2881";
+				stateMap[3] = "2842";
+				stateMap[4] = "2857";
+				stateMap[5] = "2858";
+				stateMap[6] = "2845";
+				stateMap[7] = "2846";
+				stateMap[8] = "2839";
+				stateMap[9] = "2847";
+				stateMap[10] = "2860";
+				stateMap[11] = "2863";
+				stateMap[12] = "2861";
+				stateMap[13] = "2854";
+				stateMap[14] = "2862";
+				stateMap[15] = "3470";
+				stateMap[16] = "2859";
+				stateMap[17] = "2843";
+				stateMap[18] = "2868";
+				stateMap[19] = "2864";
+				stateMap[20] = "2869";
+				stateMap[21] = "2870";
+				stateMap[22] = "2879";
+				stateMap[23] = "2865";
+				stateMap[24] = "2849";
+				stateMap[25] = "2850";
+				stateMap[26] = "2867";
+				stateMap[27] = "2851";
+				stateMap[28] = "2852";
+				stateMap[29] = "2853";
+				stateMap[30] = "2855";
+				stateMap[31] = "2856";
+				stateMap[32] = "2866";
+				stateMap[33] = "2844";
+				stateMap[34] = "2871";
+				stateMap[35] = "2848";
+				stateMap[36] = "2873";
+				stateMap[37] = "2872";
+
+				
+				//updateStockQuanitites(10000, 1.4);
+				updateStockQuanitites(100000, 1.06);
+
+				createMap(activeRegions);
+
+			});
+
+			function showProductDashboard() {
+				$("#dashboard-map-seles").fadeOut();
+				$("#dashboard-map-seles").fadeIn();
+				$("#tablefigures").fadeOut();
+				$("#tablefigures").fadeIn();
+
+				updateStockQuanitites(10000, 1.7);
+
+				$("#producttitle").html($("#search").val());
+				
+				jvm_wm.remove();
+
+				createMap(activeRegions);
+
+			}
+
+		</script>
+		<!-- END SCRIPTS -->
+	</body>
+</html>
+

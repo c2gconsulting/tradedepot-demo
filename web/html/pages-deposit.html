@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- META SECTION -->
+    <title>Tradedepot</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <!-- END META SECTION -->
+
+    <!-- CSS INCLUDE -->
+    <link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
+    <link rel="stylesheet" type="text/css" href="css/tradedepot.css" />
+    <link rel="stylesheet" href="css/remodal.css">
+    <link rel="stylesheet" type="text/css" href="css/remodal-default-theme.css">
+
+
+    <!-- EOF CSS INCLUDE -->
+    <script>
+        var user_name = sessionStorage.getItem("user_name");
+        if (!user_name) {
+            window.location.replace("pages-login.html");
+
+        }
+        //declare global variable to store selected item
+        window.addedItems = {};
+    </script>
+
+</head>
+<body>
+<!-- START PAGE CONTAINER -->
+<div class="page-container" id="page-container">
+
+    <!-- START PAGE SIDEBAR -->
+    <div class="page-sidebar">
+        <!-- START X-NAVIGATION -->
+        <ul class="x-navigation">
+            <li class="xn-logo">
+                <a href="index.html"> <img src="assets/images/logo/tradedepot.png" alt="Logo"/></a>
+                <a href="#" class="x-navigation-control"></a>
+            </li>
+            <li class="xn-profile">
+                <a href="#" class="profile-mini"> <img src="assets/images/users/avatar.jpg" alt="John Doe"/> </a>
+                <div class="profile">
+                    <div class="profile-image">
+                        <img src="assets/images/users/avatar.jpg" alt="John Doe"/>
+                    </div>
+                    <div class="profile-data">
+                        <div class="profile-data-name">
+                            PROMASIDOR
+                        </div>
+                        <div class="profile-data-title">
+                            <i>quality food products</i>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li id="Orders" class="" >
+                <a href="index.html"><span class="fa fa-shopping-cart"></span> <span class="xn-text">Sales Orders</span></a>
+            </li>
+            <li id="deposit" class="active" >
+                <a href="pages-deposit.html"><span class="fa fa-truck"></span> <span class="xn-text">Deposits</span></a>
+            </li>
+            <li id="profile" >
+                <a href="pages-edit-profile1.html"><span class="fa fa-user"></span> <span class="xn-text">Profile</span></a>
+            </li>
+
+        </ul>
+
+        <!-- END X-NAVIGATION -->
+    </div>
+    <!-- END PAGE SIDEBAR -->
+
+    <!-- PAGE CONTENT -->
+    <div class="page-content">
+
+        <!-- START X-NAVIGATION VERTICAL -->
+        <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
+            <!-- TOGGLE NAVIGATION -->
+            <li class="xn-icon-button">
+                <a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
+            </li>
+            <!-- END TOGGLE NAVIGATION -->
+            <!-- SEARCH -->
+            <li class="xn-search">
+                <form role="form">
+                    <input type="text" name="search" placeholder="Search..."/>
+                </form>
+            </li>
+            <!-- END SEARCH -->
+            <!-- POWER OFF -->
+            <li class="xn-icon-button pull-right last">
+                <a href="#"><span class="fa fa-power-off"></span></a>
+                <ul class="xn-drop-left animated zoomIn">
+                    <li><a href="pages-lock-screen.html"><span class="fa fa-lock"></span> Lock Screen</a></li>
+                    <li><a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span> Sign Out</a></li>
+                </ul>
+            </li>
+            <!-- END POWER OFF -->
+            <!-- MESSAGES -->
+            <li class="xn-icon-button pull-right">
+                <a href="#"><span class="fa fa-comments"></span></a>
+                <div class="informer informer-danger">4</div>
+                <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="fa fa-comments"></span> Messages</h3>
+                        <div class="pull-right">
+                            <span class="label label-danger">4 new</span>
+                        </div>
+                    </div>
+                    <div class="panel-body list-group list-group-contacts scroll" style="height: 200px;">
+                        <a href="#" class="list-group-item">
+                            <div class="list-group-status status-online"></div>
+                            <img src="assets/images/users/user2.jpg" class="pull-left" alt="John Doe"/>
+                            <span class="contacts-title">John Doe</span>
+                            <p>Praesent placerat tellus id augue condimentum</p>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <div class="list-group-status status-away"></div>
+                            <img src="assets/images/users/user.jpg" class="pull-left" alt="Dmitry Ivaniuk"/>
+                            <span class="contacts-title">Dmitry Ivaniuk</span>
+                            <p>Donec risus sapien, sagittis et magna quis</p>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <div class="list-group-status status-away"></div>
+                            <img src="assets/images/users/user3.jpg" class="pull-left" alt="Nadia Ali"/>
+                            <span class="contacts-title">Nadia Ali</span>
+                            <p>Mauris vel eros ut nunc rhoncus cursus sed</p>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <div class="list-group-status status-offline"></div>
+                            <img src="assets/images/users/user6.jpg" class="pull-left" alt="Darth Vader"/>
+                            <span class="contacts-title">Darth Vader</span>
+                            <p>I want my money back!</p>
+                        </a>
+                    </div>
+                    <div class="panel-footer text-center">
+                        <a href="pages-messages.html">Show all messages</a>
+                    </div>
+                </div>
+            </li>
+            <!-- END MESSAGES -->
+            <!-- TASKS -->
+            <li class="xn-icon-button pull-right">
+                <a href="#"><span class="fa fa-tasks"></span></a>
+                <div class="informer informer-warning">3</div>
+                <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="fa fa-tasks"></span> Tasks</h3>
+                        <div class="pull-right">
+                            <span class="label label-warning">3 active</span>
+                        </div>
+                    </div>
+                    <div class="panel-body list-group scroll" style="height: 200px;">
+                        <a class="list-group-item" href="#">
+                            <strong>Phasellus augue arcu, elementum</strong>
+                            <div class="progress progress-small progress-striped active">
+                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">50%</div>
+                            </div>
+                            <small class="text-muted">John Doe, 25 Sep 2015 / 50%</small>
+                        </a>
+                        <a class="list-group-item" href="#">
+                            <strong>Aenean ac cursus</strong>
+                            <div class="progress progress-small progress-striped active">
+                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">80%</div>
+                            </div>
+                            <small class="text-muted">Dmitry Ivaniuk, 24 Sep 2015 / 80%</small>
+                        </a>
+                        <a class="list-group-item" href="#">
+                            <strong>Lorem ipsum dolor</strong>
+                            <div class="progress progress-small progress-striped active">
+                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%;">95%</div>
+                            </div>
+                            <small class="text-muted">John Doe, 23 Sep 2015 / 95%</small>
+                        </a>
+                        <a class="list-group-item" href="#">
+                            <strong>Cras suscipit ac quam at tincidunt.</strong>
+                            <div class="progress progress-small">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">100%</div>
+                            </div>
+                            <small class="text-muted">John Doe, 21 Sep 2015 /</small><small class="text-success"> Done</small>
+                        </a>
+                    </div>
+                    <div class="panel-footer text-center">
+                        <a href="pages-tasks.html">Show all tasks</a>
+                    </div>
+                </div>
+            </li>
+            <!-- END TASKS -->
+            <!-- LANG BAR -->
+            <li class="xn-icon-button pull-right">
+                <a href="#"><span class="flag flag-gb"></span></a>
+                <ul class="xn-drop-left xn-drop-white animated zoomIn">
+                    <li><a href="#"><span class="flag flag-gb"></span> English</a></li>
+                    <li><a href="#"><span class="flag flag-de"></span> Deutsch</a></li>
+                    <li><a href="#"><span class="flag flag-cn"></span> Chinese</a></li>
+                </ul>
+            </li>
+            <!-- END LANG BAR -->
+        </ul>
+        <!-- END X-NAVIGATION VERTICAL -->
+
+        <!-- START BREADCRUMB -->
+        <ul class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Deposits</a></li>
+        </ul>
+        <!-- END BREADCRUMB -->
+
+        <!-- PAGE TITLE -->
+        <!-- END PAGE TITLE -->
+
+        <!-- PAGE CONTENT WRAPPER -->
+        <div class="page-content-wrap">
+
+
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- START DATATABLE EXPORT -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Previous Deposits/Payment</h3>
+                            <div class="btn-group pull-right">
+                                <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Export Data</button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" onClick ="$('#customers2').tableExport({type:'json',escape:'false'});"><img src='img/icons/json.png' width="24"/> JSON</a></li>
+                                    <li><a href="#" onClick ="$('#customers2').tableExport({type:'json',escape:'false',ignoreColumn:'[2,3]'});"><img src='img/icons/json.png' width="24"/> JSON (ignoreColumn)</a></li>
+                                    <li><a href="#" onClick ="$('#customers2').tableExport({type:'json',escape:'true'});"><img src='img/icons/json.png' width="24"/> JSON (with Escape)</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#" onClick ="$('#customers2').tableExport({type:'xml',escape:'false'});"><img src='img/icons/xml.png' width="24"/> XML</a></li>
+                                    <li><a href="#" onClick ="$('#customers2').tableExport({type:'sql'});"><img src='img/icons/sql.png' width="24"/> SQL</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#" onClick ="$('#customers2').tableExport({type:'csv',escape:'false'});"><img src='img/icons/csv.png' width="24"/> CSV</a></li>
+                                    <li><a href="#" onClick ="$('#customers2').tableExport({type:'txt',escape:'false'});"><img src='img/icons/txt.png' width="24"/> TXT</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#" onClick ="$('#customers2').tableExport({type:'excel',escape:'false'});"><img src='img/icons/xls.png' width="24"/> XLS</a></li>
+                                    <li><a href="#" onClick ="$('#customers2').tableExport({type:'doc',escape:'false'});"><img src='img/icons/word.png' width="24"/> Word</a></li>
+                                    <li><a href="#" onClick ="$('#customers2').tableExport({type:'powerpoint',escape:'false'});"><img src='img/icons/ppt.png' width="24"/> PowerPoint</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#" onClick ="$('#customers2').tableExport({type:'png',escape:'false'});"><img src='img/icons/png.png' width="24"/> PNG</a></li>
+                                    <li><a href="#" onClick ="$('#customers2').tableExport({type:'pdf',escape:'false'});"><img src='img/icons/pdf.png' width="24"/> PDF</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table id="customers2" class="table datatable">
+                                    <thead>
+                                    <tr>
+                                        <th>NIBBS Payment ID</th>
+                                        <th>Payment Type/description</th>
+                                        <th>Company</th>
+                                        <th>Status</th>
+                                        <th>Payment date</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-11901</td>
+                                        <td>Deposit</td>
+                                        <td>Pomasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2011/04/25</td>
+                                        <td>₦320,800,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-TELLER-TRDT-11904</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-warning">Pending</span></td>
+                                        <td>2011/07/25</td>
+                                        <td>₦170,750,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-11993</td>
+                                        <td>Payment</td>
+                                        <td>Pomasidor</td>
+                                        <td><span class="label label-warning">Pending</span></td>
+                                        <td>2009/01/12</td>
+                                        <td>₦86,000,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-19876</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-danger">failed</span></td>
+                                        <td>2012/03/29</td>
+                                        <td>₦433,060,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-TELLER-TRDT-1rtr</td>
+                                        <td>payments</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2008/11/28</td>
+                                        <td>₦162,700,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-18934</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-warning">Pending</span></td>
+                                        <td>2012/12/02</td>
+                                        <td>₦372,000,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-TELLER-TRDT-11965</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-danger">failed</span></td>
+                                        <td>2012/08/06</td>
+                                        <td>₦137,500,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-19678</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2010/10/14</td>
+                                        <td>₦327,900,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-19678</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2009/09/15</td>
+                                        <td>₦205,500,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-TELLER-TRDT-1998</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        `<td><span class="label label-danger">failed</span></td>`
+                                        <td>2008/12/13</td>
+                                        <td>₦103,600,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-1998</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2008/12/19</td>
+                                        <td>₦90,560,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-13499</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2013/03/03</td>
+                                        <td>₦342,000,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-13499</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-danger">failed</span></td>
+                                        <td>2008/10/16</td>
+                                        <td>₦470,600,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-TELLER-TRDT-13343</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2012/12/18</td>
+                                        <td>₦313,500,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-13334</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2010/03/17</td>
+                                        <td>₦385,750,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-13776</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2012/11/27</td>
+                                        <td>₦198,500,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-TELLER-TRDT-13665</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2010/06/09</td>
+                                        <td>₦725,000,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-13445</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2009/04/10</td>
+                                        <td>₦237,500,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-13332</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2012/10/13</td>
+                                        <td>₦132,000,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-13445</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2012/09/26</td>
+                                        <td>₦217,500,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-TELLER-TRDT-13009</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2011/09/03</td>
+                                        <td>₦345,000,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-13320</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2009/06/25</td>
+                                        <td>₦675,000,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-13256</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2011/12/12</td>
+                                        <td>₦106,450,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-132948</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2010/09/20</td>
+                                        <td>₦85,600,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-TELLER-TRDT-13345</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2009/10/09</td>
+                                        <td>₦1,200,000,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-13343</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2010/12/22</td>
+                                        <td>₦92,575,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-13323</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2010/11/14</td>
+                                        <td>₦357,650,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-13454</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2011/06/07</td>
+                                        <td>₦206,850,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-TELLER-TRDT-13865</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2010/03/11</td>
+                                        <td>₦850,000,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-13565</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2011/08/14</td>
+                                        <td>₦163,000,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-13454</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2011/06/02</td>
+                                        <td>₦95,400,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-TELLER-TRDT-13454</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2009/10/22</td>
+                                        <td>₦114,500,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-19666</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2011/05/07</td>
+                                        <td>₦145,000,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-TELLER-TRDT-19544</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2008/10/26</td>
+                                        <td>₦235,500,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-TELLER-TRDT-19098</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2011/03/09</td>
+                                        <td>₦324,050,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-19888</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2009/12/09</td>
+                                        <td>₦85,675,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-TELLER-TRDT-19655</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2008/12/16</td>
+                                        <td>₦164,500,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-19611</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2010/02/12</td>
+                                        <td>₦109,850,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-19632</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2009/02/14</td>
+                                        <td>₦452,500,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-TELLER-TRDT-19656</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2008/12/11</td>
+                                        <td>₦136,200,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-TELLER-TRDT-19609</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2008/09/26</td>
+                                        <td>₦645,750,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-19687</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2011/02/03</td>
+                                        <td>₦234,500,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-19453</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2011/05/03</td>
+                                        <td>₦163,500,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-TELLER-TRDT-19234</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2009/08/19</td>
+                                        <td>₦139,575,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-19546</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2013/08/11</td>
+                                        <td>₦98,540</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-19456</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2009/07/07</td>
+                                        <td>₦87,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-TELLER-TRDT-19654</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2012/04/09</td>
+                                        <td>₦138,575</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-TELLER-TRDT-19665</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2010/01/04</td>
+                                        <td>₦125,250</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-TELLER-TRDT-19676</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2012/06/01</td>
+                                        <td>₦115,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-TELLER-TRDT-19894</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2013/02/01</td>
+                                        <td>₦75,650</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-TELLER-TRDT-19800</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2011/12/06</td>
+                                        <td>₦145,600</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-53535</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2011/03/21</td>
+                                        <td>₦356,250</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-TELLER-TRDT-53533</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2009/02/27</td>
+                                        <td>₦103,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-53532</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2010/07/14</td>
+                                        <td>₦86,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-24434</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2008/11/13</td>
+                                        <td>₦183,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-WEB-TRDT-24455</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2011/06/27</td>
+                                        <td>₦183,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NIBBS-TELLER-TRDT-02393</td>
+                                        <td>Deposit</td>
+                                        <td>Promasidor</td>
+                                        <td><span class="label label-success">Success</span></td>
+                                        <td>2011/01/25</td>
+                                        <td>₦112,000</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END DATATABLE EXPORT -->
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="payment-btn pull-right" style="margin-right: 20px;">
+                    <a href="#modal" class="btn btn-success"><span class="fa fa-credit-card"></span> DEPOSIT </a>
+                </div>
+            </div>
+
+        </div>
+        <div class="remodal-bg">
+            &nbsp;
+        </div>
+
+        <div class="remodal" id="modal-content" data-remodal-id="modal">
+            <button data-remodal-action="close" id="modal-close" class="remodal-close"></button>
+            <div class="alert alert-success">
+                <strong>Deposit!</strong> Please enter the amount and specify the bank you want to pay from and then click proceed.
+                <p>Also note that you will be taking to the selected bank internet banking app for payments</p>
+                <p>Ensure to select biller as trade depot... </p>
+
+            </div>
+            <div class="center-block">
+                <input name="amount" type="text" id="deposit-amount" placeholder="Enter Amount e.g 100,000.00"/>
+                <select id="bank">
+                    <option value="" id="emt">Select Bank</option>
+                    <option value="https://ibank.ubagroup.com">United band for Africa</option>
+                    <option value="http://www.ecobank.com/loginib.aspx">Eco bank</option>
+                    <option value="https://ibank.gtbank.com/ibank3/login.aspx">Guarantee trust bank</option>
+                    <option value="https://ibanking.stanbicibtcbank.com">Stanbic ibtc bank</option>
+                    <option value="https://ibank.zenithbank.com/internetbanking/">Zenith bank</option>
+                    <option value="http://www.firstbanknigeria.com/firstonline/">First bank</option>
+                    <option value="http://www.diamondbanking.com/onlinebanking.htm">Diamond bank</option>
+                    <option value="https://uniononline.unionbankng.com/OnlineBanking/">Union bank</option>
+
+                </select>
+            </div>
+            <br>
+            <button id="nibbs-payment" class="remodal-cancel" onclick="payNow()">Online Payment</button>
+        </div>
+        <script type="text/javascript">
+            function payNow(){
+                var amount = parseInt($('#deposit-amount').val());
+                var bank = $('#bank').val();
+                console.log(bank);
+                if(amount && bank) {
+                    window.open(bank, '_blank');
+                    $('#deposit-amount').val('');
+                    $('#bank').find('option#emt').attr("selected", true);
+                    $('#modal-close').click();
+                    //open new page of internet banking
+                } else {
+                    alert('Please enter amount and specify bank');
+                }
+            }
+        </script>
+        <!-- END PAGE CONTENT -->
+    </div>
+    <!-- END PAGE CONTAINER -->
+
+    <!-- MESSAGE BOX-->
+    <div class="message-box animated fadeIn" data-sound="alert" id="mb-remove-row">
+        <div class="mb-container">
+            <div class="mb-middle">
+                <div class="mb-title"><span class="fa fa-times"></span> Remove <strong>Data</strong> ?</div>
+                <div class="mb-content">
+                    <p>Are you sure you want to remove this row?</p>
+                    <p>Press Yes if you sure.</p>
+                </div>
+                <div class="mb-footer">
+                    <div class="pull-right">
+                        <button class="btn btn-success btn-lg mb-control-yes">Yes</button>
+                        <button class="btn btn-default btn-lg mb-control-close">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END MESSAGE BOX-->
+
+    <!-- MESSAGE BOX-->
+    <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+        <div class="mb-container">
+            <div class="mb-middle">
+                <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
+                <div class="mb-content">
+                    <p>Are you sure you want to log out?</p>
+                    <p>Press No if youwant to continue work. Press Yes to logout current user.</p>
+                </div>
+                <div class="mb-footer">
+                    <div class="pull-right">
+                        <a href="pages-login.html" class="btn btn-success btn-lg">Yes</a>
+                        <button class="btn btn-default btn-lg mb-control-close">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END MESSAGE BOX-->
+
+    <!-- START PRELOADS -->
+    <audio id="audio-alert" src="audio/alert.mp3" preload="auto"></audio>
+    <audio id="audio-fail" src="audio/fail.mp3" preload="auto"></audio>
+    <!-- END PRELOADS -->
+
+    <!-- START SCRIPTS -->
+    <!-- START PLUGINS -->
+    <script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="js/plugins/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/plugins/bootstrap/bootstrap.min.js"></script>
+    <!-- END PLUGINS -->
+
+    <!-- START THIS PAGE PLUGINS-->
+    <script type='text/javascript' src='js/plugins/icheck/icheck.min.js'></script>
+    <script type="text/javascript" src="js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+
+    <script type="text/javascript" src="js/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/plugins/tableexport/tableExport.js"></script>
+    <script type="text/javascript" src="js/plugins/tableexport/jquery.base64.js"></script>
+    <script type="text/javascript" src="js/plugins/tableexport/html2canvas.js"></script>
+    <script type="text/javascript" src="js/plugins/tableexport/jspdf/libs/sprintf.js"></script>
+    <script type="text/javascript" src="js/plugins/tableexport/jspdf/jspdf.js"></script>
+    <script type="text/javascript" src="js/plugins/tableexport/jspdf/libs/base64.js"></script>
+    <!-- END THIS PAGE PLUGINS-->
+
+    <!-- START TEMPLATE -->
+    <script type="text/javascript" src="js/settings.js"></script>
+
+    <script type="text/javascript" src="js/plugins.js"></script>
+    <script type="text/javascript" src="js/actions.js"></script>
+    <script type="text/javascript" src="js/remodal.min.js"></script>
+    <!-- END TEMPLATE -->
+    <!-- END SCRIPTS -->
+</body>
+</html>
+
+
+
+
+
+
+

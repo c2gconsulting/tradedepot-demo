@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- META SECTION -->
+		<title>Tradedepot - Assign Price List to Customers</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="icon" href="favicon.ico" type="image/x-icon" />
+		<!-- END META SECTION -->
+
+		<!-- CSS INCLUDE -->
+		<link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
+		<link rel="stylesheet" type="text/css" href="css/tradedepot.css" />
+		<!-- EOF CSS INCLUDE -->
+		<script>
+			var user_name = sessionStorage.getItem("user_name");
+			if (!user_name) {
+				window.location.replace("pages-login.html");
+
+			}
+		</script>
+
+	</head>
+	<body>
+		<!-- START PAGE CONTAINER -->
+		<div class="page-container hidden" id="page-container">
+
+			<!-- START PAGE SIDEBAR -->
+			<div class="page-sidebar">
+				<!-- START X-NAVIGATION -->
+				<ul class="x-navigation">
+					<li class="xn-logo">
+						<a href="index.html"> <img src="assets/images/logo/tradedepot.png" alt="Logo"/></a>
+						<a href="#" class="x-navigation-control"></a>
+					</li>
+					<li class="xn-profile">
+						<a href="#" class="profile-mini"> <img src="assets/images/users/avatar.jpg" alt="John Doe"/> </a>
+						<div class="profile">
+							<div class="profile-image">
+								<img src="assets/images/users/avatar.jpg" alt="John Doe"/>
+							</div>
+							<div class="profile-data">
+								<div class="profile-data-name">
+									PROMASIDOR
+								</div>
+								<div class="profile-data-title">
+									<i>quality food products</i>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li id="dashboard" class="" >
+						<a href="pages-dashboard.html"><span class="fa fa-dashboard"></span> <span class="xn-text">Dashboard</span></a>
+					</li>
+					<li id="sales-orders" class="active" >
+						<a href="pages-ordering.html"><span class="fa fa-shopping-cart"></span> <span class="xn-text">Order Processing</span></a>
+					</li>
+					
+					<li id="ordering" class="" >
+						<a href="index.html"><span class="fa fa-shopping-cart"></span> <span class="xn-text">Sales Orders</span></a>
+					</li>
+					<li id="payments" class="" >
+						<a href="pages-payments.html"><i class="fa">₦</i> <span class="xn-text">Payments</span></a>
+					</li>
+					<li id="deposit" >
+						<a href="pages-deposit.html"><span class="fa fa-truck"></span> <span class="xn-text">Deposits</span></a>
+					</li>
+					<li id="stock-overview" >
+						<a href="pages-stockoverview.html"><span class="fa fa-tasks"></span> <span class="xn-text">Stock Overview</span></a>
+					</li>
+					<li id="analytics" >
+						<a href="pages-analytics.html"><span class="fa fa-truck"></span> <span class="xn-text">Analytics</span></a>
+					</li>
+					<li id="profile" >
+						<a href="pages-edit-profile1.html"><span class="fa fa-user"></span> <span class="xn-text">Profile</span></a>
+					</li>
+
+					<li class="xn-openable">
+						<a> <span class="fa fa-cogs"></span> <span class="xn-text"> Settings</span></a>
+						<ul>
+
+							<li>
+								<a href="Customer_Mapping.html"><span class="fa fa-heart"></span> Customer</a>
+							</li>
+							<li>
+								<a href="Price_List.html"><span class="fa fa-cogs"></span> Price List</a>
+							</li>
+							<li>
+								<a href="Product.html"><span class="fa fa-square-o"></span> Products</a>
+							</li>
+							<li>
+								<a href="Inventory.html"><span class="fa fa-pencil-square-o"></span> Discount</a>
+							</li>
+							<li>
+								<a href="Promo.html"><span class="fa fa-pencil"></span> Promo's</a>
+							</li>
+
+							<li>
+								<a href="Rebate.html"><span class="fa fa-pencil"></span> Rebate</a>
+							</li>
+						</ul>
+					</li>
+
+				</ul>
+
+				<!-- END X-NAVIGATION -->
+			</div>
+			<!-- END PAGE SIDEBAR -->
+
+			<!-- PAGE CONTENT -->
+			<div class="page-content">
+
+				<!-- START X-NAVIGATION VERTICAL -->
+				<ul class="x-navigation x-navigation-horizontal x-navigation-panel">
+					<!-- TOGGLE NAVIGATION -->
+					<li class="xn-icon-button">
+						<a href="#" class="x-navigation-minimize" id="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
+					</li>
+					<!-- END TOGGLE NAVIGATION -->
+					<!-- SEARCH -->
+					<li class="xn-search">
+						<form role="form">
+							<input type="text" name="search" placeholder="Search..."/>
+						</form>
+					</li>
+					<!-- END SEARCH -->
+					<!-- POWER OFF -->
+					<li class="xn-icon-button pull-right last">
+						<a href="#"><span class="fa fa-power-off"></span></a>
+						<ul class="xn-drop-left animated zoomIn">
+							<li>
+								<a href="pages-lock-screen.html"><span class="fa fa-lock"></span> Lock Screen</a>
+							</li>
+							<li>
+								<a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span> Sign Out</a>
+							</li>
+						</ul>
+					</li>
+					<!-- END POWER OFF -->
+					<!-- NOTIFICATIONS -->
+					<li class="xn-icon-button pull-right">
+						<a href="#"><span class="fa fa-bell-o"></span></a>
+						<div class="informer informer-warning">
+							4
+						</div>
+						<div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
+							<div class="panel-heading">
+								<h3 class="panel-title"><span class="fa fa-bell-o"></span> Notifications</h3>
+								<div class="pull-right">
+									<span class="label label-warning">4 new</span>
+								</div>
+							</div>
+							<div class="panel-body list-group list-group-contacts scroll" style="height: 200px;">
+								<a class="list-group-item" href="#"> Payment made for Order #133232 <small class="text-muted" >&nbsp;&nbsp;1d</small> </a>
+								<a class="list-group-item" href="#"> Items ready for pickup for Order #133232 <small class="text-muted" >&nbsp;&nbsp;3d</small> </a>
+								<a class="list-group-item" href="#"> Items picked up for  Order #133232 <small class="text-muted" >&nbsp;&nbsp;1d</small> </a>
+								<a class="list-group-item" href="#"> Items picked up for  Order #133232 <small class="text-muted" >&nbsp;&nbsp;1d</small> </a>
+								<a class="list-group-item" href="#"> Items picked up for  Order #133232 <small class="text-muted" >&nbsp;&nbsp;1d</small> </a>
+							</div>
+							<div class="panel-footer text-center">
+								<a href="pages-messages.html">Show all notifications</a>
+							</div>
+						</div>
+					</li>
+					<!-- END NOTIFICATIONS -->
+
+				</ul>
+				<!-- END X-NAVIGATION VERTICAL -->
+
+				<!-- START BREADCRUMB -->
+				<ul class="breadcrumb">
+                    <li><a href="pages-dashboard.html">Home</a></li>
+                    <li><a href="pages-dashboard.html">Settings</a></li>
+                    <li class="active">Price List</li>
+                </ul>
+				<!-- END BREADCRUMB -->
+ <div class="page-title">                    
+                    <h2>Price List Manager Manager</h2>
+                </div>
+				<!-- PAGE CONTENT WRAPPER -->
+				<div class="page-content-wrap">
+					<div class="row" id="mainblock">
+                    <!-- START BLOCK TO SELECT CUSTOMER -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                            <!-- jQuery AUTOCOMPLETE -->                            
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <h3>Select <strong>Distributor</strong></h3>
+                                    <p>Please Enter name of distributor to view the distributors transactions and Order History. </p>
+                                    <form action="#" class="form-horizontal">
+                                        <div class="form-group">
+                                            <div class="col-md-2"></div>
+                                            <label class="control-label col-md-2">Customer ID:</label>
+                                            <div class="col-md-4">                                                
+                                                <input id="quick-search" class="form-control"/>
+                                                <div class="help-block"><a href="#">Click Here</a> to proceed to customer manager if you cannot find your desired customer</div>
+                                            </div>
+                                            <div class="col-md-4"><button type="button" class="btn btn-primary" onClick="showTransactions()">Proceed</button> </div>
+                                           
+                                        </div>                                        
+                                    </form>
+                                </div>
+                            </div>                            
+                            <!-- END jQuery AUTOCOMPLETE -->
+
+                        </div>
+                    </div>
+                    <!-- END BLOCK TO SELECT CUSTOMER -->
+						
+									<!-- START USERS ACTIVITY BLOCK -->
+                                  
+                                        <div id = "viewTransactions" >
+									<div class="panel panel-default" id="distributorSummary">
+                                    
+                                    <p> </p>
+                                    <p></p>
+                                    <div class="col-md-16 text-center">
+											<h2><span id="distributor" >0011000012 - Madewell Productions Limited</span></h2>
+										</div>
+                                    <div class="panel-body">
+                                      <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Product List</h3>
+                                    <div class="btn-group pull-right">
+                                                        
+                                      <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Export Data</button> 
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#" onClick ="$('#customers2').tableExport({type:'json',escape:'false'});"><img src='img/icons/json.png' width="24"/> JSON</a></li>
+                                            <li><a href="#" onClick ="$('#customers2').tableExport({type:'json',escape:'false',ignoreColumn:'[2,3]'});"><img src='img/icons/json.png' width="24"/> JSON (ignoreColumn)</a></li>
+                                            <li><a href="#" onClick ="$('#customers2').tableExport({type:'json',escape:'true'});"><img src='img/icons/json.png' width="24"/> JSON (with Escape)</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#" onClick ="$('#customers2').tableExport({type:'xml',escape:'false'});"><img src='img/icons/xml.png' width="24"/> XML</a></li>
+                                            <li><a href="#" onClick ="$('#customers2').tableExport({type:'sql'});"><img src='img/icons/sql.png' width="24"/> SQL</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#" onClick ="$('#customers2').tableExport({type:'csv',escape:'false'});"><img src='img/icons/csv.png' width="24"/> CSV</a></li>
+                                            <li><a href="#" onClick ="$('#customers2').tableExport({type:'txt',escape:'false'});"><img src='img/icons/txt.png' width="24"/> TXT</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#" onClick ="$('#customers2').tableExport({type:'excel',escape:'false'});"><img src='img/icons/xls.png' width="24"/> XLS</a></li>
+                                            <li><a href="#" onClick ="$('#customers2').tableExport({type:'doc',escape:'false'});"><img src='img/icons/word.png' width="24"/> Word</a></li>
+                                            <li><a href="#" onClick ="$('#customers2').tableExport({type:'powerpoint',escape:'false'});"><img src='img/icons/ppt.png' width="24"/> PowerPoint</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#" onClick ="$('#customers2').tableExport({type:'png',escape:'false'});"><img src='img/icons/png.png' width="24"/> PNG</a></li>
+                                            <li><a href="#" onClick ="$('#customers2').tableExport({type:'pdf',escape:'false'});"><img src='img/icons/pdf.png' width="24"/> PDF</a></li>
+                                        </ul>
+                                    </div>                                    
+                                    
+                                </div>
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table id="customers2" class="table datatable">
+                                            <thead>
+                                                <tr>
+                                                
+                                                    <th>Product ID</th>
+                                                    <th>Product Name</th>
+                                                    <th>Unit of Measurment</th>
+                                                    <th>Standard Price</th>
+                                                    <th>Pricing</th>
+                                                    <th>Created At</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                     <td>M1001</td>
+                                                    <td>Cowbell Instant Filled Milk Powder (Tin: 250g)</td>
+                                                    <td>Kg</td>
+                                                    <td>₦2,150</td>
+                                                    <td width = "20%"> 
+                                               
+                                                <label type="text"  id = "txt1"> ₦2,150 </label>
+                                            </td>
+                                                    <td>2014/01/04</td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                    <td>M1002</td>
+                                                    <td>Cowbell Instant Filled Milk Powder (Tin: 400g)</td>
+                                                     <td>Kg</td>
+                                                    <td>₦3,150</td>
+                                                     <td width = "20%">
+                                      <label type="text"  id = "txt2">₦3,150 </label>
+                                             </td>
+                                                    <td>2014/01/04</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>M1003</td>
+                                                    <td>Cowbell Instant Filled Milk Powder (Tin: 800g)</td>
+                                                    <td>Kg</td>
+                                                    <td>₦5,150</td>
+                                                    <td width = "20%"> 
+                                               <label type="text"  id = "txt3">₦5,150 </label>
+                                              </td>
+                                                    <td>2014/01/04</td>
+                                                </tr>
+                                                <tr>
+                                                     <td>M1004</td>
+                                                    <td>Cowbell Instant Filled Milk Powder (Sachet: 250g)</td>
+                                                    <td>Sachet</td>
+                                                    <td>₦1,250</td>
+                                                    <td width = "20%"> 
+                                              <label type="text"  id = "txt4">₦1,250 </label>
+                                             </td>
+                                                    <td>2014/01/04</td>
+                                                </tr>
+                                                <tr>
+                                                     <td>M1005</td>
+                                                    <td>Cowbell Instant Filled Milk Powder (Sachet: 400g)</td>
+                                                    <td>Sachet</td>
+                                                    <td>₦2,250</td>
+                                                    <td width = "20%">
+                                               <label type="text"  id = "txt5">₦2,250</label>
+                                              </td>
+                                                    <td>2014/01/04</td>
+                                                </tr>
+                                                <tr>
+                                                     <td>M1006</td>
+                                                    <td>Cowbell Instant Filled Milk Powder (Sachet: 800g)</td>
+                                                    <td>Sachet</td>
+                                                    <td>₦4,250</td>
+                                                    <td width = "20%"> 
+                                               <label type="text"  id = "txt6">₦4,250</label>
+                                              </td>
+                                                    <td>2014/01/04</td>
+                                                </tr>
+                                                <tr>
+                                                     <td>M2001</td>
+                                                    <td>Loya Full Cream Milk (Tin: 250g)</td>
+                                                    <td>Kg</td>
+                                                    <td>₦1,000</td>
+                                                    <td width = "20%">
+                                                    <label type="text"  id = "txt7">₦1,000</label> </td>
+                                                    <td>2014/01/04</td>
+                                                </tr>
+                                                
+                                                <tr>
+                                                     <td>M2002</td>
+                                                    <td>Loya Full Cream Milk (Tin: 400g)</td>
+                                                    <td>Kg</td>
+                                                    <td>₦2,000</td>
+                                                    <td width = "20%"><label type="text"  id = "txt8">₦2,000</label> </td>
+                                                    <td>2014/01/04</td>
+                                                </tr>
+                                                
+                                                <tr>
+                                                     <td>M2003</td>
+                                                    <td>Loya Full Cream Milk (Tin: 800g)</td>
+                                                     <td>Kg</td>
+                                                    <td>₦4,000</td>
+                                                    <td width = "20%"><label type="text"  id = "txt9">₦4,000</label> </td>
+                                                    <td>2014/01/04</td>
+                                                </tr>
+                                                <tr>
+                                                     <td>M2004</td>
+                                                    <td>Loya Full Cream Milk (Sachet: 250g)</td>
+                                                     <td>Sachet</td>
+                                                    <td>₦1,450</td>
+                                                    <td width = "20%"> <label type="text"  id = "txt10">₦1,450</label> </td>
+                                                    <td>2014/01/04</td>
+                                                </tr>
+                                                <tr>
+                                                     <td>M2005</td>
+                                                    <td>Loya Full Cream Milk (Sachet: 400g)</td>
+                                                     <td>Sachet</td>
+                                                    <td>₦2,750</td>
+                                                    <td width = "20%"> <label type="text"  id = "txt11">₦2,750</label>  </td>
+                                                    <td>2014/01/04</td>
+                                                </tr>
+                                                <tr>
+                                                     <td>M2006</td>
+                                                    <td>Loya Full Cream Milk (Sachet: 800g)</td>
+                                                     <td>Sachet</td>
+                                                    <td>₦5,750</td>
+                                                    <td width = "20%"><label type="text"  id = "txt12">₦5,750</label></td>
+                                                    <td>2014/01/04</td>
+                                                </tr>
+                                                <tr>
+                                                     <td>"M3001</td>
+                                                    <td>Loya Premium Milk (Tin: 250g)</td>
+                                                     <td>Kg</td>
+                                                    <td>₦750</td>
+                                                    <td width = "20%"> <label type="text"  id = "txt13">₦750</label>  </td>
+                                                    <td>2014/01/04</td>
+                                                </tr>
+                                                <tr>
+                                                     <td>M3002</td>
+                                                    <td>Loya Premium Milk (Tin: 400g))</td>
+                                                    <td>Kg</td>
+                                                    <td>₦1,600</td>
+                                                    <td width = "20%"><label type="text"  id = "txt14">₦1,600</label>   </td>
+                                                    <td>2014/01/04</td>
+                                                </tr>
+                                                <tr>
+                                                     <td>M3003</td>
+                                                    <td>Loya Premium Milk (Tin: 800g)</td>
+                                                    <td>Kg</td>
+                                                    <td>₦2,300</td>
+                                                    <td width = "20%"> <label type="text"  id = "txt15">₦2,300</label>  </td>
+                                                    <td>2014/01/04</td>
+                                                </tr>
+                                                <tr>
+                                                     <td>M3004</td>
+                                                    <td>Loya Premium Milk (Sachet: 250g)</td>
+                                                    <td>Sachet</td>
+                                                    <td>₦800</td>
+                                                    <td width = "20%"> <label type="text"  id = "txt16">₦800</label></td>
+                                                    <td>2014/01/04</td>
+                                                </tr>
+                                                <tr>
+                                                     <td>M3005</td>
+                                                    <td>Loya Premium Milk (Sachet: 400g)Loya Full Cream Milk (Tin: 250g)</td>
+                                                    <td>Sachet</td>
+                                                    <td>₦1,100</td>
+                                                    <td width = "20%"> <label type="text"  id = "txt17">₦1,100</label> </td>
+                                                    <td>2014/01/04</td>
+                                                </tr>
+                                                <tr>
+                                                     <td>M3006</td>
+                                                    <td>Loya Premium Milk (Sachet: 800g)</td>
+                                                     <td>Sachet</td>
+                                                    <td>₦1,500</td>
+                                                    <td width = "20%"> <label type="text"  id = "txt18">₦1,100</label> </td>
+                                                    <td>2014/01/04</td>
+                                                </tr>
+                                                <tr>
+                                                     <td>M4001</td>
+                                                    <td>Top Tea (Standard, Regular)</td>
+                                                     <td>Carton</td>
+                                                    <td>₦5,500</td>
+                                                    <td width = "20%"> <label type="text"  id = "txt19">₦1,100</label></td>
+                                                    <td>2014/01/04</td>
+                                                </tr>
+                                                <tr>
+                                                     <td>M4002</td>
+                                                    <td>Top Tea (Standard, Ginger)</td>
+                                                     <td>Carton</td>
+                                                    <td>₦3,200</td>
+                                                    <td width = "20%"> <label type="text"  id = "txt20">₦1,100</label> </td>
+                                                    <td>2014/01/04</td>
+                                                </tr>
+                                                <tr>
+                                                     <td>M4003</td>
+                                                    <td>Top Tea (Standard, Lemon and Lime)</td>
+                                                     <td>Carton</td>
+                                                    <td>₦3,200</td>
+                                                    <td width = "20%"> <<label type="text"  id = "txt21">₦5,100</label></td>
+                                                    <td>2014/01/04</td>
+                                                </tr>
+                                                 <tr>
+                                                     <td>M4004</td>
+                                                    <td>Top Tea (Economical, Regular)</td>
+                                                     <td>Carton</td>
+                                                    <td>₦4,500</td>
+                                                    <td width = "20%"> <label type="text"  id = "txt22">₦4,100</label></td>
+                                                    <td>2014/01/04</td>
+                                                </tr>
+                                                 <tr>
+                                                     <td>M4005</td>
+                                                    <td>Top Tea (Economical, Ginger)</td>
+                                                     <td>Carton</td>
+                                                    <td>₦7,200</td>
+                                                    <td width = "20%"><label type="text"  id = "txt23">₦1,100</label></td>
+                                                    <td>2014/01/04</td>
+                                                </tr>
+                                                 <tr>
+                                                     <td>M4006</td>
+                                                    <td>Top Tea (Economical, Lemon and Lime)</td>
+                                                    <td>Carton</td>
+                                                    <td>₦1,400</td>
+                                                    <td width = "20%"> <label type="text"  id = "txt24">₦1,400</label></td>
+                                                    <td>2014/01/04</td>
+                                                </tr>
+                                                 <tr>
+                                                     <td>M9001</td>
+                                                    <td>Buy Cowbell Get Miksi Promo</td>
+                                                    <td>Carton</td>
+                                                    <td>₦8,400</td>
+                                                    <td width = "20%"> <label type="text"  id = "txt25">₦8,400</label> </td>  </td>
+                                                    <td>2014/01/04</td>
+                                                </tr>
+                                               
+                                            </tbody>
+                                        </table>                                    
+                                    </div>
+                                </div>
+                            </div>
+                                    
+                                </div>
+										</div>
+									</div>
+									<!-- END USERS ACTIVITY BLOCK -->
+
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					
+						</div>
+					</div>
+
+				</div>
+				<!-- END PAGE CONTENT WRAPPER -->
+			</div>
+			<!-- END PAGE CONTENT -->
+		</div>
+		<!-- END PAGE CONTAINER -->
+
+		<!-- MESSAGE BOX-->
+		<div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+			<div class="mb-container">
+				<div class="mb-middle">
+					<div class="mb-title">
+						<span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?
+					</div>
+					<div class="mb-content">
+						<p>
+							Are you sure you want to log out?
+						</p>
+						<p>
+							Press No if youwant to continue work. Press Yes to logout current user.
+						</p>
+					</div>
+					<div class="mb-footer">
+						<div class="pull-right">
+							<a href="pages-login.html" class="btn btn-success btn-lg">Yes</a>
+							<button class="btn btn-default btn-lg mb-control-close">
+								No
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END MESSAGE BOX-->
+        
+                <!-- Pop up box -->
+       
+        <!-- End of pop up box -->
+
+		<!-- START PRELOADS -->
+		<!-- START PRELOADS -->
+			<audio id="audio-alert" src="audio/alert.mp3" preload="auto"></audio>
+		<audio id="audio-fail" src="audio/fail.mp3" preload="auto"></audio>
+		<!-- END PRELOADS -->
+
+        
+		<!-- START SCRIPTS -->
+		<!-- START PLUGINS -->
+		<script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
+		<script type="text/javascript" src="js/plugins/jquery/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="js/plugins/bootstrap/bootstrap.min.js"></script>
+		<script src="js/tradedepot.js" type="text/javascript"></script>
+		<!-- END PLUGINS -->
+
+		<!-- START THIS PAGE PLUGINS-->
+		<script type='text/javascript' src='js/plugins/icheck/icheck.min.js'></script>
+		<script type="text/javascript" src="js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+		<script type="text/javascript" src="js/plugins/scrolltotop/scrolltopcontrol.js"></script>
+
+		<script type="text/javascript" src="js/plugins/morris/raphael-min.js"></script>
+		<script type="text/javascript" src="js/plugins/morris/morris.min.js"></script>
+		<script type="text/javascript" src="js/plugins/rickshaw/d3.v3.js"></script>
+		<script type="text/javascript" src="js/plugins/rickshaw/rickshaw.min.js"></script>
+
+		<script type='text/javascript' src='js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js'></script>
+		<script type='text/javascript' src='js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js'></script>
+		<script type='text/javascript' src='js/plugins/bootstrap/bootstrap-datepicker.js'></script>
+        <script type="text/javascript" src="js/plugins/bootstrap/bootstrap-datepicker.js"></script> 
+		<script type="text/javascript" src="js/plugins/owl/owl.carousel.min.js"></script>
+
+		<script type="text/javascript" src="js/plugins/moment.min.js"></script>
+		<script type="text/javascript" src="js/plugins/daterangepicker/daterangepicker.js"></script>
+		<script type='text/javascript' src='js/plugins/noty/jquery.noty.js'></script>
+		<script type='text/javascript' src='js/plugins/noty/layouts/topCenter.js'></script>
+		<script type='text/javascript' src='js/plugins/noty/layouts/topLeft.js'></script>
+		<script type='text/javascript' src='js/plugins/noty/layouts/topRight.js'></script>
+
+		<script type='text/javascript' src='js/plugins/noty/themes/default.js'></script>
+        <script type="text/javascript" src="js/remodal.min.js"></script> 
+        
+        
+
+		
+		<script>
+        $(function() {
+   
+            var data_1 = [
+               "0011000012 - Madewell Productions Limited", "0011000013 - Newkelson Agro Allied Industries", "0011000014 - Ab Gold Oladayo Nigeria Limited", "0011000015 - Abiodun Supply Company", "0011000016 - Abimbola Emmanuel Enterprises", "0011000017 - Abmar Builder Merchant Nigeria Enterprises", "0011000018 - Abven Building Materials Company", "0011000019 - A Chukson International Company Limited", "0011000020 - Adeomi Block Industry", "0011000021 - Adebak International Nigeria Limited", "0011000022 - Ade Joseph Block Industry", "0011000023 - Adexco Nigeria Limited", "0011000024 -Ade Naz Nigeria Enterprises", "0011000025 -Aderade Enterprises", "0011000026 -Adesina Commerical Enterprises", "0011000027 -Adekola Building Contracts Services"
+            ];
+    
+            $("#quick-search").autocomplete({
+                source: data_1,
+                open: function(event, ui) {
+                    
+                    var autocomplete = $(".ui-autocomplete:visible");
+                    var oldTop = autocomplete.offset().top;
+                    var newTop = oldTop - $("#quick-search").height() + 25;
+                    autocomplete.css("top", newTop);
+                    
+                }
+            });
+            
+        });            
+        </script>
+
+		
+		<script>
+			
+			
+			// function to send mail
+			function sendmail(mText, mHtml, subject, to) {
+				// send sms and email and then update notification bar to include message
+				$.ajax({
+					url : "../sendmail",
+					type : "get", //send it through get method
+					data : {
+						text : mText,
+						html : mHtml,
+						subject : subject,
+						to : to
+					},
+					success : function(response) {
+						//Do Something
+						console.log('successfully called sendmail');
+					},
+					error : function(xhr) {
+						//Do Something to handle error
+						console.log('something went wrong please check');
+					}
+				});
+			}
+
+			function showOrderDetailsBlock() {
+				$("#orderdetailsblock").fadeIn();
+				$("#neworderblock").hide();
+				$("#mainblock").hide();
+			}
+
+			function showActiveDistributor() {
+
+				if ($("#search").val()) {
+					$("#activeDistributor").show();
+					$("#searchDistributor").hide();
+					$("#distributor").html($("#search").val());
+
+					$("#ordersummarypanel").hide();
+					$("#openFigure").html("5,381,423.00");
+					$("#paidFigure").html("1,581,323.00");
+					$("#collectedFigure").html("2,581,323.00");
+					$("#completedFigure").html("3,544,320.00");
+					$("#draftFigure").html("₦410,500.00");
+					data = [{
+						y : '2014-12-01',
+						a : 91380300,
+						b : 51380300,
+						c : 11380300
+					}, {
+						y : '2015-01-01',
+						a : 41380300,
+						b : 61380300,
+						c : 71380300
+					}, {
+						y : '2015-02-01',
+						a : 71380300,
+						b : 51380300,
+						c : 121380300
+					}, {
+						y : '2015-03-01',
+						a : 51380300,
+						b : 71380300,
+
+						c : 91380300
+					}, {
+						y : '2015-04-01',
+						a : 91380300,
+						b : 41380300,
+						c : 51380300
+					}, {
+						y : '2015-05-01',
+						a : 91380300,
+						b : 121380300,
+						c : 101380300
+					}, {
+						y : '2015-06-01',
+						a : 111380300,
+						b : 151380300,
+						c : 201380300
+					}];
+					window.myAreaChart.setData(data);
+					$("#ordersummarypanel").fadeIn();
+
+					$("#distributorSummary").fadeOut();
+					$("#distributorSummary").fadeIn();
+
+				}
+			}
+
+			function placeOrder() {
+				pageLoadingFrame("show");
+				setTimeout(function() {
+					pageLoadingFrame("hide");
+				}, 1500);
+
+				showOrderDetailsBlock();
+				$("#alertblock").show();
+
+				setTimeout(function() {
+					$("#alertblock").fadeOut();
+				}, 5000);
+				//reset place order button to disabled
+
+			}
+
+			function showSearchDistributor() {
+				$("#activeDistributor").hide();
+				$("#searchDistributor").show();
+			}
+
+			function showDistributorActivity(orderStatus) {
+
+				/*pageLoadingFrame("show");
+				 setTimeout(function() {
+				 pageLoadingFrame("hide");
+
+				 }, 1000);
+				 */
+				if (orderStatus == 'open') {
+					reset();
+					$("#ordersOpen").addClass("widget-dark-gray");
+					$("#orderlistlabel").html("Open Orders");
+					$("#order_value").html("₦4,981,423.00");
+					$("#order_total_1").html("₦5,381,423.00");
+
+				} else if (orderStatus == 'paid') {
+					reset();
+					$("#ordersPaid").addClass("widget-dark-gray");
+					$("#orderlistlabel").html("Approved Orders");
+					$("#order_value").html("₦1,181,323.00");
+					$("#order_total_1").html("₦1,581,323.00");
+				} else if (orderStatus == 'collected') {
+					reset();
+					$("#ordersCollected").addClass("widget-dark-gray");
+					$("#orderlistlabel").html("Paid Orders");
+					$("#order_value").html("₦2,181,323.00");
+					$("#order_total_1").html("₦2,581,323.00");
+				} else if (orderStatus == 'completed') {
+					reset();
+					$("#ordersCollected").addClass("widget-dark-gray");
+					$("#orderlistlabel").html("Completed Orders");
+					$("#order_value").html("₦3,144,320.00");
+					$("#order_total_1").html("₦3,544,320.00");
+				} else if (orderStatus == 'drafts') {
+					reset();
+					$("#ordersDrafts").addClass("widget-dark-gray");
+					$("#orderlistlabel").html("Drafts");
+					$("#order_value").html("₦10,500.00");
+					$("#order_total_1").html("₦410,500.00");
+				}
+
+				$("#distributorSummary").hide();
+				$("#distributorActivity").fadeOut();
+				$("#distributorActivity").fadeIn();
+			}
+
+			function showDistributorSummary() {
+
+				$("#distributorActivity").hide();
+				$("#distributorSummary").fadeIn();
+			}
+
+			function reset() {
+				$("#ordersOpen").removeClass("widget-dark-gray");
+				$("#ordersPaid").removeClass("widget-dark-gray");
+				$("#ordersCollected").removeClass("widget-dark-gray");
+				$("#ordersDrafts").removeClass("widget-dark-gray");
+
+				$("#ordersOpen").addClass("widget-gray");
+				$("#ordersPaid").addClass("widget-gray");
+				$("#ordersCollected").addClass("widget-gray");
+				$("#ordersDrafts").addClass("widget-gray");
+			}
+
+		</script>
+
+		<!-- END THIS PAGE PLUGINS-->
+
+		<!-- START TEMPLATE -->
+		<script type="text/javascript" src="js/settings.js"></script>
+
+		<script type="text/javascript" src="js/plugins.js"></script>
+		<script type="text/javascript" src="js/actions.js"></script>
+		<!--<script type="text/javascript" src="js/demo_dashboard.js"></script>-->
+		<script type="text/javascript">
+			$(function() {
+				/* Line dashboard chart */
+				window.myAreaChart = Morris.Line({
+					element : 'dashboard-bar-1',
+					data : [{
+						y : '2014-12-01',
+						a : 4510000,
+						b : 18000000
+					}, {
+						y : '2015-01-01',
+						a : 41380300,
+						b : 120000000
+					}, {
+						y : '2015-02-01',
+						a : 71380300,
+						b : 80000000
+					}, {
+						y : '2015-03-01',
+						a : 2110000,
+						b : 22000000
+					}, {
+						y : '2015-04-01',
+						a : 4320000,
+						b : 60000000
+					}, {
+						y : '2015-05-01',
+						a : 91380300,
+						b : 11000000
+					}, {
+						y : '2015-06-01',
+						a : 3120000,
+						b : 1900000
+					}],
+					xkey : 'y',
+					ykeys : ['a', 'b'],
+					labels : ['Total Amount', 'Quantity (tonnes)'],
+					resize : false,
+					hideHover : true,
+					xLabels : 'day',
+					gridTextSize : '10px',
+					lineColors : ['#fea223', '#95b75d'],
+					gridLineColor : '#E5E5E5'
+				});
+				/* END Line dashboard chart */
+			});
+		</script>
+        
+                <script type="text/javascript">
+            function applyRebate(){
+				
+               document.getElementById("lblRebateValue").innerHTML = "Rebate Value: ₦"  +document.getElementById("rebateAmount").value 
+            }
+            function cancelRebate (){
+                alert('Are you show you want to cancel this transaction');
+            }
+        </script>
+        
+        
+        
+        
+         <script>
+	function showTransactions() 
+    {
+		var customerID  = document.getElementById("quick-search").value;
+		document.getElementById("distributor").innerHTML = customerID;
+		var textArray = ['1000',	'1230',	'1350',
+'₦2000',	'₦1240',	'₦1450',
+'₦3000',	'₦1250',	'₦1550',
+'₦4000',	'₦1260',	'₦1650',
+'₦5000',	'₦1270',	'₦1750',
+'₦6000',	'₦1280',	'₦1850',
+'₦7000',	'₦1290',	'₦1950',
+'₦8000',	'₦1300',	'₦2050',
+'₦9000',	'₦1310',	'₦2150',
+'₦10000','₦1320',	'₦2250',
+'₦11000','₦1330',	'₦2350',
+'₦12000','₦1340',	'₦2450',
+'₦13000','₦1350',	'₦2550'
+
+];
+document.getElementById("txt1").innerHTML = textArray[Math.floor(Math.random() * textArray.length)];
+	document.getElementById("txt2").innerHTML = textArray[Math.floor(Math.random() * textArray.length)];
+	document.getElementById("txt3").innerHTML = textArray[Math.floor(Math.random() * textArray.length)];
+	document.getElementById("txt4").innerHTML = textArray[Math.floor(Math.random() * textArray.length)];
+	document.getElementById("txt5").innerHTML = textArray[Math.floor(Math.random() * textArray.length)];
+	document.getElementById("txt6").innerHTML = textArray[Math.floor(Math.random() * textArray.length)];
+	document.getElementById("txt7").innerHTML = textArray[Math.floor(Math.random() * textArray.length)];
+	document.getElementById("txt8").innerHTML = textArray[Math.floor(Math.random() * textArray.length)];
+	document.getElementById("txt9").innerHTML = textArray[Math.floor(Math.random() * textArray.length)];
+	document.getElementById("txt10").innerHTML = textArray[Math.floor(Math.random() * textArray.length)];
+	document.getElementById("txt11").innerHTML = textArray[Math.floor(Math.random() * textArray.length)];
+	document.getElementById("txt12").innerHTML = textArray[Math.floor(Math.random() * textArray.length)];
+	document.getElementById("txt13").innerHTML = textArray[Math.floor(Math.random() * textArray.length)];
+	document.getElementById("txt14").innerHTML = textArray[Math.floor(Math.random() * textArray.length)];
+	document.getElementById("txt15").innerHTML = textArray[Math.floor(Math.random() * textArray.length)];
+	document.getElementById("txt16").innerHTML = textArray[Math.floor(Math.random() * textArray.length)];
+	document.getElementById("txt17").innerHTML = textArray[Math.floor(Math.random() * textArray.length)];
+	document.getElementById("txt18").innerHTML = textArray[Math.floor(Math.random() * textArray.length)];
+	document.getElementById("txt19").innerHTML = textArray[Math.floor(Math.random() * textArray.length)];
+	document.getElementById("txt20").innerHTML = textArray[Math.floor(Math.random() * textArray.length)];
+	document.getElementById("txt21").innerHTML = textArray[Math.floor(Math.random() * textArray.length)];
+	document.getElementById("txt22").innerHTML = textArray[Math.floor(Math.random() * textArray.length)];
+	document.getElementById("txt23").innerHTML = textArray[Math.floor(Math.random() * textArray.length)];
+	document.getElementById("txt24").innerHTML = textArray[Math.floor(Math.random() * textArray.length)];
+	document.getElementById("txt25").innerHTML = textArray[Math.floor(Math.random() * textArray.length)];
+	
+
+
+
+
+
+       
+	}
+                                            </script>
+                                            
+                                             <script>
+            $(function(){
+                //Spinner
+                $(".spinner_default").spinner()
+                $(".spinner_decimal").spinner({step: 0.01, numberFormat: "n"});                
+                //End spinner
+                
+                //Datepicker
+                $('#dp-2').datepicker();
+                $('#dp-3').datepicker({startView: 2});
+                $('#dp-4').datepicker({startView: 1});                
+                //End Datepicker
+            });
+        </script>
+        
+		<!-- END TEMPLATE -->
+		<!-- END SCRIPTS -->
+	</body>
+</html>
+
